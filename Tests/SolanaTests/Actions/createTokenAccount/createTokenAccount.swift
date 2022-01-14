@@ -15,7 +15,7 @@ class createTokenAccount: XCTestCase {
     
     func testCreateTokenAccount() {
         let mintAddress = "6AUM4fSvCAxCugrbJPFxTqYFp9r3axYx973yoSyzDYVH"
-        let account: (signature: String, newPubkey: String)? = try! solana.action.createTokenAccount( mintAddress: mintAddress)?.get()
+        let account: (signature: String, newPubkey: String)? = try! solana.action.createTokenAccount( mintAddress: mintAddress, signer: self.account)?.get()
         XCTAssertNotNil(account)
     }
     

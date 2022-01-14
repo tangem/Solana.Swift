@@ -2,7 +2,6 @@ import Foundation
 
 extension Action {
     public typealias SPLTokenDestinationAddress = (destination: PublicKey, isUnregisteredAsocciatedToken: Bool)
-    
     public func findSPLTokenDestinationAddress(
         mintAddress: String,
         destinationAddress: String,

@@ -5,14 +5,11 @@ extension Action {
         to destination: String,
         amount: UInt64,
         allowUnfundedRecipient: Bool = false,
+        signer: Signer,
         onComplete: @escaping ((Result<TransactionID, Error>) -> Void)
     ) {
-        guard let account = try? self.auth.account.get() else {
-            onComplete(.failure(SolanaError.unauthorized))
-            return
-        }
+        let fromPublicKey = signer.publicKey
 
-        let fromPublicKey = account.publicKey
         if fromPublicKey.base58EncodedString == destination {
             onComplete(.failure(SolanaError.other("You can not send tokens to yourself")))
             return
@@ -20,7 +17,7 @@ extension Action {
 
         // check
         if allowUnfundedRecipient {
-            serializeAndSend(from: fromPublicKey, to: destination, amount: amount, signer: account, onComplete: onComplete)
+            serializeAndSend(from: fromPublicKey, to: destination, amount: amount, signer: signer, onComplete: onComplete)
         } else {
             self.api.getAccountInfo(account: destination, decodedTo: EmptyInfo.self) { resultInfo in
                 if case Result.failure( let error) = resultInfo {
@@ -32,27 +29,27 @@ extension Action {
                         return
                     }
                 }
-
+                
                 guard case Result.success(let info) = resultInfo else {
                     onComplete(.failure(SolanaError.couldNotRetriveAccountInfo))
                     return
                 }
-
+                
                 guard info.owner == PublicKey.programId.base58EncodedString else {
                     onComplete(.failure(SolanaError.other("Invalid account info")))
                     return
                 }
-
-                self.serializeAndSend(from: fromPublicKey, to: destination, amount: amount, signer: account, onComplete: onComplete)
+                
+                self.serializeAndSend(from: fromPublicKey, to: destination, amount: amount, signer: signer, onComplete: onComplete)
             }
         }
     }
-
+    
     fileprivate func serializeAndSend(
         from fromPublicKey: PublicKey,
         to destination: String,
         amount: UInt64,
-        signer: Account,
+        signer: Signer,
         onComplete: @escaping ((Result<TransactionID, Error>) -> Void)
     ) {
         guard let to = PublicKey(string: destination) else {
@@ -81,17 +78,19 @@ extension Action {
 
 extension ActionTemplates {
     public struct SendSOL: ActionTemplate {
-        public init(amount: UInt64, destination: String) {
+        public init(amount: UInt64, destination: String, signer: Signer) {
             self.amount = amount
             self.destination = destination
+            self.signer = signer
         }
 
         public typealias Success = TransactionID
         public let amount: UInt64
         public let destination: String
+        public let signer: Signer
 
         public func perform(withConfigurationFrom actionClass: Action, completion: @escaping (Result<TransactionID, Error>) -> Void) {
-            actionClass.sendSOL(to: destination, amount: amount, onComplete: completion)
+            actionClass.sendSOL(to: destination, amount: amount, signer: signer, onComplete: completion)
         }
     }
 }

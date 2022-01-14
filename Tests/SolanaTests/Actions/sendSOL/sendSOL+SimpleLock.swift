@@ -27,12 +27,13 @@ extension Action {
 
     func sendSOL(
         to destination: String,
-        amount: UInt64
+        amount: UInt64,
+        signer: Signer
     ) -> Result<TransactionID, Error>? {
         var transaction: Result<TransactionID, Error>?
         let lock = RunLoopSimpleLock()
         lock.dispatch { [weak self] in
-            self?.sendSOL(to: destination, amount: amount) {
+            self?.sendSOL(to: destination, amount: amount, signer: signer) {
                 transaction = $0
                 lock.stop()
             }

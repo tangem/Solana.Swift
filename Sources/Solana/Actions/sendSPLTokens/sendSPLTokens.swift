@@ -8,12 +8,9 @@ extension Action {
         to destinationAddress: String,
         amount: UInt64,
         allowUnfundedRecipient: Bool = false,
+        signer: Signer,
         onComplete: @escaping (Result<TransactionID, Error>) -> Void
     ) {
-        guard let account = try? self.auth.account.get() else {
-            return onComplete(.failure(SolanaError.unauthorized))
-        }
-
         ContResult.init { cb in
             self.findSPLTokenDestinationAddress(
                 mintAddress: mintAddress,
@@ -47,7 +44,7 @@ extension Action {
                     mint: mint,
                     associatedAccount: toPublicKey,
                     owner: owner,
-                    payer: account.publicKey
+                    payer: signer.publicKey
                 )
                 instructions.append(createATokenInstruction)
             }
@@ -57,12 +54,12 @@ extension Action {
                 tokenProgramId: .tokenProgramId,
                 source: fromPublicKey,
                 destination: toPublicKey,
-                owner: account.publicKey,
+                owner: signer.publicKey,
                 amount: amount
             )
 
             instructions.append(sendInstruction)
-            return .success((instructions: instructions, account: account))
+            return .success((instructions: instructions, account: signer))
 
         }.flatMap { (instructions, account) in
             ContResult.init { cb in
@@ -82,11 +79,12 @@ extension ActionTemplates {
         public let amount: UInt64
         public let decimals: Decimals
         public let allowUnfundedRecipient: Bool
+        public let signer: Signer
 
         public typealias Success = TransactionID
 
         public func perform(withConfigurationFrom actionClass: Action, completion: @escaping (Result<TransactionID, Error>) -> Void) {
-            actionClass.sendSPLTokens(mintAddress: mintAddress, decimals: decimals, from: fromPublicKey, to: destinationAddress, amount: amount, allowUnfundedRecipient: allowUnfundedRecipient, onComplete: completion)
+            actionClass.sendSPLTokens(mintAddress: mintAddress, decimals: decimals, from: fromPublicKey, to: destinationAddress, amount: amount, allowUnfundedRecipient: allowUnfundedRecipient, signer: signer, onComplete: completion)
         }
     }
 }
