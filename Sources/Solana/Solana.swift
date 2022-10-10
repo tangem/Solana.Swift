@@ -7,7 +7,7 @@ public protocol SolanaAccountStorage {
 }
 
 public class Solana {
-    let router: NetworkingRouter
+    public let router: NetworkingRouter
     public let socket: SolanaSocket
     public let auth: SolanaAccountStorage
     public let api: Api
