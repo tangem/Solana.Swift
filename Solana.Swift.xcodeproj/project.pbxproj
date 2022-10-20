@@ -1,0 +1,2026 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7DD945E699E2BF12EB4681AD /* Pods_Solana_SwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E8409193B12E3A8D5A9D41 /* Pods_Solana_SwiftTests.framework */; };
+		A31C023BA53A7F24397E6930 /* Pods_Solana_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 331172706474BFC5CA7C4B9A /* Pods_Solana_Swift.framework */; };
+		B03AE9662901828D003E18BC /* Solana_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03AE95D2901828D003E18BC /* Solana_Swift.framework */; };
+		B03AEBFA290185C5003E18BC /* Solana_Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = B03AEB28290185C4003E18BC /* Solana_Swift.h */; };
+		B03AEBFB290185C5003E18BC /* SolanaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB2C290185C4003E18BC /* SolanaRequest.swift */; };
+		B03AEBFC290185C5003E18BC /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB2F290185C4003E18BC /* Models.swift */; };
+		B03AEBFD290185C5003E18BC /* SolanaSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB30290185C4003E18BC /* SolanaSocket.swift */; };
+		B03AEBFE290185C5003E18BC /* SolanaRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB32290185C4003E18BC /* SolanaRouter.swift */; };
+		B03AEBFF290185C5003E18BC /* NetworkingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB33290185C4003E18BC /* NetworkingRouter.swift */; };
+		B03AEC00290185C5003E18BC /* Solana.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB34290185C4003E18BC /* Solana.swift */; };
+		B03AEC01290185C5003E18BC /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB36290185C4003E18BC /* PublicKey.swift */; };
+		B03AEC02290185C5003E18BC /* TokenSwapInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB38290185C4003E18BC /* TokenSwapInfo.swift */; };
+		B03AEC03290185C5003E18BC /* EmptyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB39290185C4003E18BC /* EmptyInfo.swift */; };
+		B03AEC04290185C5003E18BC /* Mint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB3A290185C4003E18BC /* Mint.swift */; };
+		B03AEC05290185C5003E18BC /* BufferLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB3B290185C4003E18BC /* BufferLayout.swift */; };
+		B03AEC06290185C5003E18BC /* AccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB3C290185C4003E18BC /* AccountInfo.swift */; };
+		B03AEC07290185C5003E18BC /* ConfirmedTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB3D290185C4003E18BC /* ConfirmedTransaction.swift */; };
+		B03AEC08290185C5003E18BC /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB3E290185C4003E18BC /* Network.swift */; };
+		B03AEC09290185C5003E18BC /* SolanaSDK+Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB3F290185C4003E18BC /* SolanaSDK+Models.swift */; };
+		B03AEC0A290185C5003E18BC /* ParsedTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB40290185C4003E18BC /* ParsedTransaction.swift */; };
+		B03AEC0B290185C5003E18BC /* DerivablePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB41290185C4003E18BC /* DerivablePath.swift */; };
+		B03AEC0C290185C5003E18BC /* Pool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB42290185C4003E18BC /* Pool.swift */; };
+		B03AEC0D290185C5003E18BC /* TransactionInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB43290185C4003E18BC /* TransactionInstruction.swift */; };
+		B03AEC0E290185C5003E18BC /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB45290185C4003E18BC /* Message.swift */; };
+		B03AEC0F290185C5003E18BC /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB46290185C4003E18BC /* Transaction.swift */; };
+		B03AEC10290185C5003E18BC /* TokenList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB48290185C4003E18BC /* TokenList.swift */; };
+		B03AEC11290185C5003E18BC /* SolanaSDK+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB49290185C4003E18BC /* SolanaSDK+Request.swift */; };
+		B03AEC12290185C5003E18BC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB4A290185C4003E18BC /* Account.swift */; };
+		B03AEC13290185C5003E18BC /* RPCEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB4B290185C4003E18BC /* RPCEndpoint.swift */; };
+		B03AEC14290185C5003E18BC /* SolanaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB4C290185C4003E18BC /* SolanaError.swift */; };
+		B03AEC15290185C5003E18BC /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB4D290185C4003E18BC /* Wallet.swift */; };
+		B03AEC16290185C5003E18BC /* PublicKey+AssociatedTokenProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB50290185C4003E18BC /* PublicKey+AssociatedTokenProgram.swift */; };
+		B03AEC17290185C5003E18BC /* PublicKey+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB51290185C4003E18BC /* PublicKey+Extensions.swift */; };
+		B03AEC18290185C5003E18BC /* Decimals+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB52290185C4003E18BC /* Decimals+Extensions.swift */; };
+		B03AEC19290185C5003E18BC /* NSRegularExpression+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB53290185C4003E18BC /* NSRegularExpression+Extensions.swift */; };
+		B03AEC1A290185C5003E18BC /* AccountMeta+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB54290185C4003E18BC /* AccountMeta+Extensions.swift */; };
+		B03AEC1B290185C5003E18BC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB55290185C4003E18BC /* String+Extension.swift */; };
+		B03AEC1C290185C5003E18BC /* BytesEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB56290185C4003E18BC /* BytesEncodable.swift */; };
+		B03AEC1D290185C5003E18BC /* Bytes+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB57290185C4003E18BC /* Bytes+Extensions.swift */; };
+		B03AEC1E290185C5003E18BC /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB58290185C4003E18BC /* Data+Extension.swift */; };
+		B03AEC1F290185C5003E18BC /* Number+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB59290185C4003E18BC /* Number+Extensions.swift */; };
+		B03AEC20290185C5003E18BC /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB5A290185C4003E18BC /* Data+Extensions.swift */; };
+		B03AEC21290185C5003E18BC /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB5B290185C4003E18BC /* Array+Extension.swift */; };
+		B03AEC22290185C5003E18BC /* TokenSwapProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB5D290185C4003E18BC /* TokenSwapProgram.swift */; };
+		B03AEC23290185C5003E18BC /* TokenProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB5E290185C4003E18BC /* TokenProgram.swift */; };
+		B03AEC24290185C5003E18BC /* AssociatedTokenProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB5F290185C4003E18BC /* AssociatedTokenProgram.swift */; };
+		B03AEC25290185C5003E18BC /* SystemProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB60290185C4003E18BC /* SystemProgram.swift */; };
+		B03AEC26290185C5003E18BC /* closeTokenAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB63290185C4003E18BC /* closeTokenAccount.swift */; };
+		B03AEC27290185C5003E18BC /* getTokenWallets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB65290185C4003E18BC /* getTokenWallets.swift */; };
+		B03AEC28290185C5003E18BC /* createAssociatedTokenAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB67290185C4003E18BC /* createAssociatedTokenAccount.swift */; };
+		B03AEC29290185C5003E18BC /* swap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB69290185C4003E18BC /* swap.swift */; };
+		B03AEC2A290185C5003E18BC /* findSPLTokenDestinationAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB6B290185C4003E18BC /* findSPLTokenDestinationAddress.swift */; };
+		B03AEC2B290185C5003E18BC /* sendSOL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB6D290185C4003E18BC /* sendSOL.swift */; };
+		B03AEC2C290185C5003E18BC /* serializeTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB6F290185C4003E18BC /* serializeTransaction.swift */; };
+		B03AEC2D290185C5003E18BC /* getMintData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB71290185C4003E18BC /* getMintData.swift */; };
+		B03AEC2E290185C5003E18BC /* serializeAndSendWithFee.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB73290185C4003E18BC /* serializeAndSendWithFee.swift */; };
+		B03AEC2F290185C5003E18BC /* sendSPLTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB75290185C4003E18BC /* sendSPLTokens.swift */; };
+		B03AEC30290185C5003E18BC /* getPools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB77290185C4003E18BC /* getPools.swift */; };
+		B03AEC31290185C5003E18BC /* ActionTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB78290185C4003E18BC /* ActionTemplate.swift */; };
+		B03AEC32290185C5003E18BC /* createTokenAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB7A290185C5003E18BC /* createTokenAccount.swift */; };
+		B03AEC33290185C5003E18BC /* getAccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB7D290185C5003E18BC /* getAccountInfo.swift */; };
+		B03AEC34290185C5003E18BC /* getVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB7F290185C5003E18BC /* getVersion.swift */; };
+		B03AEC35290185C5003E18BC /* getTokenAccountsByOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB81290185C5003E18BC /* getTokenAccountsByOwner.swift */; };
+		B03AEC36290185C5003E18BC /* getTokenLargestAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB83290185C5003E18BC /* getTokenLargestAccounts.swift */; };
+		B03AEC37290185C5003E18BC /* getGenesisHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB85290185C5003E18BC /* getGenesisHash.swift */; };
+		B03AEC38290185C5003E18BC /* getBlockTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB87290185C5003E18BC /* getBlockTime.swift */; };
+		B03AEC39290185C5003E18BC /* getProgramAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB89290185C5003E18BC /* getProgramAccounts.swift */; };
+		B03AEC3A290185C6003E18BC /* getSlotLeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB8B290185C5003E18BC /* getSlotLeader.swift */; };
+		B03AEC3B290185C6003E18BC /* getLeaderSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB8D290185C5003E18BC /* getLeaderSchedule.swift */; };
+		B03AEC3C290185C6003E18BC /* getConfirmedSignaturesForAddress2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB8F290185C5003E18BC /* getConfirmedSignaturesForAddress2.swift */; };
+		B03AEC3D290185C6003E18BC /* getConfirmedBlocksWithLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB91290185C5003E18BC /* getConfirmedBlocksWithLimit.swift */; };
+		B03AEC3E290185C6003E18BC /* getSupply.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB93290185C5003E18BC /* getSupply.swift */; };
+		B03AEC3F290185C6003E18BC /* getFeeCalculatorForBlockhash.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB95290185C5003E18BC /* getFeeCalculatorForBlockhash.swift */; };
+		B03AEC40290185C6003E18BC /* getRecentPerformanceSamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB97290185C5003E18BC /* getRecentPerformanceSamples.swift */; };
+		B03AEC41290185C6003E18BC /* sendTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB99290185C5003E18BC /* sendTransaction.swift */; };
+		B03AEC42290185C6003E18BC /* getTokenAccountsByDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB9B290185C5003E18BC /* getTokenAccountsByDelegate.swift */; };
+		B03AEC43290185C6003E18BC /* ApiTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB9C290185C5003E18BC /* ApiTemplate.swift */; };
+		B03AEC44290185C6003E18BC /* simulateTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEB9E290185C5003E18BC /* simulateTransaction.swift */; };
+		B03AEC45290185C6003E18BC /* getIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBA0290185C5003E18BC /* getIdentity.swift */; };
+		B03AEC46290185C6003E18BC /* getMultipleAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBA2290185C5003E18BC /* getMultipleAccounts.swift */; };
+		B03AEC47290185C6003E18BC /* getFees.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBA4290185C5003E18BC /* getFees.swift */; };
+		B03AEC48290185C6003E18BC /* getFirstAvailableBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBA6290185C5003E18BC /* getFirstAvailableBlock.swift */; };
+		B03AEC49290185C6003E18BC /* getBlockCommitment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBA8290185C5003E18BC /* getBlockCommitment.swift */; };
+		B03AEC4A290185C6003E18BC /* getConfirmedBlocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBAA290185C5003E18BC /* getConfirmedBlocks.swift */; };
+		B03AEC4B290185C6003E18BC /* getVoteAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBAC290185C5003E18BC /* getVoteAccounts.swift */; };
+		B03AEC4C290185C6003E18BC /* getInflationGovernor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBAE290185C5003E18BC /* getInflationGovernor.swift */; };
+		B03AEC4D290185C6003E18BC /* getInflationRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBB0290185C5003E18BC /* getInflationRate.swift */; };
+		B03AEC4E290185C6003E18BC /* getTokenSupply.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBB2290185C5003E18BC /* getTokenSupply.swift */; };
+		B03AEC4F290185C6003E18BC /* getConfirmedBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBB4290185C5003E18BC /* getConfirmedBlock.swift */; };
+		B03AEC50290185C6003E18BC /* getStakeActivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBB6290185C5003E18BC /* getStakeActivation.swift */; };
+		B03AEC51290185C6003E18BC /* getSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBB8290185C5003E18BC /* getSlot.swift */; };
+		B03AEC52290185C6003E18BC /* getTransactionCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBBA290185C5003E18BC /* getTransactionCount.swift */; };
+		B03AEC53290185C6003E18BC /* getTokenAccountBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBBC290185C5003E18BC /* getTokenAccountBalance.swift */; };
+		B03AEC54290185C6003E18BC /* getEpochSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBBE290185C5003E18BC /* getEpochSchedule.swift */; };
+		B03AEC55290185C6003E18BC /* getMinimumBalanceForRentExemption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBC0290185C5003E18BC /* getMinimumBalanceForRentExemption.swift */; };
+		B03AEC56290185C6003E18BC /* getFeeRateGovernor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBC2290185C5003E18BC /* getFeeRateGovernor.swift */; };
+		B03AEC57290185C6003E18BC /* getConfirmedTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBC4290185C5003E18BC /* getConfirmedTransaction.swift */; };
+		B03AEC58290185C6003E18BC /* getSignatureStatuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBC6290185C5003E18BC /* getSignatureStatuses.swift */; };
+		B03AEC59290185C6003E18BC /* requestAirdrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBC8290185C5003E18BC /* requestAirdrop.swift */; };
+		B03AEC5A290185C6003E18BC /* getLargestAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBCA290185C5003E18BC /* getLargestAccounts.swift */; };
+		B03AEC5B290185C6003E18BC /* minimumLedgerSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBCC290185C5003E18BC /* minimumLedgerSlot.swift */; };
+		B03AEC5C290185C6003E18BC /* getRecentBlockhash.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBCE290185C5003E18BC /* getRecentBlockhash.swift */; };
+		B03AEC5D290185C6003E18BC /* getBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBD0290185C5003E18BC /* getBalance.swift */; };
+		B03AEC5E290185C6003E18BC /* getClusterNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBD2290185C5003E18BC /* getClusterNodes.swift */; };
+		B03AEC5F290185C6003E18BC /* getEpochInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBD4290185C5003E18BC /* getEpochInfo.swift */; };
+		B03AEC60290185C6003E18BC /* TokenInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBD6290185C5003E18BC /* TokenInfoProvider.swift */; };
+		B03AEC61290185C6003E18BC /* ContResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBD8290185C5003E18BC /* ContResult.swift */; };
+		B03AEC62290185C6003E18BC /* HMAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBD9290185C5003E18BC /* HMAC.swift */; };
+		B03AEC63290185C6003E18BC /* SHA256.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBDA290185C5003E18BC /* SHA256.swift */; };
+		B03AEC64290185C6003E18BC /* NaclLowLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBDB290185C5003E18BC /* NaclLowLevel.swift */; };
+		B03AEC65290185C6003E18BC /* CKSecp256k1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBDC290185C5003E18BC /* CKSecp256k1.swift */; };
+		B03AEC66290185C6003E18BC /* Int2X.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBDE290185C5003E18BC /* Int2X.swift */; };
+		B03AEC67290185C6003E18BC /* UInt2X.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBDF290185C5003E18BC /* UInt2X.swift */; };
+		B03AEC68290185C6003E18BC /* PBKDF2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBE0290185C5003E18BC /* PBKDF2.swift */; };
+		B03AEC69290185C6003E18BC /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBE2290185C5003E18BC /* Keys.swift */; };
+		B03AEC6A290185C6003E18BC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBE3290185C5003E18BC /* Extensions.swift */; };
+		B03AEC6B290185C6003E18BC /* Ed25519HDKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBE4290185C5003E18BC /* Ed25519HDKey.swift */; };
+		B03AEC6C290185C6003E18BC /* BorshSerialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBE6290185C5003E18BC /* BorshSerialize.swift */; };
+		B03AEC6D290185C6003E18BC /* BinaryReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBE7290185C5003E18BC /* BinaryReader.swift */; };
+		B03AEC6E290185C6003E18BC /* BorshDeserialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBE8290185C5003E18BC /* BorshDeserialize.swift */; };
+		B03AEC6F290185C6003E18BC /* BorshDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBE9290185C5003E18BC /* BorshDecoder.swift */; };
+		B03AEC70290185C6003E18BC /* Borsh.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBEA290185C5003E18BC /* Borsh.swift */; };
+		B03AEC71290185C6003E18BC /* BorshEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBEB290185C5003E18BC /* BorshEncoder.swift */; };
+		B03AEC72290185C6003E18BC /* Wordlists.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBED290185C5003E18BC /* Wordlists.swift */; };
+		B03AEC73290185C6003E18BC /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBEE290185C5003E18BC /* Mnemonic.swift */; };
+		B03AEC74290185C6003E18BC /* Base58.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBEF290185C5003E18BC /* Base58.swift */; };
+		B03AEC75290185C6003E18BC /* ASKHDUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBF1290185C5003E18BC /* ASKHDUtils.swift */; };
+		B03AEC76290185C6003E18BC /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBF2290185C5003E18BC /* Keychain.swift */; };
+		B03AEC77290185C6003E18BC /* SMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBF4290185C5003E18BC /* SMP.swift */; };
+		B03AEC78290185C6003E18BC /* SMP Bignum Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBF5290185C5003E18BC /* SMP Bignum Extensions.swift */; };
+		B03AEC79290185C6003E18BC /* UInt32+CircularShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBF7290185C5003E18BC /* UInt32+CircularShift.swift */; };
+		B03AEC7A290185C6003E18BC /* RIPEMD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBF8290185C5003E18BC /* RIPEMD.swift */; };
+		B03AEC7B290185C6003E18BC /* RIPEMD+Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEBF9290185C5003E18BC /* RIPEMD+Block.swift */; };
+		B03AECB7290185CE003E18BC /* SolanaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEC7E290185CE003E18BC /* SolanaTests.swift */; };
+		B03AECB8290185CE003E18BC /* RunLoopSimpleLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEC7F290185CE003E18BC /* RunLoopSimpleLock.swift */; };
+		B03AECB9290185CE003E18BC /* SocketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEC82290185CE003E18BC /* SocketTests.swift */; };
+		B03AECBA290185CE003E18BC /* mainnet-beta.tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = B03AEC85290185CE003E18BC /* mainnet-beta.tokens.json */; };
+		B03AECBB290185CE003E18BC /* testnet.tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = B03AEC86290185CE003E18BC /* testnet.tokens.json */; };
+		B03AECBC290185CE003E18BC /* devnet.tokens.json in Resources */ = {isa = PBXBuildFile; fileRef = B03AEC87290185CE003E18BC /* devnet.tokens.json */; };
+		B03AECBD290185CE003E18BC /* getTokenWallets.json in Resources */ = {isa = PBXBuildFile; fileRef = B03AEC88290185CE003E18BC /* getTokenWallets.json */; };
+		B03AECBE290185CE003E18BC /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEC8A290185CE003E18BC /* PublicKey.swift */; };
+		B03AECBF290185CE003E18BC /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEC8B290185CE003E18BC /* DecodingTests.swift */; };
+		B03AECC0290185CE003E18BC /* Pool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEC8C290185CE003E18BC /* Pool.swift */; };
+		B03AECC1290185CE003E18BC /* PublicKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEC8E290185CE003E18BC /* PublicKeyTests.swift */; };
+		B03AECC2290185CE003E18BC /* EncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEC8F290185CE003E18BC /* EncodingTests.swift */; };
+		B03AECC3290185CE003E18BC /* InMemoryAccountStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEC90290185CE003E18BC /* InMemoryAccountStorage.swift */; };
+		B03AECC4290185CE003E18BC /* closeTokenAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEC93290185CE003E18BC /* closeTokenAccount.swift */; };
+		B03AECC5290185CE003E18BC /* getTokenWallets+SimpleLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEC95290185CE003E18BC /* getTokenWallets+SimpleLock.swift */; };
+		B03AECC6290185CE003E18BC /* getTokenWallets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEC96290185CE003E18BC /* getTokenWallets.swift */; };
+		B03AECC7290185CE003E18BC /* createAssosiatedTokenAccount+SimpleLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEC98290185CE003E18BC /* createAssosiatedTokenAccount+SimpleLock.swift */; };
+		B03AECC8290185CE003E18BC /* createAssociatedTokenAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEC99290185CE003E18BC /* createAssociatedTokenAccount.swift */; };
+		B03AECC9290185CE003E18BC /* TokenSwapProgramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEC9B290185CE003E18BC /* TokenSwapProgramTests.swift */; };
+		B03AECCA290185CE003E18BC /* swap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEC9C290185CE003E18BC /* swap.swift */; };
+		B03AECCB290185CE003E18BC /* sendSOL+SimpleLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEC9E290185CE003E18BC /* sendSOL+SimpleLock.swift */; };
+		B03AECCC290185CE003E18BC /* sendSOL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AEC9F290185CE003E18BC /* sendSOL.swift */; };
+		B03AECCD290185CE003E18BC /* getMintData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECA1290185CE003E18BC /* getMintData.swift */; };
+		B03AECCE290185CE003E18BC /* getMintData+SimpleLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECA2290185CE003E18BC /* getMintData+SimpleLock.swift */; };
+		B03AECCF290185CE003E18BC /* serializeAndSendWithFee.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECA4290185CE003E18BC /* serializeAndSendWithFee.swift */; };
+		B03AECD0290185CE003E18BC /* serializeAndSendWithFee+SimpleLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECA5290185CE003E18BC /* serializeAndSendWithFee+SimpleLock.swift */; };
+		B03AECD1290185CE003E18BC /* sendSPLTokens+SimpleLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECA7290185CE003E18BC /* sendSPLTokens+SimpleLock.swift */; };
+		B03AECD2290185CE003E18BC /* sendSPLTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECA8290185CE003E18BC /* sendSPLTokens.swift */; };
+		B03AECD3290185CE003E18BC /* createTokenAccount+SimpleLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECAA290185CE003E18BC /* createTokenAccount+SimpleLock.swift */; };
+		B03AECD4290185CE003E18BC /* createTokenAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECAB290185CE003E18BC /* createTokenAccount.swift */; };
+		B03AECD5290185CE003E18BC /* Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECAD290185CE003E18BC /* Methods.swift */; };
+		B03AECD6290185CE003E18BC /* Methods+SimpleLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECAE290185CE003E18BC /* Methods+SimpleLock.swift */; };
+		B03AECD7290185CE003E18BC /* HMACTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECB0290185CE003E18BC /* HMACTests.swift */; };
+		B03AECD8290185CE003E18BC /* Borsh.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECB1290185CE003E18BC /* Borsh.swift */; };
+		B03AECD9290185CE003E18BC /* TokenListsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECB3290185CE003E18BC /* TokenListsParser.swift */; };
+		B03AECDA290185CE003E18BC /* ListTokenInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECB4290185CE003E18BC /* ListTokenInfoProvider.swift */; };
+		B03AECDB290185CE003E18BC /* TokenInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECB5290185CE003E18BC /* TokenInfoTests.swift */; };
+		B03AECDC290185CE003E18BC /* Solana_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECB6290185CE003E18BC /* Solana_SwiftTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B03AE9672901828D003E18BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B03AE9542901828D003E18BC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B03AE95C2901828D003E18BC;
+			remoteInfo = Solana.Swift;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0746F5898207426EE9C0D17E /* Pods-Solana.SwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solana.SwiftTests.release.xcconfig"; path = "Target Support Files/Pods-Solana.SwiftTests/Pods-Solana.SwiftTests.release.xcconfig"; sourceTree = "<group>"; };
+		331172706474BFC5CA7C4B9A /* Pods_Solana_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solana_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		625790C608CCEEA2EB711B59 /* Pods-Solana.Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solana.Swift.debug.xcconfig"; path = "Target Support Files/Pods-Solana.Swift/Pods-Solana.Swift.debug.xcconfig"; sourceTree = "<group>"; };
+		81AE72A72337C0C9BEC637D2 /* Pods-Solana.SwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solana.SwiftTests.debug.xcconfig"; path = "Target Support Files/Pods-Solana.SwiftTests/Pods-Solana.SwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B03AE95D2901828D003E18BC /* Solana_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Solana_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B03AE9652901828D003E18BC /* Solana.SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Solana.SwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B03AEB28290185C4003E18BC /* Solana_Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Solana_Swift.h; sourceTree = "<group>"; };
+		B03AEB2C290185C4003E18BC /* SolanaRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolanaRequest.swift; sourceTree = "<group>"; };
+		B03AEB2F290185C4003E18BC /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		B03AEB30290185C4003E18BC /* SolanaSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolanaSocket.swift; sourceTree = "<group>"; };
+		B03AEB32290185C4003E18BC /* SolanaRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolanaRouter.swift; sourceTree = "<group>"; };
+		B03AEB33290185C4003E18BC /* NetworkingRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingRouter.swift; sourceTree = "<group>"; };
+		B03AEB34290185C4003E18BC /* Solana.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solana.swift; sourceTree = "<group>"; };
+		B03AEB36290185C4003E18BC /* PublicKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
+		B03AEB38290185C4003E18BC /* TokenSwapInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenSwapInfo.swift; sourceTree = "<group>"; };
+		B03AEB39290185C4003E18BC /* EmptyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyInfo.swift; sourceTree = "<group>"; };
+		B03AEB3A290185C4003E18BC /* Mint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mint.swift; sourceTree = "<group>"; };
+		B03AEB3B290185C4003E18BC /* BufferLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferLayout.swift; sourceTree = "<group>"; };
+		B03AEB3C290185C4003E18BC /* AccountInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountInfo.swift; sourceTree = "<group>"; };
+		B03AEB3D290185C4003E18BC /* ConfirmedTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmedTransaction.swift; sourceTree = "<group>"; };
+		B03AEB3E290185C4003E18BC /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		B03AEB3F290185C4003E18BC /* SolanaSDK+Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SolanaSDK+Models.swift"; sourceTree = "<group>"; };
+		B03AEB40290185C4003E18BC /* ParsedTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsedTransaction.swift; sourceTree = "<group>"; };
+		B03AEB41290185C4003E18BC /* DerivablePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DerivablePath.swift; sourceTree = "<group>"; };
+		B03AEB42290185C4003E18BC /* Pool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pool.swift; sourceTree = "<group>"; };
+		B03AEB43290185C4003E18BC /* TransactionInstruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionInstruction.swift; sourceTree = "<group>"; };
+		B03AEB45290185C4003E18BC /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		B03AEB46290185C4003E18BC /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		B03AEB48290185C4003E18BC /* TokenList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenList.swift; sourceTree = "<group>"; };
+		B03AEB49290185C4003E18BC /* SolanaSDK+Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SolanaSDK+Request.swift"; sourceTree = "<group>"; };
+		B03AEB4A290185C4003E18BC /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		B03AEB4B290185C4003E18BC /* RPCEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPCEndpoint.swift; sourceTree = "<group>"; };
+		B03AEB4C290185C4003E18BC /* SolanaError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolanaError.swift; sourceTree = "<group>"; };
+		B03AEB4D290185C4003E18BC /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		B03AEB50290185C4003E18BC /* PublicKey+AssociatedTokenProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PublicKey+AssociatedTokenProgram.swift"; sourceTree = "<group>"; };
+		B03AEB51290185C4003E18BC /* PublicKey+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PublicKey+Extensions.swift"; sourceTree = "<group>"; };
+		B03AEB52290185C4003E18BC /* Decimals+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Decimals+Extensions.swift"; sourceTree = "<group>"; };
+		B03AEB53290185C4003E18BC /* NSRegularExpression+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+Extensions.swift"; sourceTree = "<group>"; };
+		B03AEB54290185C4003E18BC /* AccountMeta+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AccountMeta+Extensions.swift"; sourceTree = "<group>"; };
+		B03AEB55290185C4003E18BC /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		B03AEB56290185C4003E18BC /* BytesEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BytesEncodable.swift; sourceTree = "<group>"; };
+		B03AEB57290185C4003E18BC /* Bytes+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bytes+Extensions.swift"; sourceTree = "<group>"; };
+		B03AEB58290185C4003E18BC /* Data+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
+		B03AEB59290185C4003E18BC /* Number+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Number+Extensions.swift"; sourceTree = "<group>"; };
+		B03AEB5A290185C4003E18BC /* Data+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
+		B03AEB5B290185C4003E18BC /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		B03AEB5D290185C4003E18BC /* TokenSwapProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenSwapProgram.swift; sourceTree = "<group>"; };
+		B03AEB5E290185C4003E18BC /* TokenProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenProgram.swift; sourceTree = "<group>"; };
+		B03AEB5F290185C4003E18BC /* AssociatedTokenProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociatedTokenProgram.swift; sourceTree = "<group>"; };
+		B03AEB60290185C4003E18BC /* SystemProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemProgram.swift; sourceTree = "<group>"; };
+		B03AEB63290185C4003E18BC /* closeTokenAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = closeTokenAccount.swift; sourceTree = "<group>"; };
+		B03AEB65290185C4003E18BC /* getTokenWallets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getTokenWallets.swift; sourceTree = "<group>"; };
+		B03AEB67290185C4003E18BC /* createAssociatedTokenAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createAssociatedTokenAccount.swift; sourceTree = "<group>"; };
+		B03AEB69290185C4003E18BC /* swap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = swap.swift; sourceTree = "<group>"; };
+		B03AEB6B290185C4003E18BC /* findSPLTokenDestinationAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = findSPLTokenDestinationAddress.swift; sourceTree = "<group>"; };
+		B03AEB6D290185C4003E18BC /* sendSOL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sendSOL.swift; sourceTree = "<group>"; };
+		B03AEB6F290185C4003E18BC /* serializeTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = serializeTransaction.swift; sourceTree = "<group>"; };
+		B03AEB71290185C4003E18BC /* getMintData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getMintData.swift; sourceTree = "<group>"; };
+		B03AEB73290185C4003E18BC /* serializeAndSendWithFee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = serializeAndSendWithFee.swift; sourceTree = "<group>"; };
+		B03AEB75290185C4003E18BC /* sendSPLTokens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sendSPLTokens.swift; sourceTree = "<group>"; };
+		B03AEB77290185C4003E18BC /* getPools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getPools.swift; sourceTree = "<group>"; };
+		B03AEB78290185C4003E18BC /* ActionTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionTemplate.swift; sourceTree = "<group>"; };
+		B03AEB7A290185C5003E18BC /* createTokenAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createTokenAccount.swift; sourceTree = "<group>"; };
+		B03AEB7D290185C5003E18BC /* getAccountInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getAccountInfo.swift; sourceTree = "<group>"; };
+		B03AEB7F290185C5003E18BC /* getVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getVersion.swift; sourceTree = "<group>"; };
+		B03AEB81290185C5003E18BC /* getTokenAccountsByOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getTokenAccountsByOwner.swift; sourceTree = "<group>"; };
+		B03AEB83290185C5003E18BC /* getTokenLargestAccounts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getTokenLargestAccounts.swift; sourceTree = "<group>"; };
+		B03AEB85290185C5003E18BC /* getGenesisHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getGenesisHash.swift; sourceTree = "<group>"; };
+		B03AEB87290185C5003E18BC /* getBlockTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getBlockTime.swift; sourceTree = "<group>"; };
+		B03AEB89290185C5003E18BC /* getProgramAccounts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getProgramAccounts.swift; sourceTree = "<group>"; };
+		B03AEB8B290185C5003E18BC /* getSlotLeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getSlotLeader.swift; sourceTree = "<group>"; };
+		B03AEB8D290185C5003E18BC /* getLeaderSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getLeaderSchedule.swift; sourceTree = "<group>"; };
+		B03AEB8F290185C5003E18BC /* getConfirmedSignaturesForAddress2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getConfirmedSignaturesForAddress2.swift; sourceTree = "<group>"; };
+		B03AEB91290185C5003E18BC /* getConfirmedBlocksWithLimit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getConfirmedBlocksWithLimit.swift; sourceTree = "<group>"; };
+		B03AEB93290185C5003E18BC /* getSupply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getSupply.swift; sourceTree = "<group>"; };
+		B03AEB95290185C5003E18BC /* getFeeCalculatorForBlockhash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getFeeCalculatorForBlockhash.swift; sourceTree = "<group>"; };
+		B03AEB97290185C5003E18BC /* getRecentPerformanceSamples.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getRecentPerformanceSamples.swift; sourceTree = "<group>"; };
+		B03AEB99290185C5003E18BC /* sendTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sendTransaction.swift; sourceTree = "<group>"; };
+		B03AEB9B290185C5003E18BC /* getTokenAccountsByDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getTokenAccountsByDelegate.swift; sourceTree = "<group>"; };
+		B03AEB9C290185C5003E18BC /* ApiTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiTemplate.swift; sourceTree = "<group>"; };
+		B03AEB9E290185C5003E18BC /* simulateTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = simulateTransaction.swift; sourceTree = "<group>"; };
+		B03AEBA0290185C5003E18BC /* getIdentity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getIdentity.swift; sourceTree = "<group>"; };
+		B03AEBA2290185C5003E18BC /* getMultipleAccounts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getMultipleAccounts.swift; sourceTree = "<group>"; };
+		B03AEBA4290185C5003E18BC /* getFees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getFees.swift; sourceTree = "<group>"; };
+		B03AEBA6290185C5003E18BC /* getFirstAvailableBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getFirstAvailableBlock.swift; sourceTree = "<group>"; };
+		B03AEBA8290185C5003E18BC /* getBlockCommitment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getBlockCommitment.swift; sourceTree = "<group>"; };
+		B03AEBAA290185C5003E18BC /* getConfirmedBlocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getConfirmedBlocks.swift; sourceTree = "<group>"; };
+		B03AEBAC290185C5003E18BC /* getVoteAccounts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getVoteAccounts.swift; sourceTree = "<group>"; };
+		B03AEBAE290185C5003E18BC /* getInflationGovernor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getInflationGovernor.swift; sourceTree = "<group>"; };
+		B03AEBB0290185C5003E18BC /* getInflationRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getInflationRate.swift; sourceTree = "<group>"; };
+		B03AEBB2290185C5003E18BC /* getTokenSupply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getTokenSupply.swift; sourceTree = "<group>"; };
+		B03AEBB4290185C5003E18BC /* getConfirmedBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getConfirmedBlock.swift; sourceTree = "<group>"; };
+		B03AEBB6290185C5003E18BC /* getStakeActivation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getStakeActivation.swift; sourceTree = "<group>"; };
+		B03AEBB8290185C5003E18BC /* getSlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getSlot.swift; sourceTree = "<group>"; };
+		B03AEBBA290185C5003E18BC /* getTransactionCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getTransactionCount.swift; sourceTree = "<group>"; };
+		B03AEBBC290185C5003E18BC /* getTokenAccountBalance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getTokenAccountBalance.swift; sourceTree = "<group>"; };
+		B03AEBBE290185C5003E18BC /* getEpochSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getEpochSchedule.swift; sourceTree = "<group>"; };
+		B03AEBC0290185C5003E18BC /* getMinimumBalanceForRentExemption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getMinimumBalanceForRentExemption.swift; sourceTree = "<group>"; };
+		B03AEBC2290185C5003E18BC /* getFeeRateGovernor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getFeeRateGovernor.swift; sourceTree = "<group>"; };
+		B03AEBC4290185C5003E18BC /* getConfirmedTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getConfirmedTransaction.swift; sourceTree = "<group>"; };
+		B03AEBC6290185C5003E18BC /* getSignatureStatuses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getSignatureStatuses.swift; sourceTree = "<group>"; };
+		B03AEBC8290185C5003E18BC /* requestAirdrop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = requestAirdrop.swift; sourceTree = "<group>"; };
+		B03AEBCA290185C5003E18BC /* getLargestAccounts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getLargestAccounts.swift; sourceTree = "<group>"; };
+		B03AEBCC290185C5003E18BC /* minimumLedgerSlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = minimumLedgerSlot.swift; sourceTree = "<group>"; };
+		B03AEBCE290185C5003E18BC /* getRecentBlockhash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getRecentBlockhash.swift; sourceTree = "<group>"; };
+		B03AEBD0290185C5003E18BC /* getBalance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getBalance.swift; sourceTree = "<group>"; };
+		B03AEBD2290185C5003E18BC /* getClusterNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getClusterNodes.swift; sourceTree = "<group>"; };
+		B03AEBD4290185C5003E18BC /* getEpochInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getEpochInfo.swift; sourceTree = "<group>"; };
+		B03AEBD6290185C5003E18BC /* TokenInfoProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenInfoProvider.swift; sourceTree = "<group>"; };
+		B03AEBD8290185C5003E18BC /* ContResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContResult.swift; sourceTree = "<group>"; };
+		B03AEBD9290185C5003E18BC /* HMAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMAC.swift; sourceTree = "<group>"; };
+		B03AEBDA290185C5003E18BC /* SHA256.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA256.swift; sourceTree = "<group>"; };
+		B03AEBDB290185C5003E18BC /* NaclLowLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaclLowLevel.swift; sourceTree = "<group>"; };
+		B03AEBDC290185C5003E18BC /* CKSecp256k1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKSecp256k1.swift; sourceTree = "<group>"; };
+		B03AEBDE290185C5003E18BC /* Int2X.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int2X.swift; sourceTree = "<group>"; };
+		B03AEBDF290185C5003E18BC /* UInt2X.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UInt2X.swift; sourceTree = "<group>"; };
+		B03AEBE0290185C5003E18BC /* PBKDF2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBKDF2.swift; sourceTree = "<group>"; };
+		B03AEBE2290185C5003E18BC /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		B03AEBE3290185C5003E18BC /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B03AEBE4290185C5003E18BC /* Ed25519HDKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ed25519HDKey.swift; sourceTree = "<group>"; };
+		B03AEBE6290185C5003E18BC /* BorshSerialize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorshSerialize.swift; sourceTree = "<group>"; };
+		B03AEBE7290185C5003E18BC /* BinaryReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryReader.swift; sourceTree = "<group>"; };
+		B03AEBE8290185C5003E18BC /* BorshDeserialize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorshDeserialize.swift; sourceTree = "<group>"; };
+		B03AEBE9290185C5003E18BC /* BorshDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorshDecoder.swift; sourceTree = "<group>"; };
+		B03AEBEA290185C5003E18BC /* Borsh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Borsh.swift; sourceTree = "<group>"; };
+		B03AEBEB290185C5003E18BC /* BorshEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorshEncoder.swift; sourceTree = "<group>"; };
+		B03AEBED290185C5003E18BC /* Wordlists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wordlists.swift; sourceTree = "<group>"; };
+		B03AEBEE290185C5003E18BC /* Mnemonic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mnemonic.swift; sourceTree = "<group>"; };
+		B03AEBEF290185C5003E18BC /* Base58.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base58.swift; sourceTree = "<group>"; };
+		B03AEBF1290185C5003E18BC /* ASKHDUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASKHDUtils.swift; sourceTree = "<group>"; };
+		B03AEBF2290185C5003E18BC /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		B03AEBF4290185C5003E18BC /* SMP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMP.swift; sourceTree = "<group>"; };
+		B03AEBF5290185C5003E18BC /* SMP Bignum Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SMP Bignum Extensions.swift"; sourceTree = "<group>"; };
+		B03AEBF7290185C5003E18BC /* UInt32+CircularShift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UInt32+CircularShift.swift"; sourceTree = "<group>"; };
+		B03AEBF8290185C5003E18BC /* RIPEMD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RIPEMD.swift; sourceTree = "<group>"; };
+		B03AEBF9290185C5003E18BC /* RIPEMD+Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RIPEMD+Block.swift"; sourceTree = "<group>"; };
+		B03AEC7E290185CE003E18BC /* SolanaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolanaTests.swift; sourceTree = "<group>"; };
+		B03AEC7F290185CE003E18BC /* RunLoopSimpleLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunLoopSimpleLock.swift; sourceTree = "<group>"; };
+		B03AEC82290185CE003E18BC /* SocketTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketTests.swift; sourceTree = "<group>"; };
+		B03AEC85290185CE003E18BC /* mainnet-beta.tokens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mainnet-beta.tokens.json"; sourceTree = "<group>"; };
+		B03AEC86290185CE003E18BC /* testnet.tokens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testnet.tokens.json; sourceTree = "<group>"; };
+		B03AEC87290185CE003E18BC /* devnet.tokens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = devnet.tokens.json; sourceTree = "<group>"; };
+		B03AEC88290185CE003E18BC /* getTokenWallets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = getTokenWallets.json; sourceTree = "<group>"; };
+		B03AEC8A290185CE003E18BC /* PublicKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
+		B03AEC8B290185CE003E18BC /* DecodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodingTests.swift; sourceTree = "<group>"; };
+		B03AEC8C290185CE003E18BC /* Pool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pool.swift; sourceTree = "<group>"; };
+		B03AEC8E290185CE003E18BC /* PublicKeyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicKeyTests.swift; sourceTree = "<group>"; };
+		B03AEC8F290185CE003E18BC /* EncodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncodingTests.swift; sourceTree = "<group>"; };
+		B03AEC90290185CE003E18BC /* InMemoryAccountStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InMemoryAccountStorage.swift; sourceTree = "<group>"; };
+		B03AEC93290185CE003E18BC /* closeTokenAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = closeTokenAccount.swift; sourceTree = "<group>"; };
+		B03AEC95290185CE003E18BC /* getTokenWallets+SimpleLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "getTokenWallets+SimpleLock.swift"; sourceTree = "<group>"; };
+		B03AEC96290185CE003E18BC /* getTokenWallets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getTokenWallets.swift; sourceTree = "<group>"; };
+		B03AEC98290185CE003E18BC /* createAssosiatedTokenAccount+SimpleLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "createAssosiatedTokenAccount+SimpleLock.swift"; sourceTree = "<group>"; };
+		B03AEC99290185CE003E18BC /* createAssociatedTokenAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createAssociatedTokenAccount.swift; sourceTree = "<group>"; };
+		B03AEC9B290185CE003E18BC /* TokenSwapProgramTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenSwapProgramTests.swift; sourceTree = "<group>"; };
+		B03AEC9C290185CE003E18BC /* swap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = swap.swift; sourceTree = "<group>"; };
+		B03AEC9E290185CE003E18BC /* sendSOL+SimpleLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "sendSOL+SimpleLock.swift"; sourceTree = "<group>"; };
+		B03AEC9F290185CE003E18BC /* sendSOL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sendSOL.swift; sourceTree = "<group>"; };
+		B03AECA1290185CE003E18BC /* getMintData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getMintData.swift; sourceTree = "<group>"; };
+		B03AECA2290185CE003E18BC /* getMintData+SimpleLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "getMintData+SimpleLock.swift"; sourceTree = "<group>"; };
+		B03AECA4290185CE003E18BC /* serializeAndSendWithFee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = serializeAndSendWithFee.swift; sourceTree = "<group>"; };
+		B03AECA5290185CE003E18BC /* serializeAndSendWithFee+SimpleLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "serializeAndSendWithFee+SimpleLock.swift"; sourceTree = "<group>"; };
+		B03AECA7290185CE003E18BC /* sendSPLTokens+SimpleLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "sendSPLTokens+SimpleLock.swift"; sourceTree = "<group>"; };
+		B03AECA8290185CE003E18BC /* sendSPLTokens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sendSPLTokens.swift; sourceTree = "<group>"; };
+		B03AECAA290185CE003E18BC /* createTokenAccount+SimpleLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "createTokenAccount+SimpleLock.swift"; sourceTree = "<group>"; };
+		B03AECAB290185CE003E18BC /* createTokenAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createTokenAccount.swift; sourceTree = "<group>"; };
+		B03AECAD290185CE003E18BC /* Methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Methods.swift; sourceTree = "<group>"; };
+		B03AECAE290185CE003E18BC /* Methods+SimpleLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Methods+SimpleLock.swift"; sourceTree = "<group>"; };
+		B03AECB0290185CE003E18BC /* HMACTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMACTests.swift; sourceTree = "<group>"; };
+		B03AECB1290185CE003E18BC /* Borsh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Borsh.swift; sourceTree = "<group>"; };
+		B03AECB3290185CE003E18BC /* TokenListsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenListsParser.swift; sourceTree = "<group>"; };
+		B03AECB4290185CE003E18BC /* ListTokenInfoProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTokenInfoProvider.swift; sourceTree = "<group>"; };
+		B03AECB5290185CE003E18BC /* TokenInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenInfoTests.swift; sourceTree = "<group>"; };
+		B03AECB6290185CE003E18BC /* Solana_SwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solana_SwiftTests.swift; sourceTree = "<group>"; };
+		D1E8409193B12E3A8D5A9D41 /* Pods_Solana_SwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solana_SwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DED8C195259DA792ADCC7652 /* Pods-Solana.Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solana.Swift.release.xcconfig"; path = "Target Support Files/Pods-Solana.Swift/Pods-Solana.Swift.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B03AE95A2901828D003E18BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A31C023BA53A7F24397E6930 /* Pods_Solana_Swift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B03AE9622901828D003E18BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B03AE9662901828D003E18BC /* Solana_Swift.framework in Frameworks */,
+				7DD945E699E2BF12EB4681AD /* Pods_Solana_SwiftTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		218BB87E8317C73D2C9E0FDE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				625790C608CCEEA2EB711B59 /* Pods-Solana.Swift.debug.xcconfig */,
+				DED8C195259DA792ADCC7652 /* Pods-Solana.Swift.release.xcconfig */,
+				81AE72A72337C0C9BEC637D2 /* Pods-Solana.SwiftTests.debug.xcconfig */,
+				0746F5898207426EE9C0D17E /* Pods-Solana.SwiftTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		245A58A95C8BCDB6E6302149 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				331172706474BFC5CA7C4B9A /* Pods_Solana_Swift.framework */,
+				D1E8409193B12E3A8D5A9D41 /* Pods_Solana_SwiftTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B03AE9532901828D003E18BC = {
+			isa = PBXGroup;
+			children = (
+				B03AEB27290185C4003E18BC /* Sources */,
+				B03AEC7C290185CE003E18BC /* Tests */,
+				B03AE95E2901828D003E18BC /* Products */,
+				218BB87E8317C73D2C9E0FDE /* Pods */,
+				245A58A95C8BCDB6E6302149 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B03AE95E2901828D003E18BC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B03AE95D2901828D003E18BC /* Solana_Swift.framework */,
+				B03AE9652901828D003E18BC /* Solana.SwiftTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B03AEB27290185C4003E18BC /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB28290185C4003E18BC /* Solana_Swift.h */,
+				B03AEB29290185C4003E18BC /* Solana */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		B03AEB29290185C4003E18BC /* Solana */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB2A290185C4003E18BC /* Networking */,
+				B03AEB34290185C4003E18BC /* Solana.swift */,
+				B03AEB35290185C4003E18BC /* Models */,
+				B03AEB4E290185C4003E18BC /* Extensions */,
+				B03AEB5C290185C4003E18BC /* Programs */,
+				B03AEB61290185C4003E18BC /* Actions */,
+				B03AEB7B290185C5003E18BC /* Api */,
+				B03AEBD5290185C5003E18BC /* Tokens */,
+				B03AEBD7290185C5003E18BC /* Vendor */,
+			);
+			path = Solana;
+			sourceTree = "<group>";
+		};
+		B03AEB2A290185C4003E18BC /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB2B290185C4003E18BC /* Models */,
+				B03AEB2D290185C4003E18BC /* Socket */,
+				B03AEB31290185C4003E18BC /* Router */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		B03AEB2B290185C4003E18BC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB2C290185C4003E18BC /* SolanaRequest.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B03AEB2D290185C4003E18BC /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB2E290185C4003E18BC /* Models */,
+				B03AEB30290185C4003E18BC /* SolanaSocket.swift */,
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
+		B03AEB2E290185C4003E18BC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB2F290185C4003E18BC /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B03AEB31290185C4003E18BC /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB32290185C4003E18BC /* SolanaRouter.swift */,
+				B03AEB33290185C4003E18BC /* NetworkingRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B03AEB35290185C4003E18BC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB36290185C4003E18BC /* PublicKey.swift */,
+				B03AEB37290185C4003E18BC /* BufferLayout */,
+				B03AEB3D290185C4003E18BC /* ConfirmedTransaction.swift */,
+				B03AEB3E290185C4003E18BC /* Network.swift */,
+				B03AEB3F290185C4003E18BC /* SolanaSDK+Models.swift */,
+				B03AEB40290185C4003E18BC /* ParsedTransaction.swift */,
+				B03AEB41290185C4003E18BC /* DerivablePath.swift */,
+				B03AEB42290185C4003E18BC /* Pool.swift */,
+				B03AEB43290185C4003E18BC /* TransactionInstruction.swift */,
+				B03AEB44290185C4003E18BC /* SendingTransaction */,
+				B03AEB47290185C4003E18BC /* SolanaToken */,
+				B03AEB49290185C4003E18BC /* SolanaSDK+Request.swift */,
+				B03AEB4A290185C4003E18BC /* Account.swift */,
+				B03AEB4B290185C4003E18BC /* RPCEndpoint.swift */,
+				B03AEB4C290185C4003E18BC /* SolanaError.swift */,
+				B03AEB4D290185C4003E18BC /* Wallet.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B03AEB37290185C4003E18BC /* BufferLayout */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB38290185C4003E18BC /* TokenSwapInfo.swift */,
+				B03AEB39290185C4003E18BC /* EmptyInfo.swift */,
+				B03AEB3A290185C4003E18BC /* Mint.swift */,
+				B03AEB3B290185C4003E18BC /* BufferLayout.swift */,
+				B03AEB3C290185C4003E18BC /* AccountInfo.swift */,
+			);
+			path = BufferLayout;
+			sourceTree = "<group>";
+		};
+		B03AEB44290185C4003E18BC /* SendingTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB45290185C4003E18BC /* Message.swift */,
+				B03AEB46290185C4003E18BC /* Transaction.swift */,
+			);
+			path = SendingTransaction;
+			sourceTree = "<group>";
+		};
+		B03AEB47290185C4003E18BC /* SolanaToken */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB48290185C4003E18BC /* TokenList.swift */,
+			);
+			path = SolanaToken;
+			sourceTree = "<group>";
+		};
+		B03AEB4E290185C4003E18BC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB4F290185C4003E18BC /* PublicKey */,
+				B03AEB52290185C4003E18BC /* Decimals+Extensions.swift */,
+				B03AEB53290185C4003E18BC /* NSRegularExpression+Extensions.swift */,
+				B03AEB54290185C4003E18BC /* AccountMeta+Extensions.swift */,
+				B03AEB55290185C4003E18BC /* String+Extension.swift */,
+				B03AEB56290185C4003E18BC /* BytesEncodable.swift */,
+				B03AEB57290185C4003E18BC /* Bytes+Extensions.swift */,
+				B03AEB58290185C4003E18BC /* Data+Extension.swift */,
+				B03AEB59290185C4003E18BC /* Number+Extensions.swift */,
+				B03AEB5A290185C4003E18BC /* Data+Extensions.swift */,
+				B03AEB5B290185C4003E18BC /* Array+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B03AEB4F290185C4003E18BC /* PublicKey */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB50290185C4003E18BC /* PublicKey+AssociatedTokenProgram.swift */,
+				B03AEB51290185C4003E18BC /* PublicKey+Extensions.swift */,
+			);
+			path = PublicKey;
+			sourceTree = "<group>";
+		};
+		B03AEB5C290185C4003E18BC /* Programs */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB5D290185C4003E18BC /* TokenSwapProgram.swift */,
+				B03AEB5E290185C4003E18BC /* TokenProgram.swift */,
+				B03AEB5F290185C4003E18BC /* AssociatedTokenProgram.swift */,
+				B03AEB60290185C4003E18BC /* SystemProgram.swift */,
+			);
+			path = Programs;
+			sourceTree = "<group>";
+		};
+		B03AEB61290185C4003E18BC /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB62290185C4003E18BC /* closeTokenAccount */,
+				B03AEB64290185C4003E18BC /* getTokenWallets */,
+				B03AEB66290185C4003E18BC /* createAssociatedTokenAccount */,
+				B03AEB68290185C4003E18BC /* swap */,
+				B03AEB6A290185C4003E18BC /* findSPLTokenDestinationAddress */,
+				B03AEB6C290185C4003E18BC /* sendSOL */,
+				B03AEB6E290185C4003E18BC /* serializeTransaction */,
+				B03AEB70290185C4003E18BC /* getMintData */,
+				B03AEB72290185C4003E18BC /* serializeAndSendWithFee */,
+				B03AEB74290185C4003E18BC /* sendSPLTokens */,
+				B03AEB76290185C4003E18BC /* getPools */,
+				B03AEB78290185C4003E18BC /* ActionTemplate.swift */,
+				B03AEB79290185C5003E18BC /* createTokenAccount */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		B03AEB62290185C4003E18BC /* closeTokenAccount */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB63290185C4003E18BC /* closeTokenAccount.swift */,
+			);
+			path = closeTokenAccount;
+			sourceTree = "<group>";
+		};
+		B03AEB64290185C4003E18BC /* getTokenWallets */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB65290185C4003E18BC /* getTokenWallets.swift */,
+			);
+			path = getTokenWallets;
+			sourceTree = "<group>";
+		};
+		B03AEB66290185C4003E18BC /* createAssociatedTokenAccount */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB67290185C4003E18BC /* createAssociatedTokenAccount.swift */,
+			);
+			path = createAssociatedTokenAccount;
+			sourceTree = "<group>";
+		};
+		B03AEB68290185C4003E18BC /* swap */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB69290185C4003E18BC /* swap.swift */,
+			);
+			path = swap;
+			sourceTree = "<group>";
+		};
+		B03AEB6A290185C4003E18BC /* findSPLTokenDestinationAddress */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB6B290185C4003E18BC /* findSPLTokenDestinationAddress.swift */,
+			);
+			path = findSPLTokenDestinationAddress;
+			sourceTree = "<group>";
+		};
+		B03AEB6C290185C4003E18BC /* sendSOL */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB6D290185C4003E18BC /* sendSOL.swift */,
+			);
+			path = sendSOL;
+			sourceTree = "<group>";
+		};
+		B03AEB6E290185C4003E18BC /* serializeTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB6F290185C4003E18BC /* serializeTransaction.swift */,
+			);
+			path = serializeTransaction;
+			sourceTree = "<group>";
+		};
+		B03AEB70290185C4003E18BC /* getMintData */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB71290185C4003E18BC /* getMintData.swift */,
+			);
+			path = getMintData;
+			sourceTree = "<group>";
+		};
+		B03AEB72290185C4003E18BC /* serializeAndSendWithFee */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB73290185C4003E18BC /* serializeAndSendWithFee.swift */,
+			);
+			path = serializeAndSendWithFee;
+			sourceTree = "<group>";
+		};
+		B03AEB74290185C4003E18BC /* sendSPLTokens */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB75290185C4003E18BC /* sendSPLTokens.swift */,
+			);
+			path = sendSPLTokens;
+			sourceTree = "<group>";
+		};
+		B03AEB76290185C4003E18BC /* getPools */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB77290185C4003E18BC /* getPools.swift */,
+			);
+			path = getPools;
+			sourceTree = "<group>";
+		};
+		B03AEB79290185C5003E18BC /* createTokenAccount */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB7A290185C5003E18BC /* createTokenAccount.swift */,
+			);
+			path = createTokenAccount;
+			sourceTree = "<group>";
+		};
+		B03AEB7B290185C5003E18BC /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB7C290185C5003E18BC /* getAccountInfo */,
+				B03AEB7E290185C5003E18BC /* getVersion */,
+				B03AEB80290185C5003E18BC /* getTokenAccountsByOwner */,
+				B03AEB82290185C5003E18BC /* getTokenLargestAccounts */,
+				B03AEB84290185C5003E18BC /* getGenesisHash */,
+				B03AEB86290185C5003E18BC /* getBlockTime */,
+				B03AEB88290185C5003E18BC /* getProgramAccounts */,
+				B03AEB8A290185C5003E18BC /* getSlotLeader */,
+				B03AEB8C290185C5003E18BC /* getLeaderSchedule */,
+				B03AEB8E290185C5003E18BC /* getConfirmedSignaturesForAddress2 */,
+				B03AEB90290185C5003E18BC /* getConfirmedBlocksWithLimit */,
+				B03AEB92290185C5003E18BC /* getSupply */,
+				B03AEB94290185C5003E18BC /* getFeeCalculatorForBlockhash */,
+				B03AEB96290185C5003E18BC /* getRecentPerformanceSamples */,
+				B03AEB98290185C5003E18BC /* sendTransaction */,
+				B03AEB9A290185C5003E18BC /* getTokenAccountsByDelegate */,
+				B03AEB9C290185C5003E18BC /* ApiTemplate.swift */,
+				B03AEB9D290185C5003E18BC /* simulateTransaction */,
+				B03AEB9F290185C5003E18BC /* getIdentity */,
+				B03AEBA1290185C5003E18BC /* getMultipleAccounts */,
+				B03AEBA3290185C5003E18BC /* getFees */,
+				B03AEBA5290185C5003E18BC /* getFirstAvailableBlock */,
+				B03AEBA7290185C5003E18BC /* getBlockCommitment */,
+				B03AEBA9290185C5003E18BC /* getConfirmedBlocks */,
+				B03AEBAB290185C5003E18BC /* getVoteAccounts */,
+				B03AEBAD290185C5003E18BC /* getInflationGovernor */,
+				B03AEBAF290185C5003E18BC /* getInflationRate */,
+				B03AEBB1290185C5003E18BC /* getTokenSupply */,
+				B03AEBB3290185C5003E18BC /* getConfirmedBlock */,
+				B03AEBB5290185C5003E18BC /* getStakeActivation */,
+				B03AEBB7290185C5003E18BC /* getSlot */,
+				B03AEBB9290185C5003E18BC /* getTransactionCount */,
+				B03AEBBB290185C5003E18BC /* getTokenAccountBalance */,
+				B03AEBBD290185C5003E18BC /* getEpochSchedule */,
+				B03AEBBF290185C5003E18BC /* getMinimumBalanceForRentExemption */,
+				B03AEBC1290185C5003E18BC /* getFeeRateGovernor */,
+				B03AEBC3290185C5003E18BC /* getConfirmedTransaction */,
+				B03AEBC5290185C5003E18BC /* getSignatureStatuses */,
+				B03AEBC7290185C5003E18BC /* requestAirdrop */,
+				B03AEBC9290185C5003E18BC /* getLargestAccounts */,
+				B03AEBCB290185C5003E18BC /* minimumLedgerSlot */,
+				B03AEBCD290185C5003E18BC /* getRecentBlockhash */,
+				B03AEBCF290185C5003E18BC /* getBalance */,
+				B03AEBD1290185C5003E18BC /* getClusterNodes */,
+				B03AEBD3290185C5003E18BC /* getEpochInfo */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		B03AEB7C290185C5003E18BC /* getAccountInfo */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB7D290185C5003E18BC /* getAccountInfo.swift */,
+			);
+			path = getAccountInfo;
+			sourceTree = "<group>";
+		};
+		B03AEB7E290185C5003E18BC /* getVersion */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB7F290185C5003E18BC /* getVersion.swift */,
+			);
+			path = getVersion;
+			sourceTree = "<group>";
+		};
+		B03AEB80290185C5003E18BC /* getTokenAccountsByOwner */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB81290185C5003E18BC /* getTokenAccountsByOwner.swift */,
+			);
+			path = getTokenAccountsByOwner;
+			sourceTree = "<group>";
+		};
+		B03AEB82290185C5003E18BC /* getTokenLargestAccounts */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB83290185C5003E18BC /* getTokenLargestAccounts.swift */,
+			);
+			path = getTokenLargestAccounts;
+			sourceTree = "<group>";
+		};
+		B03AEB84290185C5003E18BC /* getGenesisHash */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB85290185C5003E18BC /* getGenesisHash.swift */,
+			);
+			path = getGenesisHash;
+			sourceTree = "<group>";
+		};
+		B03AEB86290185C5003E18BC /* getBlockTime */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB87290185C5003E18BC /* getBlockTime.swift */,
+			);
+			path = getBlockTime;
+			sourceTree = "<group>";
+		};
+		B03AEB88290185C5003E18BC /* getProgramAccounts */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB89290185C5003E18BC /* getProgramAccounts.swift */,
+			);
+			path = getProgramAccounts;
+			sourceTree = "<group>";
+		};
+		B03AEB8A290185C5003E18BC /* getSlotLeader */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB8B290185C5003E18BC /* getSlotLeader.swift */,
+			);
+			path = getSlotLeader;
+			sourceTree = "<group>";
+		};
+		B03AEB8C290185C5003E18BC /* getLeaderSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB8D290185C5003E18BC /* getLeaderSchedule.swift */,
+			);
+			path = getLeaderSchedule;
+			sourceTree = "<group>";
+		};
+		B03AEB8E290185C5003E18BC /* getConfirmedSignaturesForAddress2 */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB8F290185C5003E18BC /* getConfirmedSignaturesForAddress2.swift */,
+			);
+			path = getConfirmedSignaturesForAddress2;
+			sourceTree = "<group>";
+		};
+		B03AEB90290185C5003E18BC /* getConfirmedBlocksWithLimit */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB91290185C5003E18BC /* getConfirmedBlocksWithLimit.swift */,
+			);
+			path = getConfirmedBlocksWithLimit;
+			sourceTree = "<group>";
+		};
+		B03AEB92290185C5003E18BC /* getSupply */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB93290185C5003E18BC /* getSupply.swift */,
+			);
+			path = getSupply;
+			sourceTree = "<group>";
+		};
+		B03AEB94290185C5003E18BC /* getFeeCalculatorForBlockhash */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB95290185C5003E18BC /* getFeeCalculatorForBlockhash.swift */,
+			);
+			path = getFeeCalculatorForBlockhash;
+			sourceTree = "<group>";
+		};
+		B03AEB96290185C5003E18BC /* getRecentPerformanceSamples */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB97290185C5003E18BC /* getRecentPerformanceSamples.swift */,
+			);
+			path = getRecentPerformanceSamples;
+			sourceTree = "<group>";
+		};
+		B03AEB98290185C5003E18BC /* sendTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB99290185C5003E18BC /* sendTransaction.swift */,
+			);
+			path = sendTransaction;
+			sourceTree = "<group>";
+		};
+		B03AEB9A290185C5003E18BC /* getTokenAccountsByDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB9B290185C5003E18BC /* getTokenAccountsByDelegate.swift */,
+			);
+			path = getTokenAccountsByDelegate;
+			sourceTree = "<group>";
+		};
+		B03AEB9D290185C5003E18BC /* simulateTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEB9E290185C5003E18BC /* simulateTransaction.swift */,
+			);
+			path = simulateTransaction;
+			sourceTree = "<group>";
+		};
+		B03AEB9F290185C5003E18BC /* getIdentity */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBA0290185C5003E18BC /* getIdentity.swift */,
+			);
+			path = getIdentity;
+			sourceTree = "<group>";
+		};
+		B03AEBA1290185C5003E18BC /* getMultipleAccounts */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBA2290185C5003E18BC /* getMultipleAccounts.swift */,
+			);
+			path = getMultipleAccounts;
+			sourceTree = "<group>";
+		};
+		B03AEBA3290185C5003E18BC /* getFees */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBA4290185C5003E18BC /* getFees.swift */,
+			);
+			path = getFees;
+			sourceTree = "<group>";
+		};
+		B03AEBA5290185C5003E18BC /* getFirstAvailableBlock */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBA6290185C5003E18BC /* getFirstAvailableBlock.swift */,
+			);
+			path = getFirstAvailableBlock;
+			sourceTree = "<group>";
+		};
+		B03AEBA7290185C5003E18BC /* getBlockCommitment */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBA8290185C5003E18BC /* getBlockCommitment.swift */,
+			);
+			path = getBlockCommitment;
+			sourceTree = "<group>";
+		};
+		B03AEBA9290185C5003E18BC /* getConfirmedBlocks */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBAA290185C5003E18BC /* getConfirmedBlocks.swift */,
+			);
+			path = getConfirmedBlocks;
+			sourceTree = "<group>";
+		};
+		B03AEBAB290185C5003E18BC /* getVoteAccounts */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBAC290185C5003E18BC /* getVoteAccounts.swift */,
+			);
+			path = getVoteAccounts;
+			sourceTree = "<group>";
+		};
+		B03AEBAD290185C5003E18BC /* getInflationGovernor */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBAE290185C5003E18BC /* getInflationGovernor.swift */,
+			);
+			path = getInflationGovernor;
+			sourceTree = "<group>";
+		};
+		B03AEBAF290185C5003E18BC /* getInflationRate */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBB0290185C5003E18BC /* getInflationRate.swift */,
+			);
+			path = getInflationRate;
+			sourceTree = "<group>";
+		};
+		B03AEBB1290185C5003E18BC /* getTokenSupply */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBB2290185C5003E18BC /* getTokenSupply.swift */,
+			);
+			path = getTokenSupply;
+			sourceTree = "<group>";
+		};
+		B03AEBB3290185C5003E18BC /* getConfirmedBlock */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBB4290185C5003E18BC /* getConfirmedBlock.swift */,
+			);
+			path = getConfirmedBlock;
+			sourceTree = "<group>";
+		};
+		B03AEBB5290185C5003E18BC /* getStakeActivation */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBB6290185C5003E18BC /* getStakeActivation.swift */,
+			);
+			path = getStakeActivation;
+			sourceTree = "<group>";
+		};
+		B03AEBB7290185C5003E18BC /* getSlot */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBB8290185C5003E18BC /* getSlot.swift */,
+			);
+			path = getSlot;
+			sourceTree = "<group>";
+		};
+		B03AEBB9290185C5003E18BC /* getTransactionCount */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBBA290185C5003E18BC /* getTransactionCount.swift */,
+			);
+			path = getTransactionCount;
+			sourceTree = "<group>";
+		};
+		B03AEBBB290185C5003E18BC /* getTokenAccountBalance */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBBC290185C5003E18BC /* getTokenAccountBalance.swift */,
+			);
+			path = getTokenAccountBalance;
+			sourceTree = "<group>";
+		};
+		B03AEBBD290185C5003E18BC /* getEpochSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBBE290185C5003E18BC /* getEpochSchedule.swift */,
+			);
+			path = getEpochSchedule;
+			sourceTree = "<group>";
+		};
+		B03AEBBF290185C5003E18BC /* getMinimumBalanceForRentExemption */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBC0290185C5003E18BC /* getMinimumBalanceForRentExemption.swift */,
+			);
+			path = getMinimumBalanceForRentExemption;
+			sourceTree = "<group>";
+		};
+		B03AEBC1290185C5003E18BC /* getFeeRateGovernor */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBC2290185C5003E18BC /* getFeeRateGovernor.swift */,
+			);
+			path = getFeeRateGovernor;
+			sourceTree = "<group>";
+		};
+		B03AEBC3290185C5003E18BC /* getConfirmedTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBC4290185C5003E18BC /* getConfirmedTransaction.swift */,
+			);
+			path = getConfirmedTransaction;
+			sourceTree = "<group>";
+		};
+		B03AEBC5290185C5003E18BC /* getSignatureStatuses */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBC6290185C5003E18BC /* getSignatureStatuses.swift */,
+			);
+			path = getSignatureStatuses;
+			sourceTree = "<group>";
+		};
+		B03AEBC7290185C5003E18BC /* requestAirdrop */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBC8290185C5003E18BC /* requestAirdrop.swift */,
+			);
+			path = requestAirdrop;
+			sourceTree = "<group>";
+		};
+		B03AEBC9290185C5003E18BC /* getLargestAccounts */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBCA290185C5003E18BC /* getLargestAccounts.swift */,
+			);
+			path = getLargestAccounts;
+			sourceTree = "<group>";
+		};
+		B03AEBCB290185C5003E18BC /* minimumLedgerSlot */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBCC290185C5003E18BC /* minimumLedgerSlot.swift */,
+			);
+			path = minimumLedgerSlot;
+			sourceTree = "<group>";
+		};
+		B03AEBCD290185C5003E18BC /* getRecentBlockhash */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBCE290185C5003E18BC /* getRecentBlockhash.swift */,
+			);
+			path = getRecentBlockhash;
+			sourceTree = "<group>";
+		};
+		B03AEBCF290185C5003E18BC /* getBalance */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBD0290185C5003E18BC /* getBalance.swift */,
+			);
+			path = getBalance;
+			sourceTree = "<group>";
+		};
+		B03AEBD1290185C5003E18BC /* getClusterNodes */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBD2290185C5003E18BC /* getClusterNodes.swift */,
+			);
+			path = getClusterNodes;
+			sourceTree = "<group>";
+		};
+		B03AEBD3290185C5003E18BC /* getEpochInfo */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBD4290185C5003E18BC /* getEpochInfo.swift */,
+			);
+			path = getEpochInfo;
+			sourceTree = "<group>";
+		};
+		B03AEBD5290185C5003E18BC /* Tokens */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBD6290185C5003E18BC /* TokenInfoProvider.swift */,
+			);
+			path = Tokens;
+			sourceTree = "<group>";
+		};
+		B03AEBD7290185C5003E18BC /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBD8290185C5003E18BC /* ContResult.swift */,
+				B03AEBD9290185C5003E18BC /* HMAC.swift */,
+				B03AEBDA290185C5003E18BC /* SHA256.swift */,
+				B03AEBDB290185C5003E18BC /* NaclLowLevel.swift */,
+				B03AEBDC290185C5003E18BC /* CKSecp256k1.swift */,
+				B03AEBDD290185C5003E18BC /* Int2x */,
+				B03AEBE0290185C5003E18BC /* PBKDF2.swift */,
+				B03AEBE1290185C5003E18BC /* Ed25519HD */,
+				B03AEBE5290185C5003E18BC /* Borsh */,
+				B03AEBEC290185C5003E18BC /* BIP39 */,
+				B03AEBEF290185C5003E18BC /* Base58.swift */,
+				B03AEBF0290185C5003E18BC /* AskCoin-HD */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		B03AEBDD290185C5003E18BC /* Int2x */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBDE290185C5003E18BC /* Int2X.swift */,
+				B03AEBDF290185C5003E18BC /* UInt2X.swift */,
+			);
+			path = Int2x;
+			sourceTree = "<group>";
+		};
+		B03AEBE1290185C5003E18BC /* Ed25519HD */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBE2290185C5003E18BC /* Keys.swift */,
+				B03AEBE3290185C5003E18BC /* Extensions.swift */,
+				B03AEBE4290185C5003E18BC /* Ed25519HDKey.swift */,
+			);
+			path = Ed25519HD;
+			sourceTree = "<group>";
+		};
+		B03AEBE5290185C5003E18BC /* Borsh */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBE6290185C5003E18BC /* BorshSerialize.swift */,
+				B03AEBE7290185C5003E18BC /* BinaryReader.swift */,
+				B03AEBE8290185C5003E18BC /* BorshDeserialize.swift */,
+				B03AEBE9290185C5003E18BC /* BorshDecoder.swift */,
+				B03AEBEA290185C5003E18BC /* Borsh.swift */,
+				B03AEBEB290185C5003E18BC /* BorshEncoder.swift */,
+			);
+			path = Borsh;
+			sourceTree = "<group>";
+		};
+		B03AEBEC290185C5003E18BC /* BIP39 */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBED290185C5003E18BC /* Wordlists.swift */,
+				B03AEBEE290185C5003E18BC /* Mnemonic.swift */,
+			);
+			path = BIP39;
+			sourceTree = "<group>";
+		};
+		B03AEBF0290185C5003E18BC /* AskCoin-HD */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBF1290185C5003E18BC /* ASKHDUtils.swift */,
+				B03AEBF2290185C5003E18BC /* Keychain.swift */,
+				B03AEBF3290185C5003E18BC /* SwiftBigInteger */,
+				B03AEBF6290185C5003E18BC /* RIPEMD */,
+			);
+			path = "AskCoin-HD";
+			sourceTree = "<group>";
+		};
+		B03AEBF3290185C5003E18BC /* SwiftBigInteger */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBF4290185C5003E18BC /* SMP.swift */,
+				B03AEBF5290185C5003E18BC /* SMP Bignum Extensions.swift */,
+			);
+			path = SwiftBigInteger;
+			sourceTree = "<group>";
+		};
+		B03AEBF6290185C5003E18BC /* RIPEMD */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEBF7290185C5003E18BC /* UInt32+CircularShift.swift */,
+				B03AEBF8290185C5003E18BC /* RIPEMD.swift */,
+				B03AEBF9290185C5003E18BC /* RIPEMD+Block.swift */,
+			);
+			path = RIPEMD;
+			sourceTree = "<group>";
+		};
+		B03AEC7C290185CE003E18BC /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEC7D290185CE003E18BC /* SolanaTests */,
+				B03AECB6290185CE003E18BC /* Solana_SwiftTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		B03AEC7D290185CE003E18BC /* SolanaTests */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEC7E290185CE003E18BC /* SolanaTests.swift */,
+				B03AEC7F290185CE003E18BC /* RunLoopSimpleLock.swift */,
+				B03AEC80290185CE003E18BC /* Networking */,
+				B03AEC83290185CE003E18BC /* Resources */,
+				B03AEC89290185CE003E18BC /* Models */,
+				B03AEC8D290185CE003E18BC /* Extensions */,
+				B03AEC90290185CE003E18BC /* InMemoryAccountStorage.swift */,
+				B03AEC91290185CE003E18BC /* Actions */,
+				B03AECAC290185CE003E18BC /* Api */,
+				B03AECAF290185CE003E18BC /* Vendor */,
+				B03AECB2290185CE003E18BC /* TokenInfo */,
+			);
+			path = SolanaTests;
+			sourceTree = "<group>";
+		};
+		B03AEC80290185CE003E18BC /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEC81290185CE003E18BC /* Socket */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		B03AEC81290185CE003E18BC /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEC82290185CE003E18BC /* SocketTests.swift */,
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
+		B03AEC83290185CE003E18BC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEC84290185CE003E18BC /* TokenInfo */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B03AEC84290185CE003E18BC /* TokenInfo */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEC85290185CE003E18BC /* mainnet-beta.tokens.json */,
+				B03AEC86290185CE003E18BC /* testnet.tokens.json */,
+				B03AEC87290185CE003E18BC /* devnet.tokens.json */,
+				B03AEC88290185CE003E18BC /* getTokenWallets.json */,
+			);
+			path = TokenInfo;
+			sourceTree = "<group>";
+		};
+		B03AEC89290185CE003E18BC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEC8A290185CE003E18BC /* PublicKey.swift */,
+				B03AEC8B290185CE003E18BC /* DecodingTests.swift */,
+				B03AEC8C290185CE003E18BC /* Pool.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B03AEC8D290185CE003E18BC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEC8E290185CE003E18BC /* PublicKeyTests.swift */,
+				B03AEC8F290185CE003E18BC /* EncodingTests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B03AEC91290185CE003E18BC /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEC92290185CE003E18BC /* closeTokenAccount */,
+				B03AEC94290185CE003E18BC /* getTokenWallets */,
+				B03AEC97290185CE003E18BC /* createAssociatedTokenAccount */,
+				B03AEC9A290185CE003E18BC /* swap */,
+				B03AEC9D290185CE003E18BC /* sendSOL */,
+				B03AECA0290185CE003E18BC /* getMintData */,
+				B03AECA3290185CE003E18BC /* serializeAndSendWithFee */,
+				B03AECA6290185CE003E18BC /* sendSPLTokens */,
+				B03AECA9290185CE003E18BC /* createTokenAccount */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		B03AEC92290185CE003E18BC /* closeTokenAccount */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEC93290185CE003E18BC /* closeTokenAccount.swift */,
+			);
+			path = closeTokenAccount;
+			sourceTree = "<group>";
+		};
+		B03AEC94290185CE003E18BC /* getTokenWallets */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEC95290185CE003E18BC /* getTokenWallets+SimpleLock.swift */,
+				B03AEC96290185CE003E18BC /* getTokenWallets.swift */,
+			);
+			path = getTokenWallets;
+			sourceTree = "<group>";
+		};
+		B03AEC97290185CE003E18BC /* createAssociatedTokenAccount */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEC98290185CE003E18BC /* createAssosiatedTokenAccount+SimpleLock.swift */,
+				B03AEC99290185CE003E18BC /* createAssociatedTokenAccount.swift */,
+			);
+			path = createAssociatedTokenAccount;
+			sourceTree = "<group>";
+		};
+		B03AEC9A290185CE003E18BC /* swap */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEC9B290185CE003E18BC /* TokenSwapProgramTests.swift */,
+				B03AEC9C290185CE003E18BC /* swap.swift */,
+			);
+			path = swap;
+			sourceTree = "<group>";
+		};
+		B03AEC9D290185CE003E18BC /* sendSOL */ = {
+			isa = PBXGroup;
+			children = (
+				B03AEC9E290185CE003E18BC /* sendSOL+SimpleLock.swift */,
+				B03AEC9F290185CE003E18BC /* sendSOL.swift */,
+			);
+			path = sendSOL;
+			sourceTree = "<group>";
+		};
+		B03AECA0290185CE003E18BC /* getMintData */ = {
+			isa = PBXGroup;
+			children = (
+				B03AECA1290185CE003E18BC /* getMintData.swift */,
+				B03AECA2290185CE003E18BC /* getMintData+SimpleLock.swift */,
+			);
+			path = getMintData;
+			sourceTree = "<group>";
+		};
+		B03AECA3290185CE003E18BC /* serializeAndSendWithFee */ = {
+			isa = PBXGroup;
+			children = (
+				B03AECA4290185CE003E18BC /* serializeAndSendWithFee.swift */,
+				B03AECA5290185CE003E18BC /* serializeAndSendWithFee+SimpleLock.swift */,
+			);
+			path = serializeAndSendWithFee;
+			sourceTree = "<group>";
+		};
+		B03AECA6290185CE003E18BC /* sendSPLTokens */ = {
+			isa = PBXGroup;
+			children = (
+				B03AECA7290185CE003E18BC /* sendSPLTokens+SimpleLock.swift */,
+				B03AECA8290185CE003E18BC /* sendSPLTokens.swift */,
+			);
+			path = sendSPLTokens;
+			sourceTree = "<group>";
+		};
+		B03AECA9290185CE003E18BC /* createTokenAccount */ = {
+			isa = PBXGroup;
+			children = (
+				B03AECAA290185CE003E18BC /* createTokenAccount+SimpleLock.swift */,
+				B03AECAB290185CE003E18BC /* createTokenAccount.swift */,
+			);
+			path = createTokenAccount;
+			sourceTree = "<group>";
+		};
+		B03AECAC290185CE003E18BC /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				B03AECAD290185CE003E18BC /* Methods.swift */,
+				B03AECAE290185CE003E18BC /* Methods+SimpleLock.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		B03AECAF290185CE003E18BC /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				B03AECB0290185CE003E18BC /* HMACTests.swift */,
+				B03AECB1290185CE003E18BC /* Borsh.swift */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		B03AECB2290185CE003E18BC /* TokenInfo */ = {
+			isa = PBXGroup;
+			children = (
+				B03AECB3290185CE003E18BC /* TokenListsParser.swift */,
+				B03AECB4290185CE003E18BC /* ListTokenInfoProvider.swift */,
+				B03AECB5290185CE003E18BC /* TokenInfoTests.swift */,
+			);
+			path = TokenInfo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B03AE9582901828D003E18BC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B03AEBFA290185C5003E18BC /* Solana_Swift.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B03AE95C2901828D003E18BC /* Solana.Swift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B03AE96F2901828D003E18BC /* Build configuration list for PBXNativeTarget "Solana.Swift" */;
+			buildPhases = (
+				AC2AEE76F4AC652DF4A54476 /* [CP] Check Pods Manifest.lock */,
+				B03AE9582901828D003E18BC /* Headers */,
+				B03AE9592901828D003E18BC /* Sources */,
+				B03AE95A2901828D003E18BC /* Frameworks */,
+				B03AE95B2901828D003E18BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Solana.Swift;
+			productName = Solana.Swift;
+			productReference = B03AE95D2901828D003E18BC /* Solana_Swift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B03AE9642901828D003E18BC /* Solana.SwiftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B03AE9722901828D003E18BC /* Build configuration list for PBXNativeTarget "Solana.SwiftTests" */;
+			buildPhases = (
+				43FFD975D10D19F307D5ABB5 /* [CP] Check Pods Manifest.lock */,
+				B03AE9612901828D003E18BC /* Sources */,
+				B03AE9622901828D003E18BC /* Frameworks */,
+				B03AE9632901828D003E18BC /* Resources */,
+				82E3A1CC245E2A42F6E20F1E /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B03AE9682901828D003E18BC /* PBXTargetDependency */,
+			);
+			name = Solana.SwiftTests;
+			productName = Solana.SwiftTests;
+			productReference = B03AE9652901828D003E18BC /* Solana.SwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B03AE9542901828D003E18BC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					B03AE95C2901828D003E18BC = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+					B03AE9642901828D003E18BC = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+				};
+			};
+			buildConfigurationList = B03AE9572901828D003E18BC /* Build configuration list for PBXProject "Solana.Swift" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B03AE9532901828D003E18BC;
+			productRefGroup = B03AE95E2901828D003E18BC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B03AE95C2901828D003E18BC /* Solana.Swift */,
+				B03AE9642901828D003E18BC /* Solana.SwiftTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B03AE95B2901828D003E18BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B03AE9632901828D003E18BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B03AECBB290185CE003E18BC /* testnet.tokens.json in Resources */,
+				B03AECBD290185CE003E18BC /* getTokenWallets.json in Resources */,
+				B03AECBA290185CE003E18BC /* mainnet-beta.tokens.json in Resources */,
+				B03AECBC290185CE003E18BC /* devnet.tokens.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		43FFD975D10D19F307D5ABB5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Solana.SwiftTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		82E3A1CC245E2A42F6E20F1E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Solana.SwiftTests/Pods-Solana.SwiftTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Solana.SwiftTests/Pods-Solana.SwiftTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Solana.SwiftTests/Pods-Solana.SwiftTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC2AEE76F4AC652DF4A54476 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Solana.Swift-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B03AE9592901828D003E18BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B03AEC45290185C6003E18BC /* getIdentity.swift in Sources */,
+				B03AEC30290185C5003E18BC /* getPools.swift in Sources */,
+				B03AEC14290185C5003E18BC /* SolanaError.swift in Sources */,
+				B03AEC25290185C5003E18BC /* SystemProgram.swift in Sources */,
+				B03AEC1B290185C5003E18BC /* String+Extension.swift in Sources */,
+				B03AEC44290185C6003E18BC /* simulateTransaction.swift in Sources */,
+				B03AEC71290185C6003E18BC /* BorshEncoder.swift in Sources */,
+				B03AEC62290185C6003E18BC /* HMAC.swift in Sources */,
+				B03AEC78290185C6003E18BC /* SMP Bignum Extensions.swift in Sources */,
+				B03AEC01290185C5003E18BC /* PublicKey.swift in Sources */,
+				B03AEBFE290185C5003E18BC /* SolanaRouter.swift in Sources */,
+				B03AEC55290185C6003E18BC /* getMinimumBalanceForRentExemption.swift in Sources */,
+				B03AEBFB290185C5003E18BC /* SolanaRequest.swift in Sources */,
+				B03AEC67290185C6003E18BC /* UInt2X.swift in Sources */,
+				B03AEC37290185C5003E18BC /* getGenesisHash.swift in Sources */,
+				B03AEC0D290185C5003E18BC /* TransactionInstruction.swift in Sources */,
+				B03AEC68290185C6003E18BC /* PBKDF2.swift in Sources */,
+				B03AEC41290185C6003E18BC /* sendTransaction.swift in Sources */,
+				B03AEC46290185C6003E18BC /* getMultipleAccounts.swift in Sources */,
+				B03AEC04290185C5003E18BC /* Mint.swift in Sources */,
+				B03AEC51290185C6003E18BC /* getSlot.swift in Sources */,
+				B03AEC59290185C6003E18BC /* requestAirdrop.swift in Sources */,
+				B03AEC2A290185C5003E18BC /* findSPLTokenDestinationAddress.swift in Sources */,
+				B03AEC5F290185C6003E18BC /* getEpochInfo.swift in Sources */,
+				B03AEC38290185C5003E18BC /* getBlockTime.swift in Sources */,
+				B03AEC7B290185C6003E18BC /* RIPEMD+Block.swift in Sources */,
+				B03AEC5C290185C6003E18BC /* getRecentBlockhash.swift in Sources */,
+				B03AEC54290185C6003E18BC /* getEpochSchedule.swift in Sources */,
+				B03AEC1A290185C5003E18BC /* AccountMeta+Extensions.swift in Sources */,
+				B03AEC1D290185C5003E18BC /* Bytes+Extensions.swift in Sources */,
+				B03AEC6A290185C6003E18BC /* Extensions.swift in Sources */,
+				B03AEC12290185C5003E18BC /* Account.swift in Sources */,
+				B03AEBFC290185C5003E18BC /* Models.swift in Sources */,
+				B03AEC2E290185C5003E18BC /* serializeAndSendWithFee.swift in Sources */,
+				B03AEC29290185C5003E18BC /* swap.swift in Sources */,
+				B03AEC06290185C5003E18BC /* AccountInfo.swift in Sources */,
+				B03AEC24290185C5003E18BC /* AssociatedTokenProgram.swift in Sources */,
+				B03AEC10290185C5003E18BC /* TokenList.swift in Sources */,
+				B03AEC69290185C6003E18BC /* Keys.swift in Sources */,
+				B03AEC3C290185C6003E18BC /* getConfirmedSignaturesForAddress2.swift in Sources */,
+				B03AEC3D290185C6003E18BC /* getConfirmedBlocksWithLimit.swift in Sources */,
+				B03AEC7A290185C6003E18BC /* RIPEMD.swift in Sources */,
+				B03AEC6F290185C6003E18BC /* BorshDecoder.swift in Sources */,
+				B03AEC3E290185C6003E18BC /* getSupply.swift in Sources */,
+				B03AEC4B290185C6003E18BC /* getVoteAccounts.swift in Sources */,
+				B03AEC4C290185C6003E18BC /* getInflationGovernor.swift in Sources */,
+				B03AEC36290185C5003E18BC /* getTokenLargestAccounts.swift in Sources */,
+				B03AEC05290185C5003E18BC /* BufferLayout.swift in Sources */,
+				B03AEC75290185C6003E18BC /* ASKHDUtils.swift in Sources */,
+				B03AEC0A290185C5003E18BC /* ParsedTransaction.swift in Sources */,
+				B03AEC61290185C6003E18BC /* ContResult.swift in Sources */,
+				B03AEC73290185C6003E18BC /* Mnemonic.swift in Sources */,
+				B03AEC4F290185C6003E18BC /* getConfirmedBlock.swift in Sources */,
+				B03AEC58290185C6003E18BC /* getSignatureStatuses.swift in Sources */,
+				B03AEC2C290185C5003E18BC /* serializeTransaction.swift in Sources */,
+				B03AEC57290185C6003E18BC /* getConfirmedTransaction.swift in Sources */,
+				B03AEC39290185C5003E18BC /* getProgramAccounts.swift in Sources */,
+				B03AEC4D290185C6003E18BC /* getInflationRate.swift in Sources */,
+				B03AEC2F290185C5003E18BC /* sendSPLTokens.swift in Sources */,
+				B03AEC77290185C6003E18BC /* SMP.swift in Sources */,
+				B03AEC4E290185C6003E18BC /* getTokenSupply.swift in Sources */,
+				B03AEC3B290185C6003E18BC /* getLeaderSchedule.swift in Sources */,
+				B03AEC5B290185C6003E18BC /* minimumLedgerSlot.swift in Sources */,
+				B03AEC48290185C6003E18BC /* getFirstAvailableBlock.swift in Sources */,
+				B03AEC00290185C5003E18BC /* Solana.swift in Sources */,
+				B03AEC16290185C5003E18BC /* PublicKey+AssociatedTokenProgram.swift in Sources */,
+				B03AEC3A290185C6003E18BC /* getSlotLeader.swift in Sources */,
+				B03AEC3F290185C6003E18BC /* getFeeCalculatorForBlockhash.swift in Sources */,
+				B03AEC5D290185C6003E18BC /* getBalance.swift in Sources */,
+				B03AEC43290185C6003E18BC /* ApiTemplate.swift in Sources */,
+				B03AEC60290185C6003E18BC /* TokenInfoProvider.swift in Sources */,
+				B03AEC56290185C6003E18BC /* getFeeRateGovernor.swift in Sources */,
+				B03AEC1F290185C5003E18BC /* Number+Extensions.swift in Sources */,
+				B03AEC1E290185C5003E18BC /* Data+Extension.swift in Sources */,
+				B03AEC20290185C5003E18BC /* Data+Extensions.swift in Sources */,
+				B03AEC2B290185C5003E18BC /* sendSOL.swift in Sources */,
+				B03AEC74290185C6003E18BC /* Base58.swift in Sources */,
+				B03AEC76290185C6003E18BC /* Keychain.swift in Sources */,
+				B03AEC6B290185C6003E18BC /* Ed25519HDKey.swift in Sources */,
+				B03AEC32290185C5003E18BC /* createTokenAccount.swift in Sources */,
+				B03AEC23290185C5003E18BC /* TokenProgram.swift in Sources */,
+				B03AEC07290185C5003E18BC /* ConfirmedTransaction.swift in Sources */,
+				B03AEC0B290185C5003E18BC /* DerivablePath.swift in Sources */,
+				B03AEC15290185C5003E18BC /* Wallet.swift in Sources */,
+				B03AEC2D290185C5003E18BC /* getMintData.swift in Sources */,
+				B03AEC72290185C6003E18BC /* Wordlists.swift in Sources */,
+				B03AEC26290185C5003E18BC /* closeTokenAccount.swift in Sources */,
+				B03AEC66290185C6003E18BC /* Int2X.swift in Sources */,
+				B03AEC63290185C6003E18BC /* SHA256.swift in Sources */,
+				B03AEC5E290185C6003E18BC /* getClusterNodes.swift in Sources */,
+				B03AEC40290185C6003E18BC /* getRecentPerformanceSamples.swift in Sources */,
+				B03AEC49290185C6003E18BC /* getBlockCommitment.swift in Sources */,
+				B03AEC1C290185C5003E18BC /* BytesEncodable.swift in Sources */,
+				B03AEC34290185C5003E18BC /* getVersion.swift in Sources */,
+				B03AEC21290185C5003E18BC /* Array+Extension.swift in Sources */,
+				B03AEC6E290185C6003E18BC /* BorshDeserialize.swift in Sources */,
+				B03AEC5A290185C6003E18BC /* getLargestAccounts.swift in Sources */,
+				B03AEC28290185C5003E18BC /* createAssociatedTokenAccount.swift in Sources */,
+				B03AEC35290185C5003E18BC /* getTokenAccountsByOwner.swift in Sources */,
+				B03AEBFD290185C5003E18BC /* SolanaSocket.swift in Sources */,
+				B03AEC09290185C5003E18BC /* SolanaSDK+Models.swift in Sources */,
+				B03AEC0F290185C5003E18BC /* Transaction.swift in Sources */,
+				B03AEC53290185C6003E18BC /* getTokenAccountBalance.swift in Sources */,
+				B03AEC19290185C5003E18BC /* NSRegularExpression+Extensions.swift in Sources */,
+				B03AEC27290185C5003E18BC /* getTokenWallets.swift in Sources */,
+				B03AEC11290185C5003E18BC /* SolanaSDK+Request.swift in Sources */,
+				B03AEC02290185C5003E18BC /* TokenSwapInfo.swift in Sources */,
+				B03AEC42290185C6003E18BC /* getTokenAccountsByDelegate.swift in Sources */,
+				B03AEC03290185C5003E18BC /* EmptyInfo.swift in Sources */,
+				B03AEC79290185C6003E18BC /* UInt32+CircularShift.swift in Sources */,
+				B03AEC17290185C5003E18BC /* PublicKey+Extensions.swift in Sources */,
+				B03AEC52290185C6003E18BC /* getTransactionCount.swift in Sources */,
+				B03AEC0C290185C5003E18BC /* Pool.swift in Sources */,
+				B03AEC13290185C5003E18BC /* RPCEndpoint.swift in Sources */,
+				B03AEC64290185C6003E18BC /* NaclLowLevel.swift in Sources */,
+				B03AEC33290185C5003E18BC /* getAccountInfo.swift in Sources */,
+				B03AEC6C290185C6003E18BC /* BorshSerialize.swift in Sources */,
+				B03AEC70290185C6003E18BC /* Borsh.swift in Sources */,
+				B03AEC4A290185C6003E18BC /* getConfirmedBlocks.swift in Sources */,
+				B03AEC0E290185C5003E18BC /* Message.swift in Sources */,
+				B03AEC6D290185C6003E18BC /* BinaryReader.swift in Sources */,
+				B03AEC18290185C5003E18BC /* Decimals+Extensions.swift in Sources */,
+				B03AEC22290185C5003E18BC /* TokenSwapProgram.swift in Sources */,
+				B03AEC08290185C5003E18BC /* Network.swift in Sources */,
+				B03AEBFF290185C5003E18BC /* NetworkingRouter.swift in Sources */,
+				B03AEC47290185C6003E18BC /* getFees.swift in Sources */,
+				B03AEC31290185C5003E18BC /* ActionTemplate.swift in Sources */,
+				B03AEC65290185C6003E18BC /* CKSecp256k1.swift in Sources */,
+				B03AEC50290185C6003E18BC /* getStakeActivation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B03AE9612901828D003E18BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B03AECCA290185CE003E18BC /* swap.swift in Sources */,
+				B03AECD5290185CE003E18BC /* Methods.swift in Sources */,
+				B03AECC3290185CE003E18BC /* InMemoryAccountStorage.swift in Sources */,
+				B03AECD1290185CE003E18BC /* sendSPLTokens+SimpleLock.swift in Sources */,
+				B03AECDB290185CE003E18BC /* TokenInfoTests.swift in Sources */,
+				B03AECD4290185CE003E18BC /* createTokenAccount.swift in Sources */,
+				B03AECC2290185CE003E18BC /* EncodingTests.swift in Sources */,
+				B03AECC7290185CE003E18BC /* createAssosiatedTokenAccount+SimpleLock.swift in Sources */,
+				B03AECC5290185CE003E18BC /* getTokenWallets+SimpleLock.swift in Sources */,
+				B03AECB8290185CE003E18BC /* RunLoopSimpleLock.swift in Sources */,
+				B03AECC8290185CE003E18BC /* createAssociatedTokenAccount.swift in Sources */,
+				B03AECDA290185CE003E18BC /* ListTokenInfoProvider.swift in Sources */,
+				B03AECCE290185CE003E18BC /* getMintData+SimpleLock.swift in Sources */,
+				B03AECBF290185CE003E18BC /* DecodingTests.swift in Sources */,
+				B03AECC9290185CE003E18BC /* TokenSwapProgramTests.swift in Sources */,
+				B03AECB9290185CE003E18BC /* SocketTests.swift in Sources */,
+				B03AECCC290185CE003E18BC /* sendSOL.swift in Sources */,
+				B03AECD0290185CE003E18BC /* serializeAndSendWithFee+SimpleLock.swift in Sources */,
+				B03AECCB290185CE003E18BC /* sendSOL+SimpleLock.swift in Sources */,
+				B03AECC1290185CE003E18BC /* PublicKeyTests.swift in Sources */,
+				B03AECC4290185CE003E18BC /* closeTokenAccount.swift in Sources */,
+				B03AECC0290185CE003E18BC /* Pool.swift in Sources */,
+				B03AECCD290185CE003E18BC /* getMintData.swift in Sources */,
+				B03AECD2290185CE003E18BC /* sendSPLTokens.swift in Sources */,
+				B03AECD7290185CE003E18BC /* HMACTests.swift in Sources */,
+				B03AECDC290185CE003E18BC /* Solana_SwiftTests.swift in Sources */,
+				B03AECCF290185CE003E18BC /* serializeAndSendWithFee.swift in Sources */,
+				B03AECD8290185CE003E18BC /* Borsh.swift in Sources */,
+				B03AECD9290185CE003E18BC /* TokenListsParser.swift in Sources */,
+				B03AECC6290185CE003E18BC /* getTokenWallets.swift in Sources */,
+				B03AECD3290185CE003E18BC /* createTokenAccount+SimpleLock.swift in Sources */,
+				B03AECD6290185CE003E18BC /* Methods+SimpleLock.swift in Sources */,
+				B03AECBE290185CE003E18BC /* PublicKey.swift in Sources */,
+				B03AECB7290185CE003E18BC /* SolanaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B03AE9682901828D003E18BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B03AE95C2901828D003E18BC /* Solana.Swift */;
+			targetProxy = B03AE9672901828D003E18BC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B03AE96D2901828D003E18BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B03AE96E2901828D003E18BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B03AE9702901828D003E18BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 625790C608CCEEA2EB711B59 /* Pods-Solana.Swift.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 4897UJ6D8C;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tangem.Solana-Swift";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B03AE9712901828D003E18BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DED8C195259DA792ADCC7652 /* Pods-Solana.Swift.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 4897UJ6D8C;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tangem.Solana-Swift";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B03AE9732901828D003E18BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81AE72A72337C0C9BEC637D2 /* Pods-Solana.SwiftTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4897UJ6D8C;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tangem.Solana-SwiftTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B03AE9742901828D003E18BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0746F5898207426EE9C0D17E /* Pods-Solana.SwiftTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4897UJ6D8C;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tangem.Solana-SwiftTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B03AE9572901828D003E18BC /* Build configuration list for PBXProject "Solana.Swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B03AE96D2901828D003E18BC /* Debug */,
+				B03AE96E2901828D003E18BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B03AE96F2901828D003E18BC /* Build configuration list for PBXNativeTarget "Solana.Swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B03AE9702901828D003E18BC /* Debug */,
+				B03AE9712901828D003E18BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B03AE9722901828D003E18BC /* Build configuration list for PBXNativeTarget "Solana.SwiftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B03AE9732901828D003E18BC /* Debug */,
+				B03AE9742901828D003E18BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B03AE9542901828D003E18BC /* Project object */;
+}
