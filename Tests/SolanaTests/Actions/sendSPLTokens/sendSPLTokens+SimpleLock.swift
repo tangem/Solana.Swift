@@ -36,7 +36,6 @@ extension Action {
         let lock = RunLoopSimpleLock()
         lock.dispatch { [weak self] in
             self?.sendSPLTokens(mintAddress: mintAddress,
-                                decimals: decimals,
                                 from: fromPublicKey,
                                 to: destinationAddress,
                                 amount: amount,
