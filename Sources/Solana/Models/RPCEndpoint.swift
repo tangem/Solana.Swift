@@ -4,10 +4,17 @@ public struct RPCEndpoint: Hashable, Codable {
     public let url: URL
     public let urlWebSocket: URL
     public let network: Network
-    public init(url: URL, urlWebSocket: URL, network: Network) {
+    
+    public let apiKeyHeaderName: String?
+    public let apiKeyHeaderValue: String?
+    
+    public init(url: URL, urlWebSocket: URL, network: Network, apiKeyHeaderName: String? = nil, apiKeyHeaderValue: String? = nil) {
         self.url = url
         self.urlWebSocket = urlWebSocket
         self.network = network
+        
+        self.apiKeyHeaderName = apiKeyHeaderName
+        self.apiKeyHeaderValue = apiKeyHeaderValue
     }
 
     public static let mainnetBetaSerum = RPCEndpoint(url: URL(string: "https://solana-api.projectserum.com")!, urlWebSocket: URL(string: "wss://solana-api.projectserum.com")!, network: .mainnetBeta)

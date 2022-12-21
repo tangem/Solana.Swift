@@ -53,6 +53,10 @@ public class NetworkingRouter: SolanaRouter {
         request.httpMethod = method.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
+        if let apiKeyHeaderName = endpoint.apiKeyHeaderName, let apiKeyHeaderValue = endpoint.apiKeyHeaderValue {
+            request.setValue(apiKeyHeaderValue, forHTTPHeaderField: apiKeyHeaderName)
+        }
+        
         do {
             request.httpBody = try JSONEncoder().encode(requestAPI)
         } catch {
