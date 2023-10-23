@@ -95,6 +95,7 @@ public class NetworkingRouter: SolanaRouter {
                 }
             }
             .retry(2)
+            .receive(on: RunLoop.main)
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self = self else { return }
                 
