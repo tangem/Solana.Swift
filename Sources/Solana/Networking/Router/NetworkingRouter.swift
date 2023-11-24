@@ -31,7 +31,6 @@ public class NetworkingRouter: SolanaRouter {
     private let endpoints: [RPCEndpoint]
     
     private var currentEndpointIndex = 0
-    private var bag = Set<AnyCancellable>()
     
     public init(endpoints: [RPCEndpoint], session: URLSession = .shared) {
         self.endpoints = endpoints
@@ -63,7 +62,8 @@ public class NetworkingRouter: SolanaRouter {
             onComplete(.failure(error))
         }
         
-        urlSession.dataTaskPublisher(for: request)
+        var subscription: AnyCancellable?
+        subscription = urlSession.dataTaskPublisher(for: request)
             .tryMap { (data: Data?, response: URLResponse) -> Void in
                 guard let httpURLResponse = response as? HTTPURLResponse else {
                     throw RPCError.httpError
@@ -123,8 +123,9 @@ public class NetworkingRouter: SolanaRouter {
                 }
                 
                 retry()
+                
+                withExtendedLifetime(subscription) {}
             }, receiveValue: { })
-            .store(in: &bag)
     }
     
     private func needRetry(for errorHost: String?) -> Bool {
