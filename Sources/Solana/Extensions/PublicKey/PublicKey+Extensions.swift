@@ -2,6 +2,7 @@ import Foundation
 
 public extension PublicKey {
     static let tokenProgramId = PublicKey(string: "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA")!
+    static let token2022ProgramId = PublicKey(string: "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb")!
     static let sysvarRent = PublicKey(string: "SysvarRent111111111111111111111111111111111")!
     static let programId = PublicKey(string: "11111111111111111111111111111111")!
     static let wrappedSOLMint = PublicKey(string: "So11111111111111111111111111111111111111112")!
