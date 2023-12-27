@@ -3,6 +3,7 @@ import Foundation
 extension Action {
     public func sendSPLTokens(
         mintAddress: String,
+        tokenProgramId: PublicKey,
         decimals: Decimals,
         from fromPublicKey: String,
         to destinationAddress: String,
@@ -14,6 +15,7 @@ extension Action {
         ContResult.init { cb in
             self.findSPLTokenDestinationAddress(
                 mintAddress: mintAddress,
+                tokenProgramId: tokenProgramId,
                 destinationAddress: destinationAddress,
                 allowUnfundedRecipient: allowUnfundedRecipient
             ) { cb($0) }
@@ -51,7 +53,7 @@ extension Action {
 
             // send instruction
             let sendInstruction = TokenProgram.transferInstruction(
-                tokenProgramId: .tokenProgramId,
+                tokenProgramId: tokenProgramId,
                 source: fromPublicKey,
                 destination: toPublicKey,
                 owner: signer.publicKey,
@@ -74,6 +76,7 @@ extension Action {
 extension ActionTemplates {
     public struct SendSPLTokens: ActionTemplate {
         public let mintAddress: String
+        public let tokenProgramId: PublicKey
         public let fromPublicKey: String
         public let destinationAddress: String
         public let amount: UInt64
@@ -84,7 +87,7 @@ extension ActionTemplates {
         public typealias Success = TransactionID
 
         public func perform(withConfigurationFrom actionClass: Action, completion: @escaping (Result<TransactionID, Error>) -> Void) {
-            actionClass.sendSPLTokens(mintAddress: mintAddress, decimals: decimals, from: fromPublicKey, to: destinationAddress, amount: amount, allowUnfundedRecipient: allowUnfundedRecipient, signer: signer, onComplete: completion)
+            actionClass.sendSPLTokens(mintAddress: mintAddress, tokenProgramId: tokenProgramId, decimals: decimals, from: fromPublicKey, to: destinationAddress, amount: amount, allowUnfundedRecipient: allowUnfundedRecipient, signer: signer, onComplete: completion)
         }
     }
 }

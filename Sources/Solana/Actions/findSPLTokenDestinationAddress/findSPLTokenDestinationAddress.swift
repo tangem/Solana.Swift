@@ -4,6 +4,7 @@ extension Action {
     public typealias SPLTokenDestinationAddress = (destination: PublicKey, isUnregisteredAsocciatedToken: Bool)
     public func findSPLTokenDestinationAddress(
         mintAddress: String,
+        tokenProgramId: PublicKey,
         destinationAddress: String,
         allowUnfundedRecipient: Bool = false,
         onComplete: @escaping (Result<SPLTokenDestinationAddress, Error>) -> Void
@@ -11,12 +12,14 @@ extension Action {
         if allowUnfundedRecipient {
             checkSPLTokenAccountExistence(
                 mintAddress: mintAddress,
+                tokenProgramId: tokenProgramId,
                 destinationAddress: destinationAddress,
                 onComplete: onComplete
             )
         } else {
             findSPLTokenDestinationAddressOfExistingAccount(
                 mintAddress: mintAddress,
+                tokenProgramId: tokenProgramId,
                 destinationAddress: destinationAddress,
                 onComplete: onComplete
             )
@@ -25,13 +28,14 @@ extension Action {
     
     fileprivate func checkSPLTokenAccountExistence(
         mintAddress: String,
+        tokenProgramId: PublicKey,
         destinationAddress: String,
         onComplete: @escaping (Result<SPLTokenDestinationAddress, Error>) -> Void
     ) {
         guard
             let owner = PublicKey(string: destinationAddress),
             let tokenMint = PublicKey(string: mintAddress),
-            case let .success(associatedTokenAddress) = PublicKey.associatedTokenAddress(walletAddress: owner, tokenMintAddress: tokenMint)
+            case let .success(associatedTokenAddress) = PublicKey.associatedTokenAddress(walletAddress: owner, tokenMintAddress: tokenMint, tokenProgramId: tokenProgramId)
         else {
             onComplete(.failure(SolanaError.invalidPublicKey))
             return
@@ -60,6 +64,7 @@ extension Action {
     
     fileprivate func findSPLTokenDestinationAddressOfExistingAccount(
         mintAddress: String,
+        tokenProgramId: PublicKey,
         destinationAddress: String,
         onComplete: @escaping (Result<SPLTokenDestinationAddress, Error>) -> Void
     ) {
@@ -86,7 +91,8 @@ extension Action {
                 // create associated token address
                 guard case let .success(address) = PublicKey.associatedTokenAddress(
                     walletAddress: owner,
-                    tokenMintAddress: tokenMint
+                    tokenMintAddress: tokenMint,
+                    tokenProgramId: tokenProgramId
                 ) else {
                     return .failure(SolanaError.invalidPublicKey)
                 }
@@ -123,19 +129,21 @@ extension Action {
 
 extension ActionTemplates {
     public struct FindSPLTokenDestinationAddress: ActionTemplate {
-        public init(mintAddress: String, destinationAddress: String, allowUnfundedRecipient: Bool) {
+        public init(mintAddress: String, tokenProgramId: PublicKey, destinationAddress: String, allowUnfundedRecipient: Bool) {
             self.mintAddress = mintAddress
+            self.tokenProgramId = tokenProgramId
             self.destinationAddress = destinationAddress
             self.allowUnfundedRecipient = allowUnfundedRecipient
         }
 
         public typealias Success = Action.SPLTokenDestinationAddress
         public let mintAddress: String
+        public let tokenProgramId: PublicKey
         public let destinationAddress: String
         public let allowUnfundedRecipient: Bool
 
         public func perform(withConfigurationFrom actionClass: Action, completion: @escaping (Result<Action.SPLTokenDestinationAddress, Error>) -> Void) {
-            actionClass.findSPLTokenDestinationAddress(mintAddress: mintAddress, destinationAddress: destinationAddress, allowUnfundedRecipient: allowUnfundedRecipient, onComplete: completion)
+            actionClass.findSPLTokenDestinationAddress(mintAddress: mintAddress, tokenProgramId: tokenProgramId, destinationAddress: destinationAddress, allowUnfundedRecipient: allowUnfundedRecipient, onComplete: completion)
         }
     }
 }
