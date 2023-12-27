@@ -31,6 +31,11 @@ extension Action {
             guard let fromPublicKey = PublicKey(string: fromPublicKey) else {
                 return .failure( SolanaError.invalidPublicKey)
             }
+            
+            guard let mint = PublicKey(string: mintAddress) else {
+                return .failure(SolanaError.invalidPublicKey)
+            }
+            
             var instructions = [TransactionInstruction]()
 
             // create associated token address
@@ -55,8 +60,10 @@ extension Action {
             let sendInstruction = TokenProgram.transferInstruction(
                 tokenProgramId: tokenProgramId,
                 source: fromPublicKey,
+                mint: mint,
                 destination: toPublicKey,
                 owner: signer.publicKey,
+                decimals: decimals,
                 amount: amount
             )
 
