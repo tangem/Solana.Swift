@@ -67,7 +67,8 @@ extension Action {
                 var results: [Result<[PublicKey: Mint], Error>] = []
                 for chunk in requestChunks {
                     dispatchGroup.enter()
-                    self.getMultipleMintDatas(mintAddresses: chunk) { mintDataResult in
+                    // Hardcoded programID -- OK, we don't use this
+                    self.getMultipleMintDatas(mintAddresses: chunk, programId: .tokenProgramId) { mintDataResult in
                         results.append(mintDataResult)
                         dispatchGroup.leave()
                     }

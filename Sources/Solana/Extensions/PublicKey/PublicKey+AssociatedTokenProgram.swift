@@ -15,12 +15,13 @@ private extension Int {
 extension PublicKey {
     public static func associatedTokenAddress(
         walletAddress: PublicKey,
-        tokenMintAddress: PublicKey
+        tokenMintAddress: PublicKey,
+        tokenProgramId: PublicKey
     ) -> Result<PublicKey, Error> {
         return findProgramAddress(
             seeds: [
                 walletAddress.data,
-                PublicKey.tokenProgramId.data,
+                tokenProgramId.data,
                 tokenMintAddress.data
             ],
             programId: .splAssociatedTokenAccountProgramId

@@ -3,6 +3,7 @@ import Foundation
 extension Action {
     public func sendSPLTokens(
         mintAddress: String,
+        tokenProgramId: PublicKey,
         decimals: Decimals,
         from fromPublicKey: String,
         to destinationAddress: String,
@@ -14,6 +15,7 @@ extension Action {
         ContResult.init { cb in
             self.findSPLTokenDestinationAddress(
                 mintAddress: mintAddress,
+                tokenProgramId: tokenProgramId,
                 destinationAddress: destinationAddress,
                 allowUnfundedRecipient: allowUnfundedRecipient
             ) { cb($0) }
@@ -29,6 +31,11 @@ extension Action {
             guard let fromPublicKey = PublicKey(string: fromPublicKey) else {
                 return .failure( SolanaError.invalidPublicKey)
             }
+            
+            guard let mint = PublicKey(string: mintAddress) else {
+                return .failure(SolanaError.invalidPublicKey)
+            }
+            
             var instructions = [TransactionInstruction]()
 
             // create associated token address
@@ -41,6 +48,7 @@ extension Action {
                 }
 
                 let createATokenInstruction = AssociatedTokenProgram.createAssociatedTokenAccountInstruction(
+                    programId: tokenProgramId,
                     mint: mint,
                     associatedAccount: toPublicKey,
                     owner: owner,
@@ -50,12 +58,15 @@ extension Action {
             }
 
             // send instruction
-            let sendInstruction = TokenProgram.transferInstruction(
-                tokenProgramId: .tokenProgramId,
+            let sendInstruction = TokenProgram.transferCheckedInstruction(
+                programId: tokenProgramId,
                 source: fromPublicKey,
+                mint: mint,
                 destination: toPublicKey,
                 owner: signer.publicKey,
-                amount: amount
+                multiSigners: [],
+                amount: amount,
+                decimals: decimals
             )
 
             instructions.append(sendInstruction)
@@ -74,6 +85,7 @@ extension Action {
 extension ActionTemplates {
     public struct SendSPLTokens: ActionTemplate {
         public let mintAddress: String
+        public let tokenProgramId: PublicKey
         public let fromPublicKey: String
         public let destinationAddress: String
         public let amount: UInt64
@@ -84,7 +96,7 @@ extension ActionTemplates {
         public typealias Success = TransactionID
 
         public func perform(withConfigurationFrom actionClass: Action, completion: @escaping (Result<TransactionID, Error>) -> Void) {
-            actionClass.sendSPLTokens(mintAddress: mintAddress, decimals: decimals, from: fromPublicKey, to: destinationAddress, amount: amount, allowUnfundedRecipient: allowUnfundedRecipient, signer: signer, onComplete: completion)
+            actionClass.sendSPLTokens(mintAddress: mintAddress, tokenProgramId: tokenProgramId, decimals: decimals, from: fromPublicKey, to: destinationAddress, amount: amount, allowUnfundedRecipient: allowUnfundedRecipient, signer: signer, onComplete: completion)
         }
     }
 }

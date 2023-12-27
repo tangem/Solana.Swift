@@ -5,11 +5,13 @@ extension Action {
     public func getOrCreateAssociatedTokenAccount(
         owner: PublicKey,
         tokenMint: PublicKey,
+        tokenProgramId: PublicKey,
         onComplete: @escaping (Result<(transactionId: TransactionID?, associatedTokenAddress: PublicKey), Error>) -> Void
     ) {
         guard case let .success(associatedAddress) = PublicKey.associatedTokenAddress(
             walletAddress: owner,
-            tokenMintAddress: tokenMint
+            tokenMintAddress: tokenMint,
+            tokenProgramId: tokenProgramId
         ) else {
             onComplete(.failure(SolanaError.other("Could not create associated token account")))
             return
@@ -21,14 +23,15 @@ extension Action {
         ) { acountInfoResult in
             switch acountInfoResult {
             case .success(let info):
-                if info.owner == PublicKey.tokenProgramId.base58EncodedString &&
+                if info.owner == tokenProgramId.base58EncodedString &&
                     info.data.value != nil {
                     onComplete(.success((transactionId: nil, associatedTokenAddress: associatedAddress)))
                     return
                 }
                 self.createAssociatedTokenAccount(
                     for: owner,
-                    tokenMint: tokenMint
+                    tokenMint: tokenMint,
+                    tokenProgramId: tokenProgramId
                 ) { createAssociatedResult in
                     switch createAssociatedResult {
                     case .success(let transactionId):
@@ -49,6 +52,7 @@ extension Action {
     public func createAssociatedTokenAccount(
         for owner: PublicKey,
         tokenMint: PublicKey,
+        tokenProgramId: PublicKey,
         payer: Account? = nil,
         onComplete: @escaping ((Result<TransactionID, Error>) -> Void)
     ) {
@@ -59,7 +63,8 @@ extension Action {
 
         guard case let .success(associatedAddress) = PublicKey.associatedTokenAddress(
                 walletAddress: owner,
-                tokenMintAddress: tokenMint
+                tokenMintAddress: tokenMint,
+                tokenProgramId: tokenProgramId
             ) else {
                 onComplete(.failure(SolanaError.other("Could not create associated token account")))
                 return
@@ -68,6 +73,7 @@ extension Action {
             // create instruction
             let instruction = AssociatedTokenProgram
                 .createAssociatedTokenAccountInstruction(
+                    programId: tokenProgramId,
                     mint: tokenMint,
                     associatedAccount: associatedAddress,
                     owner: owner,
@@ -93,21 +99,24 @@ extension Action {
 extension ActionTemplates {
 
     public struct CreateAssociatedTokenAccountAction: ActionTemplate {
-        public init(owner: PublicKey, tokenMint: PublicKey, payer: Account?) {
+        public init(owner: PublicKey, tokenMint: PublicKey, tokenProgramId: PublicKey, payer: Account?) {
             self.owner = owner
             self.tokenMint = tokenMint
+            self.tokenProgramId = tokenProgramId
             self.payer = payer
         }
 
         public typealias Success = TransactionID
         public let owner: PublicKey
         public let tokenMint: PublicKey
+        public let tokenProgramId: PublicKey
         public let payer: Account?
 
         public func perform(withConfigurationFrom actionClass: Action, completion: @escaping (Result<TransactionID, Error>) -> Void) {
             actionClass.createAssociatedTokenAccount(
                 for: owner,
                    tokenMint: tokenMint,
+                   tokenProgramId: tokenProgramId,
                    payer: payer,
                    onComplete: completion
             )
@@ -115,17 +124,19 @@ extension ActionTemplates {
     }
 
     public struct GetOrCreateAssociatedTokenAccountAction: ActionTemplate {
-        public init(owner: PublicKey, tokenMint: PublicKey) {
+        public init(owner: PublicKey, tokenMint: PublicKey, tokenProgramId: PublicKey) {
             self.owner = owner
             self.tokenMint = tokenMint
+            self.tokenProgramId = tokenProgramId
         }
 
         public typealias Success = (transactionId: TransactionID?, associatedTokenAddress: PublicKey)
         public let owner: PublicKey
         public let tokenMint: PublicKey
+        public let tokenProgramId: PublicKey
 
         public func perform(withConfigurationFrom actionClass: Action, completion: @escaping (Result<Success, Error>) -> Void) {
-            actionClass.getOrCreateAssociatedTokenAccount(owner: owner, tokenMint: tokenMint, onComplete: completion)
+            actionClass.getOrCreateAssociatedTokenAccount(owner: owner, tokenMint: tokenMint, tokenProgramId: tokenProgramId, onComplete: completion)
         }
     }
 }

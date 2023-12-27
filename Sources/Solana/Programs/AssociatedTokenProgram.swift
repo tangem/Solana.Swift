@@ -4,7 +4,7 @@ public struct AssociatedTokenProgram {
     // MARK: - Interface
     static func createAssociatedTokenAccountInstruction(
         associatedProgramId: PublicKey = .splAssociatedTokenAccountProgramId,
-        programId: PublicKey = .tokenProgramId,
+        programId: PublicKey,
         mint: PublicKey,
         associatedAccount: PublicKey,
         owner: PublicKey,

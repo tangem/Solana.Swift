@@ -10,6 +10,7 @@ extension Action {
         let configs = RequestConfiguration(commitment: "recent", encoding: "jsonParsed")
 
         ContResult.init { cb in
+            // Hardcoded programID -- OK, we don't use this
             self.api.getTokenAccountsByOwner(pubkey: account, programId: PublicKey.tokenProgramId.base58EncodedString, configs: configs )
             { (result: Result<[TokenAccount<AccountInfoData>], Error>) in cb(result) }
         }.map { accounts in
