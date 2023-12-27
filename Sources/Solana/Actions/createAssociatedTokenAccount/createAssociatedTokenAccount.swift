@@ -23,7 +23,7 @@ extension Action {
         ) { acountInfoResult in
             switch acountInfoResult {
             case .success(let info):
-                if info.owner == PublicKey.tokenProgramId.base58EncodedString &&
+                if info.owner == tokenProgramId.base58EncodedString &&
                     info.data.value != nil {
                     onComplete(.success((transactionId: nil, associatedTokenAddress: associatedAddress)))
                     return
@@ -73,6 +73,7 @@ extension Action {
             // create instruction
             let instruction = AssociatedTokenProgram
                 .createAssociatedTokenAccountInstruction(
+                    programId: tokenProgramId,
                     mint: tokenMint,
                     associatedAccount: associatedAddress,
                     owner: owner,

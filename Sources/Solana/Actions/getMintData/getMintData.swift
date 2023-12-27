@@ -2,7 +2,7 @@ import Foundation
 
 public extension Action {
 
-    func getMintData(mintAddress: PublicKey, programId: PublicKey = .tokenProgramId, onComplete: @escaping ((Result<Mint, Error>) -> Void)) {
+    func getMintData(mintAddress: PublicKey, programId: PublicKey, onComplete: @escaping ((Result<Mint, Error>) -> Void)) {
         self.api.getAccountInfo(account: mintAddress.base58EncodedString, decodedTo: Mint.self) { result in
             switch result {
             case .success(let account):
@@ -23,7 +23,7 @@ public extension Action {
         }
     }
 
-    func getMultipleMintDatas(mintAddresses: [PublicKey], programId: PublicKey = .tokenProgramId, onComplete: @escaping (Result<[PublicKey: Mint], Error>) -> Void) {
+    func getMultipleMintDatas(mintAddresses: [PublicKey], programId: PublicKey, onComplete: @escaping (Result<[PublicKey: Mint], Error>) -> Void) {
 
         return ContResult.init { cb in
             self.api.getMultipleAccounts(pubkeys: mintAddresses.map { $0.base58EncodedString }, decodedTo: Mint.self) {
@@ -51,7 +51,7 @@ public extension Action {
 
 extension ActionTemplates {
     public struct GetMintData: ActionTemplate {
-        public init(programId: PublicKey = .tokenProgramId, mintAddress: PublicKey) {
+        public init(programId: PublicKey, mintAddress: PublicKey) {
             self.programId = programId
             self.mintAddress = mintAddress
         }
@@ -66,7 +66,7 @@ extension ActionTemplates {
     }
 
     public struct GetMultipleMintData: ActionTemplate {
-        public init(programId: PublicKey = .tokenProgramId, mintAddresses: [PublicKey]) {
+        public init(programId: PublicKey, mintAddresses: [PublicKey]) {
             self.programId = programId
             self.mintAddresses = mintAddresses
         }

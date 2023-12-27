@@ -11,6 +11,7 @@ public struct SystemProgram {
         toNewPubkey newPubkey: PublicKey,
         lamports: UInt64,
         space: UInt64 = AccountInfo.BUFFER_LENGTH,
+        // Hardcoded programID -- OK, we don't use this
         programPubkey: PublicKey = PublicKey.tokenProgramId
     ) -> TransactionInstruction {
 

@@ -48,6 +48,7 @@ extension Action {
                 }
 
                 let createATokenInstruction = AssociatedTokenProgram.createAssociatedTokenAccountInstruction(
+                    programId: tokenProgramId,
                     mint: mint,
                     associatedAccount: toPublicKey,
                     owner: owner,

@@ -114,7 +114,7 @@ extension Action {
                 }.flatMap { info1 in
                     var isUnregisteredAsocciatedToken = true
                     // if associated token account has been registered
-                    if info1.owner == PublicKey.tokenProgramId.base58EncodedString &&
+                    if info1.owner == tokenProgramId.base58EncodedString &&
                         info.data.value != nil {
                         isUnregisteredAsocciatedToken = false
                     }
