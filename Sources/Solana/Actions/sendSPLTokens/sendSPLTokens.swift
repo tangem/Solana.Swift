@@ -58,14 +58,15 @@ extension Action {
             }
 
             // send instruction
-            let sendInstruction = TokenProgram.transferInstruction(
-                tokenProgramId: tokenProgramId,
+            let sendInstruction = TokenProgram.transferCheckedInstruction(
+                programId: tokenProgramId,
                 source: fromPublicKey,
                 mint: mint,
                 destination: toPublicKey,
                 owner: signer.publicKey,
-                decimals: decimals,
-                amount: amount
+                multiSigners: [],
+                amount: amount,
+                decimals: decimals
             )
 
             instructions.append(sendInstruction)

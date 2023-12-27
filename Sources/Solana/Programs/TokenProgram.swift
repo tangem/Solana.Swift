@@ -56,27 +56,21 @@ struct TokenProgram {
         )
     }
 
-    // See the sources for the difference between transfer and transfer_check
-    // https://github.com/solana-labs/solana-program-library/blob/a08ec509/token/js/src/instructions/transfer.ts#L18
-    // https://github.com/solana-labs/solana-program-library/blob/a08ec509/token/js/src/instructions/transferChecked.ts#L18
     public static func transferInstruction(
         tokenProgramId: PublicKey,
         source: PublicKey,
-        mint: PublicKey,
         destination: PublicKey,
         owner: PublicKey,
-        decimals: Decimals,
         amount: UInt64
     ) -> TransactionInstruction {
         TransactionInstruction(
             keys: [
                 Account.Meta(publicKey: source, isSigner: false, isWritable: true),
-                Account.Meta(publicKey: mint, isSigner: false, isWritable: false),
                 Account.Meta(publicKey: destination, isSigner: false, isWritable: true),
                 Account.Meta(publicKey: owner, isSigner: true, isWritable: true)
             ],
             programId: tokenProgramId,
-            data: [Index.transferChecked, amount, decimals]
+            data: [Index.transfer, amount]
         )
     }
 
