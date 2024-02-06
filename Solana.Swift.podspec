@@ -18,7 +18,8 @@ Pod::Spec.new do |s|
   s.source_files = 'Sources/Solana/**/*'
   s.swift_versions   = ["5.3"]
 
+  # 'secp256k1.swift' dependency must be added via SPM
+
   s.dependency 'TweetNacl', '~> 1.0.2'
   s.dependency 'Starscream', '4.0.4'
-  s.dependency 'secp256k1.swift'
 end
