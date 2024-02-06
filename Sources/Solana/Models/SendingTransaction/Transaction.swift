@@ -1,7 +1,7 @@
 import Foundation
 import TweetNacl
 
-struct Transaction {
+class Transaction {
     private var signatures = [Signature]()
     let feePayer: PublicKey
     var instructions = [TransactionInstruction]()
@@ -16,13 +16,14 @@ struct Transaction {
     }
 
     // MARK: - Methods
-    mutating func sign(signers: [Account]) -> Result<Void, Error> {
+    func sign(signers: [Signer], queue: DispatchQueue, onComplete: @escaping ((Result<Void, Error>) -> Void)) {
         guard signers.count > 0 else {
-            return .failure(SolanaError.invalidRequest(reason: "No signers"))
+            onComplete(.failure(SolanaError.invalidRequest(reason: "No signers")))
+            return
         }
 
         // unique signers
-        let signers = signers.reduce([Account](), {signers, signer in
+        let signers = signers.reduce([Signer](), {signers, signer in
             var uniqueSigners = signers
             if !uniqueSigners.contains(where: {$0.publicKey == signer.publicKey}) {
                 uniqueSigners.append(signer)
@@ -34,12 +35,15 @@ struct Transaction {
         signatures = signers.map { Signature(signature: nil, publicKey: $0.publicKey) }
 
         // construct message
-        return compile().flatMap { message in
-            return partialSign(message: message, signers: signers)
+        switch compile() {
+        case .failure(let error):
+            onComplete(.failure(error))
+        case .success(let message):
+            partialSign(message: message, signers: signers, queue: queue, onComplete: onComplete)
         }
     }
 
-    mutating func serialize(
+    func serialize(
         requiredAllSignatures: Bool = true,
         verifySignatures: Bool = false
     ) -> Result<Data, Error> {
@@ -52,17 +56,17 @@ struct Transaction {
     }
 
     // MARK: - Helpers
-    mutating func addSignature(_ signature: Signature) -> Result<Void, Error> {
+    func addSignature(_ signature: Signature) -> Result<Void, Error> {
         return compile() // Ensure signatures array is populated
             .flatMap { _ in return _addSignature(signature) }
     }
 
-    mutating func serializeMessage() -> Result<Data, Error> {
+    func serializeMessage() -> Result<Data, Error> {
         return compile()
             .flatMap { $0.serialize() }
     }
 
-    mutating func verifySignatures() -> Result<Bool, Error> {
+    func verifySignatures() -> Result<Bool, Error> {
         return serializeMessage().flatMap {
             _verifySignatures(serializedMessage: $0, requiredAllSignatures: true)
         }
@@ -73,22 +77,45 @@ struct Transaction {
     }
 
     // MARK: - Signing
-    private mutating func partialSign(message: Message, signers: [Account]) -> Result<Void, Error> {
-        message.serialize()
-            .flatMap { signData in
-                for signer in signers {
-                    do {
-                        let data = try NaclSign.signDetached(message: signData, secretKey: signer.secretKey)
-                        try _addSignature(Signature(signature: data, publicKey: signer.publicKey)).get()
-                    } catch let error {
-                        return .failure(error)
+    private func partialSign(message: Message, signers: [Signer], queue: DispatchQueue, onComplete: @escaping (Result<Void, Error>) -> Void) {
+        switch message.serialize() {
+        case .failure(let error):
+            onComplete(.failure(error))
+        case .success(let serializedMessage):
+            let group = DispatchGroup()
+            var signingError: Error?
+            
+            for signer in signers {
+                group.enter()
+                signer.sign(message: serializedMessage) { signedDataResult in
+                    queue.async {
+                        switch signedDataResult {
+                        case .failure(let error):
+                            signingError = error
+                        case .success(let signedData):
+                            do {
+                                try self._addSignature(Signature(signature: signedData, publicKey: signer.publicKey)).get()
+                            } catch {
+                                signingError = error
+                            }
+                        }
+                        
+                        group.leave()
                     }
                 }
-                return .success(())
             }
+            
+            group.notify(queue: queue) {
+                if let signingError = signingError {
+                    onComplete(.failure(signingError))
+                } else {
+                    onComplete(.success(()))
+                }
+            }
+        }
     }
 
-    private mutating func _addSignature(_ signature: Signature) -> Result<Void, Error> {
+    private func _addSignature(_ signature: Signature) -> Result<Void, Error> {
         guard let data = signature.signature,
               data.count == 64,
               let index = signatures.firstIndex(where: {$0.publicKey == signature.publicKey})
@@ -101,7 +128,7 @@ struct Transaction {
     }
 
     // MARK: - Compiling
-    private mutating func compile() -> Result<Message, Error> {
+    private func compile() -> Result<Message, Error> {
         compileMessage().map { message in
             let signedKeys = message.accountKeys.filter { $0.isSigner }
             if signatures.count == signedKeys.count {
@@ -220,7 +247,7 @@ struct Transaction {
     }
 
     // MARK: - Verifying
-    private mutating func _verifySignatures(
+    private func _verifySignatures(
         serializedMessage: Data,
         requiredAllSignatures: Bool
     ) -> Result<Bool, Error> {
@@ -239,7 +266,7 @@ struct Transaction {
     }
 
     // MARK: - Serializing
-    private mutating func _serialize(serializedMessage: Data) -> Result<Data, Error> {
+    private func _serialize(serializedMessage: Data) -> Result<Data, Error> {
         // signature length
         var signaturesLength = signatures.count
 

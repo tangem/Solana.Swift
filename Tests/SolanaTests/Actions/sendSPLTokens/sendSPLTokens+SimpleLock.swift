@@ -29,16 +29,17 @@ extension Action {
         decimals: Decimals,
         from fromPublicKey: String,
         to destinationAddress: String,
-        amount: UInt64
+        amount: UInt64,
+        signer: Signer
     ) -> Result<TransactionID, Error>? {
         var transaction: Result<TransactionID, Error>?
         let lock = RunLoopSimpleLock()
         lock.dispatch { [weak self] in
             self?.sendSPLTokens(mintAddress: mintAddress,
-                                decimals: decimals,
                                 from: fromPublicKey,
                                 to: destinationAddress,
-                                amount: amount) {
+                                amount: amount,
+                                signer: signer) {
                 transaction = $0
                 lock.stop()
             }

@@ -8,18 +8,14 @@ extension Action {
 
     public func createTokenAccount(
         mintAddress: String,
+        signer: Signer,
         onComplete: @escaping ((Result<(signature: String, newPubkey: String), Error>) -> Void)
     ) {
-        guard let payer = try? self.auth.account.get() else {
-            onComplete(.failure(SolanaError.unauthorized))
-            return
-        }
-
         self.api.getRecentBlockhash { resultBlockhash in
             switch resultBlockhash {
             case .success(let recentBlockhash):
                 self.callGetCreateTokenAccountFee(mintAddress: mintAddress,
-                                                  payer: payer,
+                                                  payer: signer,
                                                   recentBlockhash: recentBlockhash,
                                                   onComplete: onComplete)
                 return
@@ -32,7 +28,7 @@ extension Action {
 
     fileprivate func callGetCreateTokenAccountFee(
         mintAddress: String,
-        payer: Account,
+        payer: Signer,
         recentBlockhash: String,
         onComplete: @escaping ((Result<(signature: String, newPubkey: String), Error>) -> Void)
     ) {
@@ -54,7 +50,7 @@ extension Action {
     }
 
     fileprivate func signAndSend(mintAddress: String,
-                          payer: Account,
+                          payer: Signer,
                           recentBlockhash: String,
                           minBalance: UInt64,
                           onComplete: @escaping ((Result<(signature: String, newPubkey: String), Error>) -> Void)) {
@@ -116,9 +112,10 @@ extension ActionTemplates {
         public typealias Success = (signature: String, newPubkey: String)
 
         public let mintAddress: String
-
+        public let signer: Signer
+        
         public func perform(withConfigurationFrom actionClass: Action, completion: @escaping (Result<(signature: String, newPubkey: String), Error>) -> Void) {
-            actionClass.createTokenAccount(mintAddress: mintAddress, onComplete: completion)
+            actionClass.createTokenAccount(mintAddress: mintAddress, signer: signer, onComplete: completion)
         }
     }
 }

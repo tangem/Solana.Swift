@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
 
 
   s.description      = <<-DESC
- This is a open source library on pure swift for Solana protocol. 
+ This is a open source library on pure swift for Solana protocol.
                        DESC
 
   s.homepage         = 'https://github.com/ajamaica/Solana.Swift'
@@ -13,13 +13,12 @@ Pod::Spec.new do |s|
   s.author           = { 'ajamaica' => 'arturo.jamaicagarcia@asurion.com' }
   s.source           = { :git => 'https://github.com/ajamaica/Solana.Swift.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '11.0'
-  s.osx.deployment_target = "10.12"
+  s.ios.deployment_target = '13.0'
+  s.osx.deployment_target = "12.0"
   s.source_files = 'Sources/Solana/**/*'
   s.swift_versions   = ["5.3"]
-  s.resource_bundles = {
-    'Solana.Swift' => ['Sources/Solana/Resources/*.json']
-  }
+
   s.dependency 'TweetNacl', '~> 1.0.2'
-  s.dependency 'CryptoSwift', '~> 1.4.0'
+  s.dependency 'Starscream', '4.0.4'
+  s.dependency 'secp256k1.swift'
 end

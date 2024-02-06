@@ -24,7 +24,8 @@ class sendSPLTokens: XCTestCase {
             decimals: 5,
             from: source,
             to: destination,
-            amount: Double(0.001).toLamport(decimals: 5)
+            amount: Double(0.001).toLamport(decimals: 5),
+            signer: account
         )?.get()
         XCTAssertNotNil(transactionId)
         
@@ -33,7 +34,8 @@ class sendSPLTokens: XCTestCase {
             decimals: 5,
             from: destination,
             to: source,
-            amount: Double(0.001).toLamport(decimals: 5)
+            amount: Double(0.001).toLamport(decimals: 5),
+            signer: account
         )?.get()
         XCTAssertNotNil(transactionIdB)
     }

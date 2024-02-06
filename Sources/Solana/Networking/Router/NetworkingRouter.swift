@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 
 public enum HTTPMethod: String {
     case post = "POST"
@@ -17,95 +18,127 @@ public enum RPCError: Error {
 }
 
 public class NetworkingRouter: SolanaRouter {
-
-    public let endpoint: RPCEndpoint
+    
+    public var endpoint: RPCEndpoint {
+        endpoints[currentEndpointIndex]
+    }
+    
+    private var host: String? {
+        endpoint.url.host
+    }
+    
     private let urlSession: URLSession
-    public init(endpoint: RPCEndpoint, session: URLSession = .shared) {
-        self.endpoint = endpoint
+    private let endpoints: [RPCEndpoint]
+    
+    private var currentEndpointIndex = 0
+    
+    public init(endpoints: [RPCEndpoint], session: URLSession = .shared) {
+        self.endpoints = endpoints
         self.urlSession = session
     }
-
+    
     public func request<T: Decodable>(
         method: HTTPMethod = .post,
         bcMethod: String = #function,
         parameters: [Encodable?] = [],
         onComplete: @escaping (Result<T, Error>) -> Void
     ) {
+        let bcMethod = bcMethod.replacingOccurrences(of: "\\([\\w\\s:]*\\)", with: "", options: .regularExpression)
         let url = endpoint.url
         let params = parameters.compactMap {$0}
-
-        let bcMethod = bcMethod.replacingOccurrences(of: "\\([\\w\\s:]*\\)", with: "", options: .regularExpression)
         let requestAPI = SolanaRequest(method: bcMethod, params: params)
-
-        ContResult<URLRequest, Error>.init { cb in
-            var urlRequest = URLRequest(url: url)
-            urlRequest.httpMethod = method.rawValue
-            urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-            do {
-                urlRequest.httpBody = try JSONEncoder().encode(requestAPI)
-                cb(.success(urlRequest))
-                return
-            } catch let ecodingError {
-                cb(.failure(ecodingError))
-                return
-            }
-
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = method.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        if let apiKeyHeaderName = endpoint.apiKeyHeaderName, let apiKeyHeaderValue = endpoint.apiKeyHeaderValue {
+            request.setValue(apiKeyHeaderValue, forHTTPHeaderField: apiKeyHeaderName)
         }
-        .flatMap { urlRequest in
-            ContResult<(data: Data?, response: URLResponse?), Error>.init { cb in
-                let task = self.urlSession.dataTask(with: urlRequest) { (data, response, error) in
-                    if let error = error {
-                        cb(.failure(error))
-                        return
-                    }
-                    cb(.success((data: data, response: response)))
+        
+        do {
+            request.httpBody = try JSONEncoder().encode(requestAPI)
+        } catch {
+            onComplete(.failure(error))
+        }
+        
+        var subscription: AnyCancellable?
+        subscription = urlSession.dataTaskPublisher(for: request)
+            .tryMap { (data: Data?, response: URLResponse) -> Void in
+                guard let httpURLResponse = response as? HTTPURLResponse else {
+                    throw RPCError.httpError
+                }
+                
+                switch httpURLResponse.statusCode {
+                case 200..<300:
+                    break
+                case 429:
+                    throw RPCError.retry
+                default:
+                    throw RPCError.httpErrorCode(httpURLResponse.statusCode)
+                }
+                
+                guard let data = data else {
+                    throw RPCError.invalidResponseNoData
+                }
+                
+                let decodedResponse = try JSONDecoder().decode(Response<T>.self, from: data)
+                
+                if let result = decodedResponse.result {
+                    onComplete(.success(result))
                     return
                 }
-                task.resume()
+                if let responseError = decodedResponse.error {
+                    throw RPCError.invalidResponse(responseError)
+                } else {
+                    throw RPCError.unknownResponse
+                }
             }
-            .onSuccess { (data: Data?, response: URLResponse?) in }
+            .retry(2)
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { [weak self] completion in
+                guard let self = self else { return }
+                
+                guard case let .failure(error) = completion else {
+                    return
+                }
+                
+                func retry() {
+                    self.request(method: method,
+                                  bcMethod: bcMethod,
+                                  parameters: parameters,
+                                  onComplete: onComplete)
+                }
+                
+                if let solanaError = error as? RPCError,
+                   case .retry = solanaError {
+                    retry()
+                    return
+                }
+                
+                guard self.needRetry(for: url.host) else {
+                    print("Failed to send request: \(bcMethod) \(url)")
+                    onComplete(.failure(error))
+                    return
+                }
+                
+                retry()
+                
+                withExtendedLifetime(subscription) {}
+            }, receiveValue: { })
+    }
+    
+    private func needRetry(for errorHost: String?) -> Bool {
+        if self.host != errorHost {
+            return true
         }
-        .flatMap {
-            if let httpURLResponse = $0.response as? HTTPURLResponse {
-                return .success((data: $0.data, httpURLResponse: httpURLResponse))
-            } else {
-                return .failure(RPCError.httpError)
-            }
+        
+        currentEndpointIndex += 1
+        if currentEndpointIndex < endpoints.count {
+            return true
         }
-        .flatMap { (data: Data?, httpURLResponse: HTTPURLResponse) in
-            if (200..<300).contains(httpURLResponse.statusCode) {
-                return .success((data: data, httpURLResponse: httpURLResponse))
-            } else if httpURLResponse.statusCode == 429 {
-                // TODO: Retry
-                return .failure(RPCError.retry)
-            } else {
-                return .failure(RPCError.httpErrorCode(httpURLResponse.statusCode))
-            }
-        }
-        .flatMap { (data: Data?, httpURLResponse: HTTPURLResponse) in
-            guard let responseData = data else {
-                return .failure(RPCError.invalidResponseNoData)
-            }
-            return .success((responseData, httpURLResponse))
-        }
-        .flatMap { (responseData: Data, _: HTTPURLResponse) in
-            do {
-                let decoded = try JSONDecoder().decode(Response<T>.self, from: responseData)
-                return .success(decoded)
-            } catch let error {
-                return .failure(error)
-            }
-        }
-        .flatMap { (decoded: Response<T>) in
-            if let result = decoded.result {
-                return .success(result)
-            } else if let responseError = decoded.error {
-                return .failure(RPCError.invalidResponse(responseError))
-            } else {
-                return .failure(RPCError.unknownResponse)
-            }
-        }
-        .run(onComplete)
+        
+        currentEndpointIndex = 0
+        return false
     }
 }

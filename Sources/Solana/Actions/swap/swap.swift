@@ -52,6 +52,7 @@ extension Action {
         }
 
         let accountInfoCall: (Pool) -> ContResult<AccountInfo, Error> = { pool in
+            // Hardcoded programID -- OK, we don't use this
             ContResult<AccountInfo, Error>.init { cb in
                 self.getAccountInfoData(
                     account: pool.swapData.tokenAccountA.base58EncodedString,

@@ -4,12 +4,12 @@ extension Action {
     public func serializeTransaction(
         instructions: [TransactionInstruction],
         recentBlockhash: String? = nil,
-        signers: [Account],
+        signers: [Signer],
         feePayer: PublicKey? = nil,
         onComplete: @escaping ((Result<String, Error>) -> Void)
     ) {
 
-        guard let feePayer = try? feePayer ?? auth.account.get().publicKey else {
+        guard let feePayer = feePayer ?? signers.first?.publicKey else {
             onComplete(.failure(SolanaError.invalidRequest(reason: "Fee-payer not found")))
             return
         }
@@ -17,20 +17,25 @@ extension Action {
         let getRecentBlockhashRequest: (Result<String, Error>) -> Void = { result in
             switch result {
             case .success(let recentBlockhash):
+                let queue = DispatchQueue.global()
+                queue.async {
+                    let transaction = Transaction(
+                        feePayer: feePayer,
+                        instructions: instructions,
+                        recentBlockhash: recentBlockhash
+                    )
 
-                var transaction = Transaction(
-                    feePayer: feePayer,
-                    instructions: instructions,
-                    recentBlockhash: recentBlockhash
-                )
-
-                transaction.sign(signers: signers)
-                .flatMap { transaction.serialize() }
-                .flatMap {
-                    let base64 = $0.bytes.toBase64()
-                    return .success(base64)
+                    transaction.sign(signers: signers, queue: queue) { result in
+                        result
+                            .flatMap { transaction.serialize() }
+                            .flatMap {
+                                let base64 = $0.bytes.toBase64()
+                                return .success(base64)
+                            }
+                            .onSuccess { onComplete(.success($0)) }
+                            .onFailure { onComplete(.failure($0)) }
+                    }
                 }
-                .onSuccess { onComplete(.success($0)) }
             case .failure(let error):
                 onComplete(.failure(error))
                 return

@@ -2,7 +2,7 @@ import Foundation
 
 extension Action {
     public func closeTokenAccount(
-        account: Account? = nil,
+        account: Signer? = nil,
         tokenPubkey: String,
         onComplete: @escaping (Result<TransactionID, Error>) -> Void
     ) {

@@ -30,7 +30,7 @@ extension Action {
     public func serializeAndSendWithFee(
         instructions: [TransactionInstruction],
         recentBlockhash: String? = nil,
-        signers: [Account],
+        signers: [Signer],
         maxAttemps: Int,
         numberOfTries: Int,
         onComplete: @escaping ((Result<String, Error>) -> Void)
@@ -47,7 +47,7 @@ extension Action {
     public func serializeAndSendWithFee(
         instructions: [TransactionInstruction],
         recentBlockhash: String? = nil,
-        signers: [Account],
+        signers: [Signer],
         maxAttempts: Int = 3,
         numberOfTries: Int = 0,
         onComplete: @escaping ((Result<String, Error>) -> Void)

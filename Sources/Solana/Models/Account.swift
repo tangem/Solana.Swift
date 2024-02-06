@@ -5,7 +5,7 @@ public struct Account: Codable, Hashable {
     public let phrase: [String]
     public let publicKey: PublicKey
     public let secretKey: Data
-
+    
     public init?(phrase: [String] = [], network: Network, derivablePath: DerivablePath? = nil) {
         let mnemonic: Mnemonic
         var phrase = phrase.filter {!$0.isEmpty}
@@ -66,6 +66,17 @@ public struct Account: Codable, Hashable {
         self.secretKey = keys.secretKey
 
         self.phrase = phrase
+    }
+}
+
+extension Account: Signer {
+    public func sign(message: Data, completion: @escaping (Result<Data, Error>) -> Void) {
+        do {
+            let signed = try NaclSign.signDetached(message: message, secretKey: secretKey)
+            completion(.success(signed))
+        } catch {
+            completion(.failure(error))
+        }
     }
 }
 

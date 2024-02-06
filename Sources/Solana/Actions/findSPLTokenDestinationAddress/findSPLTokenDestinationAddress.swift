@@ -4,10 +4,70 @@ extension Action {
     public typealias SPLTokenDestinationAddress = (destination: PublicKey, isUnregisteredAsocciatedToken: Bool)
     public func findSPLTokenDestinationAddress(
         mintAddress: String,
+        tokenProgramId: PublicKey,
+        destinationAddress: String,
+        allowUnfundedRecipient: Bool = false,
+        onComplete: @escaping (Result<SPLTokenDestinationAddress, Error>) -> Void
+    ) {
+        if allowUnfundedRecipient {
+            checkSPLTokenAccountExistence(
+                mintAddress: mintAddress,
+                tokenProgramId: tokenProgramId,
+                destinationAddress: destinationAddress,
+                onComplete: onComplete
+            )
+        } else {
+            findSPLTokenDestinationAddressOfExistingAccount(
+                mintAddress: mintAddress,
+                tokenProgramId: tokenProgramId,
+                destinationAddress: destinationAddress,
+                onComplete: onComplete
+            )
+        }
+    }
+    
+    fileprivate func checkSPLTokenAccountExistence(
+        mintAddress: String,
+        tokenProgramId: PublicKey,
         destinationAddress: String,
         onComplete: @escaping (Result<SPLTokenDestinationAddress, Error>) -> Void
     ) {
-
+        guard
+            let owner = PublicKey(string: destinationAddress),
+            let tokenMint = PublicKey(string: mintAddress),
+            case let .success(associatedTokenAddress) = PublicKey.associatedTokenAddress(walletAddress: owner, tokenMintAddress: tokenMint, tokenProgramId: tokenProgramId)
+        else {
+            onComplete(.failure(SolanaError.invalidPublicKey))
+            return
+        }
+        
+        self.api.getAccountInfo(account: associatedTokenAddress.base58EncodedString, decodedTo: AccountInfo.self) { result in
+            let hasAssociatedTokenAccount: Bool
+            
+            switch result {
+            case .failure(let error):
+                guard let solanaError = error as? SolanaError,
+                      case .nullValue = solanaError
+                else {
+                    onComplete(.failure(error))
+                    return
+                }
+                
+                hasAssociatedTokenAccount = false
+            case .success:
+                hasAssociatedTokenAccount = true
+            }
+            
+            onComplete(.success((associatedTokenAddress, !hasAssociatedTokenAccount)))
+        }
+    }
+    
+    fileprivate func findSPLTokenDestinationAddressOfExistingAccount(
+        mintAddress: String,
+        tokenProgramId: PublicKey,
+        destinationAddress: String,
+        onComplete: @escaping (Result<SPLTokenDestinationAddress, Error>) -> Void
+    ) {
         ContResult<BufferInfo<AccountInfo>, Error>.init { cb in
             self.api.getAccountInfo(
                 account: destinationAddress,
@@ -31,7 +91,8 @@ extension Action {
                 // create associated token address
                 guard case let .success(address) = PublicKey.associatedTokenAddress(
                     walletAddress: owner,
-                    tokenMintAddress: tokenMint
+                    tokenMintAddress: tokenMint,
+                    tokenProgramId: tokenProgramId
                 ) else {
                     return .failure(SolanaError.invalidPublicKey)
                 }
@@ -53,7 +114,7 @@ extension Action {
                 }.flatMap { info1 in
                     var isUnregisteredAsocciatedToken = true
                     // if associated token account has been registered
-                    if info1.owner == PublicKey.tokenProgramId.base58EncodedString &&
+                    if info1.owner == tokenProgramId.base58EncodedString &&
                         info.data.value != nil {
                         isUnregisteredAsocciatedToken = false
                     }
@@ -68,17 +129,21 @@ extension Action {
 
 extension ActionTemplates {
     public struct FindSPLTokenDestinationAddress: ActionTemplate {
-        public init(mintAddress: String, destinationAddress: String) {
+        public init(mintAddress: String, tokenProgramId: PublicKey, destinationAddress: String, allowUnfundedRecipient: Bool) {
             self.mintAddress = mintAddress
+            self.tokenProgramId = tokenProgramId
             self.destinationAddress = destinationAddress
+            self.allowUnfundedRecipient = allowUnfundedRecipient
         }
 
         public typealias Success = Action.SPLTokenDestinationAddress
         public let mintAddress: String
+        public let tokenProgramId: PublicKey
         public let destinationAddress: String
+        public let allowUnfundedRecipient: Bool
 
         public func perform(withConfigurationFrom actionClass: Action, completion: @escaping (Result<Action.SPLTokenDestinationAddress, Error>) -> Void) {
-            actionClass.findSPLTokenDestinationAddress(mintAddress: mintAddress, destinationAddress: destinationAddress, onComplete: completion)
+            actionClass.findSPLTokenDestinationAddress(mintAddress: mintAddress, tokenProgramId: tokenProgramId, destinationAddress: destinationAddress, allowUnfundedRecipient: allowUnfundedRecipient, onComplete: completion)
         }
     }
 }
