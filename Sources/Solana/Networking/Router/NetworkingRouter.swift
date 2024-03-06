@@ -72,8 +72,6 @@ public class NetworkingRouter: SolanaRouter {
                 switch httpURLResponse.statusCode {
                 case 200..<300:
                     break
-                case 429:
-                    throw RPCError.retry
                 default:
                     throw RPCError.httpErrorCode(httpURLResponse.statusCode)
                 }
