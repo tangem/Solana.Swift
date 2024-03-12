@@ -8,6 +8,8 @@ extension Action {
         from fromPublicKey: String,
         to destinationAddress: String,
         amount: UInt64,
+        computeUnitLimit: UInt32,
+        computeUnitPrice: UInt64,
         allowUnfundedRecipient: Bool = false,
         signer: Signer,
         onComplete: @escaping (Result<TransactionID, Error>) -> Void
@@ -37,7 +39,10 @@ extension Action {
             }
             
             var instructions = [TransactionInstruction]()
-
+            
+            instructions.append(ComputeBudgetProgram.setComputeUnitLimitInstruction(units: computeUnitLimit))
+            instructions.append(ComputeBudgetProgram.setComputeUnitPriceInstruction(microLamports: computeUnitPrice))
+            
             // create associated token address
             if isUnregisteredAsocciatedToken {
                 guard let mint = PublicKey(string: mintAddress) else {
@@ -89,6 +94,8 @@ extension ActionTemplates {
         public let fromPublicKey: String
         public let destinationAddress: String
         public let amount: UInt64
+        public let computeUnitLimit: UInt32
+        public let computeUnitPrice: UInt64
         public let decimals: Decimals
         public let allowUnfundedRecipient: Bool
         public let signer: Signer
@@ -96,7 +103,7 @@ extension ActionTemplates {
         public typealias Success = TransactionID
 
         public func perform(withConfigurationFrom actionClass: Action, completion: @escaping (Result<TransactionID, Error>) -> Void) {
-            actionClass.sendSPLTokens(mintAddress: mintAddress, tokenProgramId: tokenProgramId, decimals: decimals, from: fromPublicKey, to: destinationAddress, amount: amount, allowUnfundedRecipient: allowUnfundedRecipient, signer: signer, onComplete: completion)
+            actionClass.sendSPLTokens(mintAddress: mintAddress, tokenProgramId: tokenProgramId, decimals: decimals, from: fromPublicKey, to: destinationAddress, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, allowUnfundedRecipient: allowUnfundedRecipient, signer: signer, onComplete: completion)
         }
     }
 }

@@ -4,6 +4,8 @@ extension Action {
     public func sendSOL(
         to destination: String,
         amount: UInt64,
+        computeUnitLimit: UInt32,
+        computeUnitPrice: UInt64,
         allowUnfundedRecipient: Bool = false,
         signer: Signer,
         onComplete: @escaping ((Result<TransactionID, Error>) -> Void)
@@ -17,7 +19,7 @@ extension Action {
 
         // check
         if allowUnfundedRecipient {
-            serializeAndSend(from: fromPublicKey, to: destination, amount: amount, signer: signer, onComplete: onComplete)
+            serializeAndSend(from: fromPublicKey, to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, signer: signer, onComplete: onComplete)
         } else {
             self.api.getAccountInfo(account: destination, decodedTo: EmptyInfo.self) { resultInfo in
                 if case Result.failure( let error) = resultInfo {
@@ -40,7 +42,7 @@ extension Action {
                     return
                 }
                 
-                self.serializeAndSend(from: fromPublicKey, to: destination, amount: amount, signer: signer, onComplete: onComplete)
+                self.serializeAndSend(from: fromPublicKey, to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, signer: signer, onComplete: onComplete)
             }
         }
     }
@@ -49,6 +51,8 @@ extension Action {
         from fromPublicKey: PublicKey,
         to destination: String,
         amount: UInt64,
+        computeUnitLimit: UInt32,
+        computeUnitPrice: UInt64,
         signer: Signer,
         onComplete: @escaping ((Result<TransactionID, Error>) -> Void)
     ) {
@@ -56,14 +60,21 @@ extension Action {
             onComplete(.failure(SolanaError.invalidPublicKey))
             return
         }
-
-        let instruction = SystemProgram.transferInstruction(
+        
+        var instructions = [TransactionInstruction]()
+        
+        instructions.append(ComputeBudgetProgram.setComputeUnitLimitInstruction(units: computeUnitLimit))
+        instructions.append(ComputeBudgetProgram.setComputeUnitPriceInstruction(microLamports: computeUnitPrice))
+        
+        let transferInstruction = SystemProgram.transferInstruction(
             from: fromPublicKey,
             to: to,
             lamports: amount
         )
+        instructions.append(transferInstruction)
+        
         self.serializeAndSendWithFee(
-            instructions: [instruction],
+            instructions: instructions,
             signers: [signer]
         ) {
             switch $0 {
@@ -78,19 +89,23 @@ extension Action {
 
 extension ActionTemplates {
     public struct SendSOL: ActionTemplate {
-        public init(amount: UInt64, destination: String, signer: Signer) {
+        public init(amount: UInt64, computeUnitLimit: UInt32, computeUnitPrice: UInt64, destination: String, signer: Signer) {
             self.amount = amount
+            self.computeUnitLimit = computeUnitLimit
+            self.computeUnitPrice = computeUnitPrice
             self.destination = destination
             self.signer = signer
         }
 
         public typealias Success = TransactionID
         public let amount: UInt64
+        public let computeUnitLimit: UInt32
+        public let computeUnitPrice: UInt64
         public let destination: String
         public let signer: Signer
 
         public func perform(withConfigurationFrom actionClass: Action, completion: @escaping (Result<TransactionID, Error>) -> Void) {
-            actionClass.sendSOL(to: destination, amount: amount, signer: signer, onComplete: completion)
+            actionClass.sendSOL(to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, signer: signer, onComplete: completion)
         }
     }
 }
