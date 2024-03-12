@@ -57,13 +57,22 @@ extension Action {
             return
         }
 
-        let instruction = SystemProgram.transferInstruction(
+        let setComputeUnitLimitInstruction = ComputeBudgetProgram.setComputeUnitLimitInstruction(units: 100_000)
+        let setComputeUnitPriceInstruction = ComputeBudgetProgram.setComputeUnitPriceInstruction(microLamports: 3)
+        let transferInstruction = SystemProgram.transferInstruction(
             from: fromPublicKey,
             to: to,
             lamports: amount
         )
+        
+        let instructions = [
+            setComputeUnitLimitInstruction,
+            setComputeUnitPriceInstruction,
+            transferInstruction
+        ]
+        
         self.serializeAndSendWithFee(
-            instructions: [instruction],
+            instructions: instructions,
             signers: [signer]
         ) {
             switch $0 {
