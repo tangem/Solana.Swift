@@ -9,15 +9,15 @@ import Foundation
 
 enum ComputeBudgetProgram {
     private enum Index: UInt8, BytesEncodable {
-        case SetComputeUnitPrice = 2
-        case SetComputeUnitLimit = 3
+        case SetComputeUnitLimit = 2
+        case SetComputeUnitPrice = 3
     }
 
     static func setComputeUnitLimitInstruction(units: UInt32) -> TransactionInstruction {
         return TransactionInstruction(
             keys: [],
             programId: PublicKey.computeBudgetProgramId,
-            data: [UInt8(2), units]
+            data: [Index.SetComputeUnitLimit, units]
         )
     }
 
@@ -25,7 +25,7 @@ enum ComputeBudgetProgram {
         return TransactionInstruction(
             keys: [],
             programId: PublicKey.computeBudgetProgramId,
-            data: [UInt8(3), microLamports]
+            data: [Index.SetComputeUnitPrice, microLamports]
         )
     }
 }
