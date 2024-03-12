@@ -140,6 +140,13 @@ public struct PerformanceSample: Decodable {
     public let samplePeriodSecs: UInt
     public let slot: UInt64
 }
+
+// tangem
+public struct RecentPrioritizationFee: Decodable {
+    public let prioritizationFee: Int64
+    public let slot: Int
+}
+
 public struct SignatureInfo: Decodable, Hashable {
     public let signature: String
     public let slot: UInt64?
