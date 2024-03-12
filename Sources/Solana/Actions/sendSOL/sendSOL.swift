@@ -4,8 +4,8 @@ extension Action {
     public func sendSOL(
         to destination: String,
         amount: UInt64,
-        computeUnitLimit: UInt32,
-        computeUnitPrice: UInt64,
+        computeUnitLimit: UInt32?,
+        computeUnitPrice: UInt64?,
         allowUnfundedRecipient: Bool = false,
         signer: Signer,
         onComplete: @escaping ((Result<TransactionID, Error>) -> Void)
@@ -51,8 +51,8 @@ extension Action {
         from fromPublicKey: PublicKey,
         to destination: String,
         amount: UInt64,
-        computeUnitLimit: UInt32,
-        computeUnitPrice: UInt64,
+        computeUnitLimit: UInt32?,
+        computeUnitPrice: UInt64?,
         signer: Signer,
         onComplete: @escaping ((Result<TransactionID, Error>) -> Void)
     ) {
@@ -63,8 +63,13 @@ extension Action {
         
         var instructions = [TransactionInstruction]()
         
-        instructions.append(ComputeBudgetProgram.setComputeUnitLimitInstruction(units: computeUnitLimit))
-        instructions.append(ComputeBudgetProgram.setComputeUnitPriceInstruction(microLamports: computeUnitPrice))
+        if let computeUnitLimit {
+            instructions.append(ComputeBudgetProgram.setComputeUnitLimitInstruction(units: computeUnitLimit))
+        }
+        
+        if let computeUnitPrice {
+            instructions.append(ComputeBudgetProgram.setComputeUnitPriceInstruction(microLamports: computeUnitPrice))
+        }
         
         let transferInstruction = SystemProgram.transferInstruction(
             from: fromPublicKey,
@@ -89,7 +94,7 @@ extension Action {
 
 extension ActionTemplates {
     public struct SendSOL: ActionTemplate {
-        public init(amount: UInt64, computeUnitLimit: UInt32, computeUnitPrice: UInt64, destination: String, signer: Signer) {
+        public init(amount: UInt64, computeUnitLimit: UInt32?, computeUnitPrice: UInt64?, destination: String, signer: Signer) {
             self.amount = amount
             self.computeUnitLimit = computeUnitLimit
             self.computeUnitPrice = computeUnitPrice
@@ -99,8 +104,8 @@ extension ActionTemplates {
 
         public typealias Success = TransactionID
         public let amount: UInt64
-        public let computeUnitLimit: UInt32
-        public let computeUnitPrice: UInt64
+        public let computeUnitLimit: UInt32?
+        public let computeUnitPrice: UInt64?
         public let destination: String
         public let signer: Signer
 
