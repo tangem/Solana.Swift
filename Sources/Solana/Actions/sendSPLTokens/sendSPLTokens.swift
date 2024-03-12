@@ -8,8 +8,8 @@ extension Action {
         from fromPublicKey: String,
         to destinationAddress: String,
         amount: UInt64,
-        computeUnitLimit: UInt32,
-        computeUnitPrice: UInt64,
+        computeUnitLimit: UInt32?,
+        computeUnitPrice: UInt64?,
         allowUnfundedRecipient: Bool = false,
         signer: Signer,
         onComplete: @escaping (Result<TransactionID, Error>) -> Void
@@ -40,8 +40,13 @@ extension Action {
             
             var instructions = [TransactionInstruction]()
             
-            instructions.append(ComputeBudgetProgram.setComputeUnitLimitInstruction(units: computeUnitLimit))
-            instructions.append(ComputeBudgetProgram.setComputeUnitPriceInstruction(microLamports: computeUnitPrice))
+            if let computeUnitLimit {
+                instructions.append(ComputeBudgetProgram.setComputeUnitLimitInstruction(units: computeUnitLimit))
+            }
+            
+            if let computeUnitPrice {
+                instructions.append(ComputeBudgetProgram.setComputeUnitPriceInstruction(microLamports: computeUnitPrice))
+            }
             
             // create associated token address
             if isUnregisteredAsocciatedToken {
