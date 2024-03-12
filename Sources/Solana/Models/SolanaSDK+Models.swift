@@ -143,7 +143,7 @@ public struct PerformanceSample: Decodable {
 
 // tangem
 public struct RecentPrioritizationFee: Decodable {
-    public let prioritizationFee: Int64
+    public let prioritizationFee: UInt64
     public let slot: Int
 }
 

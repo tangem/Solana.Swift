@@ -60,20 +60,18 @@ extension Action {
             onComplete(.failure(SolanaError.invalidPublicKey))
             return
         }
-
-        let setComputeUnitLimitInstruction = ComputeBudgetProgram.setComputeUnitLimitInstruction(units: computeUnitLimit)
-        let setComputeUnitPriceInstruction = ComputeBudgetProgram.setComputeUnitPriceInstruction(microLamports: computeUnitPrice)
+        
+        var instructions = [TransactionInstruction]()
+        
+        instructions.append(ComputeBudgetProgram.setComputeUnitLimitInstruction(units: computeUnitLimit))
+        instructions.append(ComputeBudgetProgram.setComputeUnitPriceInstruction(microLamports: computeUnitPrice))
+        
         let transferInstruction = SystemProgram.transferInstruction(
             from: fromPublicKey,
             to: to,
             lamports: amount
         )
-        
-        let instructions = [
-            setComputeUnitLimitInstruction,
-            setComputeUnitPriceInstruction,
-            transferInstruction
-        ]
+        instructions.append(transferInstruction)
         
         self.serializeAndSendWithFee(
             instructions: instructions,
