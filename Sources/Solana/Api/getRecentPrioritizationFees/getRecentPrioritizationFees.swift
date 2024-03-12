@@ -1,6 +1,5 @@
 import Foundation
 
-// Tangem
 public extension Api {
     func getRecentPrioritizationFees(accounts: [String], onComplete: @escaping(Result<[RecentPrioritizationFee], Error>) -> Void) {
         router.request(parameters: [accounts, RequestConfiguration()]) { (result: Result<[RecentPrioritizationFee], Error>) in

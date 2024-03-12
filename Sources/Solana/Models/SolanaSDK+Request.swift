@@ -28,7 +28,7 @@ public struct RequestConfiguration: Encodable {
     public let limit: Int?
     public let before: String?
     public let until: String?
-    public let maxRetries: Int? // tangem
+    public let maxRetries: Int?
 
     public init?(commitment: Commitment? = nil, encoding: String? = nil, dataSlice: DataSlice? = nil, filters: [[String: EncodableWrapper]]? = nil, limit: Int? = nil, before: String? = nil, until: String? = nil, maxRetries: Int? = nil) {
         if commitment == nil && encoding == nil && dataSlice == nil && filters == nil && limit == nil && before == nil && until == nil && maxRetries == nil {
