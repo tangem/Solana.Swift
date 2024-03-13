@@ -54,7 +54,7 @@ extension Action {
     ) {
 
         ContResult.init { cb in
-            self.serializeTransaction(instructions: instructions, recentBlockhash: recentBlockhash, signers: signers) {
+            self.serializeTransaction(instructions: instructions, recentBlockhash: recentBlockhash, signers: signers, mode: .serializeAndSign) {
                 cb($0)
             }
         }.flatMap { transaction in
@@ -128,7 +128,7 @@ extension Action {
         numberOfTries: Int = 0,
         onComplete: @escaping((Result<String, Error>) -> Void)
     ) {
-        serializeTransaction(instructions: instructions, recentBlockhash: recentBlockhash, signers: signers) { result in
+        serializeTransaction(instructions: instructions, recentBlockhash: recentBlockhash, signers: signers, mode: .serializeAndSign) { result in
             switch result {
             case .success(let transaction):
                 self.api.simulateTransaction(transaction: transaction) {
