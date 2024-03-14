@@ -10,13 +10,26 @@ extension Action {
         fromPublicKey: PublicKey,
         onComplete: @escaping ((Result<String, Error>) -> Void)
     ) {
-        prep(to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, allowUnfundedRecipient: allowUnfundedRecipient, fromPublicKey: fromPublicKey) { result in
+        checkTransaction(
+            to: destination,
+            amount: amount,
+            computeUnitLimit: computeUnitLimit,
+            computeUnitPrice: computeUnitPrice,
+            allowUnfundedRecipient: allowUnfundedRecipient,
+            fromPublicKey: fromPublicKey
+        ) { result in
             switch result {
             case .failure(let error):
                 onComplete(.failure(error))
             case .success:
-                self.serializedMessage(from: fromPublicKey, to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, onComplete: onComplete)
-
+                self.serializedMessage(
+                    from: fromPublicKey,
+                    to: destination,
+                    amount: amount,
+                    computeUnitLimit: computeUnitLimit,
+                    computeUnitPrice: computeUnitPrice,
+                    onComplete: onComplete
+                )
             }
         }
     }
@@ -31,23 +44,32 @@ extension Action {
         onComplete: @escaping ((Result<TransactionID, Error>) -> Void)
     ) {
         let fromPublicKey = signer.publicKey
-        prep(to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, allowUnfundedRecipient: allowUnfundedRecipient, fromPublicKey: fromPublicKey) { result in
+        checkTransaction(
+            to: destination,
+            amount: amount,
+            computeUnitLimit: computeUnitLimit,
+            computeUnitPrice: computeUnitPrice,
+            allowUnfundedRecipient: allowUnfundedRecipient,
+            fromPublicKey: fromPublicKey
+        ) { result in
             switch result {
             case .failure(let error):
                 onComplete(.failure(error))
             case .success:
-                self.serializeAndSend(from: fromPublicKey, to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, signer: signer, onComplete: onComplete)
+                self.serializeAndSend(
+                    from: fromPublicKey,
+                    to: destination,
+                    amount: amount,
+                    computeUnitLimit: computeUnitLimit,
+                    computeUnitPrice: computeUnitPrice,
+                    signer: signer,
+                    onComplete: onComplete
+                )
             }
         }
     }
-    
-    // TODO:
-    // TODO:
-    // TODO:
-    // TODO:
-    // TODO:
-    
-    fileprivate func prep(
+
+    fileprivate func checkTransaction(
         to destination: String,
         amount: UInt64,
         computeUnitLimit: UInt32?,
