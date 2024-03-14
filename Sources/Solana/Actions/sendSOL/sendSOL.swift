@@ -7,53 +7,14 @@ extension Action {
         computeUnitLimit: UInt32?,
         computeUnitPrice: UInt64?,
         allowUnfundedRecipient: Bool = false,
-//        signer: Signer,
         fromPublicKey: PublicKey,
         onComplete: @escaping ((Result<String, Error>) -> Void)
     ) {
-//        let fromPublicKey = signer.publicKey
-
-//        if fromPublicKey.base58EncodedString == destination {
-//            onComplete(.failure(SolanaError.other("You can not send tokens to yourself")))
-//            return
-//        }
-
-        // check
-//        if allowUnfundedRecipient {
-//            serializedMessage(from: fromPublicKey, to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, onComplete: onComplete)
-//        } else {
-//            self.api.getAccountInfo(account: destination, decodedTo: EmptyInfo.self) { resultInfo in
-//                if case Result.failure( let error) = resultInfo {
-//                    if let solanaError = error as? SolanaError,
-//                       case SolanaError.couldNotRetriveAccountInfo = solanaError {
-//                        // let request through
-//                    } else {
-//                        onComplete(.failure(error))
-//                        return
-//                    }
-//                }
-//                
-//                guard case Result.success(let info) = resultInfo else {
-//                    onComplete(.failure(SolanaError.couldNotRetriveAccountInfo))
-//                    return
-//                }
-//                
-//                guard info.owner == PublicKey.programId.base58EncodedString else {
-//                    onComplete(.failure(SolanaError.other("Invalid account info")))
-//                    return
-//                }
-//                
-//                self.serializedMessage(from: fromPublicKey, to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, onComplete: onComplete)
-//            }
-//        }
-//        
-        
         prep(to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, allowUnfundedRecipient: allowUnfundedRecipient, fromPublicKey: fromPublicKey) { result in
             switch result {
             case .failure(let error):
                 onComplete(.failure(error))
             case .success:
-//                self.serializeAndSend(from: fromPublicKey, to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, signer: signer, onComplete: onComplete)
                 self.serializedMessage(from: fromPublicKey, to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, onComplete: onComplete)
 
             }
@@ -70,41 +31,6 @@ extension Action {
         onComplete: @escaping ((Result<TransactionID, Error>) -> Void)
     ) {
         let fromPublicKey = signer.publicKey
-//
-//        if fromPublicKey.base58EncodedString == destination {
-//            onComplete(.failure(SolanaError.other("You can not send tokens to yourself")))
-//            return
-//        }
-//
-//        // check
-//        if allowUnfundedRecipient {
-//            serializeAndSend(from: fromPublicKey, to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, signer: signer, onComplete: onComplete)
-//        } else {
-//            self.api.getAccountInfo(account: destination, decodedTo: EmptyInfo.self) { resultInfo in
-//                if case Result.failure( let error) = resultInfo {
-//                    if let solanaError = error as? SolanaError,
-//                       case SolanaError.couldNotRetriveAccountInfo = solanaError {
-//                        // let request through
-//                    } else {
-//                        onComplete(.failure(error))
-//                        return
-//                    }
-//                }
-//                
-//                guard case Result.success(let info) = resultInfo else {
-//                    onComplete(.failure(SolanaError.couldNotRetriveAccountInfo))
-//                    return
-//                }
-//                
-//                guard info.owner == PublicKey.programId.base58EncodedString else {
-//                    onComplete(.failure(SolanaError.other("Invalid account info")))
-//                    return
-//                }
-//                
-//                self.serializeAndSend(from: fromPublicKey, to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, signer: signer, onComplete: onComplete)
-//            }
-//        }
-        
         prep(to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, allowUnfundedRecipient: allowUnfundedRecipient, fromPublicKey: fromPublicKey) { result in
             switch result {
             case .failure(let error):
@@ -127,12 +53,9 @@ extension Action {
         computeUnitLimit: UInt32?,
         computeUnitPrice: UInt64?,
         allowUnfundedRecipient: Bool = false,
-//        signer: Signer,
         fromPublicKey: PublicKey,
         onComplete: @escaping ((Result<Void, Error>) -> Void)
     ) {
-//        let fromPublicKey = signer.publicKey
-
         if fromPublicKey.base58EncodedString == destination {
             onComplete(.failure(SolanaError.other("You can not send tokens to yourself")))
             return
@@ -141,7 +64,6 @@ extension Action {
         // check
         if allowUnfundedRecipient {
             onComplete(.success(()))
-//            serializeAndSend(from: fromPublicKey, to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, signer: signer, onComplete: onComplete)
         } else {
             self.api.getAccountInfo(account: destination, decodedTo: EmptyInfo.self) { resultInfo in
                 if case Result.failure( let error) = resultInfo {
@@ -163,8 +85,6 @@ extension Action {
                     onComplete(.failure(SolanaError.other("Invalid account info")))
                     return
                 }
-                
-//                self.serializeAndSend(from: fromPublicKey, to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, signer: signer, onComplete: onComplete)
                 
                 onComplete(.success(()))
             }
