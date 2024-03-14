@@ -138,12 +138,7 @@ extension Action {
             feePayer: fromPublicKey,
             mode: .serializeOnly
         ) {
-            switch $0 {
-            case .success(let transaction):
-                onComplete(.success(transaction))
-            case .failure(let error):
-                onComplete(.failure(error))
-            }
+            onComplete($0)
         }
     }
     
@@ -171,12 +166,7 @@ extension Action {
             instructions: instructions,
             signers: [signer]
         ) {
-            switch $0 {
-            case .success(let transaction):
-                onComplete(.success(transaction))
-            case .failure(let error):
-                onComplete(.failure(error))
-            }
+            onComplete($0)
         }
     }
     
