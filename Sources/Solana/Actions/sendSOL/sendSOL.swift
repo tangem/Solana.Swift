@@ -1,6 +1,39 @@
 import Foundation
 
 extension Action {
+    public func serializeMessage(
+        to destination: String,
+        amount: UInt64,
+        computeUnitLimit: UInt32?,
+        computeUnitPrice: UInt64?,
+        allowUnfundedRecipient: Bool = false,
+        fromPublicKey: PublicKey,
+        onComplete: @escaping ((Result<String, Error>) -> Void)
+    ) {
+        checkTransaction(
+            to: destination,
+            amount: amount,
+            computeUnitLimit: computeUnitLimit,
+            computeUnitPrice: computeUnitPrice,
+            allowUnfundedRecipient: allowUnfundedRecipient,
+            fromPublicKey: fromPublicKey
+        ) { result in
+            switch result {
+            case .failure(let error):
+                onComplete(.failure(error))
+            case .success:
+                self.serializedMessage(
+                    from: fromPublicKey,
+                    to: destination,
+                    amount: amount,
+                    computeUnitLimit: computeUnitLimit,
+                    computeUnitPrice: computeUnitPrice,
+                    onComplete: onComplete
+                )
+            }
+        }
+    }
+    
     public func sendSOL(
         to destination: String,
         amount: UInt64,
@@ -11,7 +44,40 @@ extension Action {
         onComplete: @escaping ((Result<TransactionID, Error>) -> Void)
     ) {
         let fromPublicKey = signer.publicKey
+        checkTransaction(
+            to: destination,
+            amount: amount,
+            computeUnitLimit: computeUnitLimit,
+            computeUnitPrice: computeUnitPrice,
+            allowUnfundedRecipient: allowUnfundedRecipient,
+            fromPublicKey: fromPublicKey
+        ) { result in
+            switch result {
+            case .failure(let error):
+                onComplete(.failure(error))
+            case .success:
+                self.serializeAndSend(
+                    from: fromPublicKey,
+                    to: destination,
+                    amount: amount,
+                    computeUnitLimit: computeUnitLimit,
+                    computeUnitPrice: computeUnitPrice,
+                    signer: signer,
+                    onComplete: onComplete
+                )
+            }
+        }
+    }
 
+    fileprivate func checkTransaction(
+        to destination: String,
+        amount: UInt64,
+        computeUnitLimit: UInt32?,
+        computeUnitPrice: UInt64?,
+        allowUnfundedRecipient: Bool = false,
+        fromPublicKey: PublicKey,
+        onComplete: @escaping ((Result<Void, Error>) -> Void)
+    ) {
         if fromPublicKey.base58EncodedString == destination {
             onComplete(.failure(SolanaError.other("You can not send tokens to yourself")))
             return
@@ -19,7 +85,7 @@ extension Action {
 
         // check
         if allowUnfundedRecipient {
-            serializeAndSend(from: fromPublicKey, to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, signer: signer, onComplete: onComplete)
+            onComplete(.success(()))
         } else {
             self.api.getAccountInfo(account: destination, decodedTo: EmptyInfo.self) { resultInfo in
                 if case Result.failure( let error) = resultInfo {
@@ -42,8 +108,37 @@ extension Action {
                     return
                 }
                 
-                self.serializeAndSend(from: fromPublicKey, to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice, signer: signer, onComplete: onComplete)
+                onComplete(.success(()))
             }
+        }
+    }
+    
+    fileprivate func serializedMessage(
+        from fromPublicKey: PublicKey,
+        to destination: String,
+        amount: UInt64,
+        computeUnitLimit: UInt32?,
+        computeUnitPrice: UInt64?,
+        onComplete: @escaping ((Result<String, Error>) -> Void)
+    ) {
+        let instructionsResult = sendSolInstructions(from: fromPublicKey, to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice)
+        
+        let instructions: [TransactionInstruction]
+        switch instructionsResult {
+        case .success(let array):
+            instructions = array
+        case .failure(let error):
+            onComplete(.failure(error))
+            return
+        }
+        
+        self.serializeTransaction(
+            instructions: instructions,
+            signers: [],
+            feePayer: fromPublicKey,
+            mode: .serializeOnly
+        ) {
+            onComplete($0)
         }
     }
     
@@ -56,9 +151,34 @@ extension Action {
         signer: Signer,
         onComplete: @escaping ((Result<TransactionID, Error>) -> Void)
     ) {
-        guard let to = PublicKey(string: destination) else {
-            onComplete(.failure(SolanaError.invalidPublicKey))
+        let instructionsResult = sendSolInstructions(from: fromPublicKey, to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice)
+
+        let instructions: [TransactionInstruction]
+        switch instructionsResult {
+        case .success(let array):
+            instructions = array
+        case .failure(let error):
+            onComplete(.failure(error))
             return
+        }
+        
+        self.serializeAndSendWithFee(
+            instructions: instructions,
+            signers: [signer]
+        ) {
+            onComplete($0)
+        }
+    }
+    
+    fileprivate func sendSolInstructions(
+        from fromPublicKey: PublicKey,
+        to destination: String,
+        amount: UInt64,
+        computeUnitLimit: UInt32?,
+        computeUnitPrice: UInt64?
+    ) -> Result<[TransactionInstruction], Error> {
+        guard let to = PublicKey(string: destination) else {
+            return .failure(SolanaError.invalidPublicKey)
         }
         
         var instructions = [TransactionInstruction]()
@@ -78,17 +198,7 @@ extension Action {
         )
         instructions.append(transferInstruction)
         
-        self.serializeAndSendWithFee(
-            instructions: instructions,
-            signers: [signer]
-        ) {
-            switch $0 {
-            case .success(let transaction):
-                onComplete(.success(transaction))
-            case .failure(let error):
-                onComplete(.failure(error))
-            }
-        }
+        return .success(instructions)
     }
 }
 

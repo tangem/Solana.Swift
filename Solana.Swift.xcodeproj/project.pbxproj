@@ -179,6 +179,7 @@
 		B03AECDB290185CE003E18BC /* TokenInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECB5290185CE003E18BC /* TokenInfoTests.swift */; };
 		B03AECDC290185CE003E18BC /* Solana_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECB6290185CE003E18BC /* Solana_SwiftTests.swift */; };
 		B03AECDE290267FA003E18BC /* Signer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECDD290267FA003E18BC /* Signer.swift */; };
+		DACFA7CD2BA2CE8E00ABEF02 /* getFeeForMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACFA7CC2BA2CE8E00ABEF02 /* getFeeForMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -368,6 +369,7 @@
 		B03AECB6290185CE003E18BC /* Solana_SwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solana_SwiftTests.swift; sourceTree = "<group>"; };
 		B03AECDD290267FA003E18BC /* Signer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signer.swift; sourceTree = "<group>"; };
 		D1E8409193B12E3A8D5A9D41 /* Pods_Solana_SwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solana_SwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DACFA7CC2BA2CE8E00ABEF02 /* getFeeForMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getFeeForMessage.swift; sourceTree = "<group>"; };
 		DED8C195259DA792ADCC7652 /* Pods-Solana.Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solana.Swift.release.xcconfig"; path = "Target Support Files/Pods-Solana.Swift/Pods-Solana.Swift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -711,6 +713,7 @@
 		B03AEB7B290185C5003E18BC /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				DACFA7CB2BA2CE7F00ABEF02 /* getFeeForMessage */,
 				B03AEB7C290185C5003E18BC /* getAccountInfo */,
 				B03AEB7E290185C5003E18BC /* getVersion */,
 				B03AEB80290185C5003E18BC /* getTokenAccountsByOwner */,
@@ -1415,6 +1418,14 @@
 			path = TokenInfo;
 			sourceTree = "<group>";
 		};
+		DACFA7CB2BA2CE7F00ABEF02 /* getFeeForMessage */ = {
+			isa = PBXGroup;
+			children = (
+				DACFA7CC2BA2CE8E00ABEF02 /* getFeeForMessage.swift */,
+			);
+			path = getFeeForMessage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1661,6 +1672,7 @@
 				B03AEC48290185C6003E18BC /* getFirstAvailableBlock.swift in Sources */,
 				B03AEC00290185C5003E18BC /* Solana.swift in Sources */,
 				B03AEC16290185C5003E18BC /* PublicKey+AssociatedTokenProgram.swift in Sources */,
+				DACFA7CD2BA2CE8E00ABEF02 /* getFeeForMessage.swift in Sources */,
 				B03AEC3A290185C6003E18BC /* getSlotLeader.swift in Sources */,
 				B03AEC3F290185C6003E18BC /* getFeeCalculatorForBlockhash.swift in Sources */,
 				B03AEC5D290185C6003E18BC /* getBalance.swift in Sources */,
