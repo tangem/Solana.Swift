@@ -135,6 +135,7 @@ public struct BufferInfo<T: BufferLayout>: Decodable {
     public let owner: String
     public let executable: Bool
     public let rentEpoch: UInt64
+    public let space: UInt64?
 }
 
 public struct PerformanceSample: Decodable {
