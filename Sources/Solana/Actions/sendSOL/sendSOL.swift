@@ -1,7 +1,7 @@
 import Foundation
 
 extension Action {
-    public func serializedMessage(
+    public func serializeMessage(
         to destination: String,
         amount: UInt64,
         computeUnitLimit: UInt32?,

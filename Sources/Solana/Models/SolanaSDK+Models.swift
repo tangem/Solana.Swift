@@ -86,6 +86,9 @@ public struct Fee: Decodable {
 public struct FeeCalculator: Decodable {
     public let lamportsPerSignature: Lamports
 }
+public struct FeeForMessageResult: Decodable {
+    public let value: UInt64
+}
 public struct FeeRateGovernor: Decodable {
     public let burnPercent: UInt64
     public let maxLamportsPerSignature: Lamports
