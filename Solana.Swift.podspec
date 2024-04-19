@@ -21,5 +21,5 @@ Pod::Spec.new do |s|
   # 'secp256k1.swift' dependency must be added via SPM
 
   s.dependency 'TweetNacl', '~> 1.0.2'
-  s.dependency 'Starscream', '4.0.4'
+  s.dependency 'Starscream', '4.0.8'
 end
