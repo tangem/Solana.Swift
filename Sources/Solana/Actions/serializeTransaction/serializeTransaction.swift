@@ -55,12 +55,8 @@ extension Action {
                 return
             }
         }
-
-        if let recentBlockhash = recentBlockhash {
-            getRecentBlockhashRequest(.success(recentBlockhash))
-        } else {
-            self.api.getRecentBlockhash { getRecentBlockhashRequest($0) }
-        }
+        
+        self.api.getRecentBlockhash { getRecentBlockhashRequest($0) }
     }
 }
 

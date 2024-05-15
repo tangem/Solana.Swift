@@ -2,7 +2,7 @@ import Foundation
 
 public extension Api {
     func sendTransaction(serializedTransaction: String,
-                         configs: RequestConfiguration = RequestConfiguration(encoding: "base64", maxRetries: 12)!,
+                         configs: RequestConfiguration = RequestConfiguration(encoding: "base64", maxRetries: 12, skipPreflight: true)!,
                          onComplete: @escaping(Result<TransactionID, Error>) -> Void) {
         router.request(parameters: [serializedTransaction, configs]) { (result: Result<TransactionID, Error>) in
             switch result {
