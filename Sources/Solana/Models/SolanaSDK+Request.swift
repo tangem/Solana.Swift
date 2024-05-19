@@ -29,7 +29,6 @@ public struct RequestConfiguration: Encodable {
     public let before: String?
     public let until: String?
     public let maxRetries: Int?
-    public let skipPreflight: Bool?
 
     public init?(commitment: Commitment? = nil, encoding: String? = nil, dataSlice: DataSlice? = nil, filters: [[String: EncodableWrapper]]? = nil, limit: Int? = nil, before: String? = nil, until: String? = nil, maxRetries: Int? = nil, skipPreflight: Bool? = nil) {
         if commitment == nil && encoding == nil && dataSlice == nil && filters == nil && limit == nil && before == nil && until == nil && maxRetries == nil {
@@ -43,7 +42,6 @@ public struct RequestConfiguration: Encodable {
         self.before = before
         self.until = until
         self.maxRetries = maxRetries
-        self.skipPreflight = skipPreflight
     }
 }
 
