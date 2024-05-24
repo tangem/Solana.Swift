@@ -38,8 +38,6 @@ public class NetworkingRouter: SolanaRouter {
     
     private var currentEndpointIndex = 0
     
-    private var subscription: AnyCancellable?
-    
     // MARK: - Init
     
     public init(endpoints: [RPCEndpoint], session: URLSession = .shared, apiLogger: NetworkingRouterSwitchApiLogger?) {
@@ -73,6 +71,7 @@ public class NetworkingRouter: SolanaRouter {
             onComplete(.failure(error))
         }
         
+        var subscription: AnyCancellable?
         subscription = urlSession.dataTaskPublisher(for: request)
             .tryMap { (data: Data?, response: URLResponse) -> Void in
                 guard let httpURLResponse = response as? HTTPURLResponse else {
