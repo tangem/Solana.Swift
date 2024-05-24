@@ -59,7 +59,7 @@ extension Action {
         if let recentBlockhash = recentBlockhash {
             getRecentBlockhashRequest(.success(recentBlockhash))
         } else {
-            self.api.getRecentBlockhash { getRecentBlockhashRequest($0) }
+            self.api.getLatestBlockhash(onComplete: getRecentBlockhashRequest)
         }
     }
 }

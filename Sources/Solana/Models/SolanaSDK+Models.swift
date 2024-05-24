@@ -83,6 +83,10 @@ public struct Fee: Decodable {
     public let blockhash: String?
     public let lastValidSlot: UInt64?
 }
+public struct LatestBlockhash: Decodable {
+    public let blockhash: String?
+    public let lastValidBlockHeight: UInt64?
+}
 public struct FeeCalculator: Decodable {
     public let lamportsPerSignature: Lamports
 }
