@@ -133,7 +133,7 @@ public class NetworkingRouter: SolanaRouter {
                     return
                 }
                 
-                self.apiLogger?.handle(error: "Failed to send request: \(bcMethod). error = \(error)")
+                self.apiLogger?.handle(error: "Failed to send request: \(bcMethod). Error = \(error)")
                 onComplete(.failure(error))
             }, receiveValue: { })
     }
