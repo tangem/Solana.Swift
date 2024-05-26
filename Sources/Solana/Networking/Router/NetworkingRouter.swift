@@ -17,6 +17,11 @@ public enum RPCError: Error {
     case retry
 }
 
+public protocol NetworkingRouterSwitchApiLogger {
+    func handle(error: Error, currentHost: String, nextHost: String)
+    func handle(error message: String)
+}
+
 public class NetworkingRouter: SolanaRouter {
     
     public var endpoint: RPCEndpoint {
@@ -29,12 +34,16 @@ public class NetworkingRouter: SolanaRouter {
     
     private let urlSession: URLSession
     private let endpoints: [RPCEndpoint]
+    private var apiLogger: NetworkingRouterSwitchApiLogger?
     
     private var currentEndpointIndex = 0
     
-    public init(endpoints: [RPCEndpoint], session: URLSession = .shared) {
+    // MARK: - Init
+    
+    public init(endpoints: [RPCEndpoint], session: URLSession = .shared, apiLogger: NetworkingRouterSwitchApiLogger?) {
         self.endpoints = endpoints
         self.urlSession = session
+        self.apiLogger = apiLogger
     }
     
     public func request<T: Decodable>(
@@ -92,7 +101,6 @@ public class NetworkingRouter: SolanaRouter {
                     throw RPCError.unknownResponse
                 }
             }
-            .retry(2)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self = self else { return }
@@ -100,6 +108,8 @@ public class NetworkingRouter: SolanaRouter {
                 guard case let .failure(error) = completion else {
                     return
                 }
+                
+                self.apiLogger?.handle(error: "Switchable publisher catched error: \(error) host: \(url.host ?? "")")
                 
                 func retry() {
                     self.request(method: method,
@@ -114,15 +124,19 @@ public class NetworkingRouter: SolanaRouter {
                     return
                 }
                 
-                guard self.needRetry(for: url.host) else {
-                    print("Failed to send request: \(bcMethod) \(url)")
-                    onComplete(.failure(error))
+                if self.needRetry(for: url.host) {
+                    if url.host != host {
+                        self.apiLogger?.handle(error: error, currentHost: url.host ?? "", nextHost: self.host ?? "")
+                    }
+                    
+                    retry()
+                    
+                    withExtendedLifetime(subscription) {}
                     return
                 }
                 
-                retry()
-                
-                withExtendedLifetime(subscription) {}
+                self.apiLogger?.handle(error: "Failed to send request: \(bcMethod). Error = \(error)")
+                onComplete(.failure(error))
             }, receiveValue: { })
     }
     

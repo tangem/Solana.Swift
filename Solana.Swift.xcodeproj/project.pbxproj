@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D79B1502C00C04600E71EBB /* getLatestBlockhash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79B14F2C00C04600E71EBB /* getLatestBlockhash.swift */; };
 		7DD945E699E2BF12EB4681AD /* Pods_Solana_SwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E8409193B12E3A8D5A9D41 /* Pods_Solana_SwiftTests.framework */; };
 		A31C023BA53A7F24397E6930 /* Pods_Solana_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 331172706474BFC5CA7C4B9A /* Pods_Solana_Swift.framework */; };
 		B03AE9662901828D003E18BC /* Solana_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03AE95D2901828D003E18BC /* Solana_Swift.framework */; };
@@ -194,6 +195,7 @@
 
 /* Begin PBXFileReference section */
 		0746F5898207426EE9C0D17E /* Pods-Solana.SwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solana.SwiftTests.release.xcconfig"; path = "Target Support Files/Pods-Solana.SwiftTests/Pods-Solana.SwiftTests.release.xcconfig"; sourceTree = "<group>"; };
+		2D79B14F2C00C04600E71EBB /* getLatestBlockhash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getLatestBlockhash.swift; sourceTree = "<group>"; };
 		331172706474BFC5CA7C4B9A /* Pods_Solana_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solana_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		625790C608CCEEA2EB711B59 /* Pods-Solana.Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solana.Swift.debug.xcconfig"; path = "Target Support Files/Pods-Solana.Swift/Pods-Solana.Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		81AE72A72337C0C9BEC637D2 /* Pods-Solana.SwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solana.SwiftTests.debug.xcconfig"; path = "Target Support Files/Pods-Solana.SwiftTests/Pods-Solana.SwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1087,6 +1089,7 @@
 			isa = PBXGroup;
 			children = (
 				B03AEBCE290185C5003E18BC /* getRecentBlockhash.swift */,
+				2D79B14F2C00C04600E71EBB /* getLatestBlockhash.swift */,
 			);
 			path = getRecentBlockhash;
 			sourceTree = "<group>";
@@ -1696,6 +1699,7 @@
 				B03AEC26290185C5003E18BC /* closeTokenAccount.swift in Sources */,
 				B03AEC66290185C6003E18BC /* Int2X.swift in Sources */,
 				B03AEC63290185C6003E18BC /* SHA256.swift in Sources */,
+				2D79B1502C00C04600E71EBB /* getLatestBlockhash.swift in Sources */,
 				B03AEC5E290185C6003E18BC /* getClusterNodes.swift in Sources */,
 				B03AEC40290185C6003E18BC /* getRecentPerformanceSamples.swift in Sources */,
 				B03AEC49290185C6003E18BC /* getBlockCommitment.swift in Sources */,
