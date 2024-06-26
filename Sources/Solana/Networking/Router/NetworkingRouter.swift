@@ -125,7 +125,7 @@ public class NetworkingRouter: SolanaRouter {
                     return
                 }
                 
-                // "needRetry" flag used for forced shutdown retry cycle
+                // 'enableRetry' flag used for forced shutdown retry cycle
                 if self.needRetry(for: url.host, with: enableRetry) {
                     if url.host != host {
                         self.apiLogger?.handle(error: error, currentHost: url.host ?? "", nextHost: self.host ?? "")
@@ -149,7 +149,6 @@ public class NetworkingRouter: SolanaRouter {
         
         currentEndpointIndex += 1
         if currentEndpointIndex < endpoints.count {
-            // Used for forced shutdown switched api
             return enableRetry
         }
         
