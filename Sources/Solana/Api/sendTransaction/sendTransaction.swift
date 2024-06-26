@@ -4,7 +4,7 @@ public extension Api {
     func sendTransaction(serializedTransaction: String,
                          configs: RequestConfiguration = RequestConfiguration(encoding: "base64", maxRetries: 12)!,
                          onComplete: @escaping(Result<TransactionID, Error>) -> Void) {
-        router.request(parameters: [serializedTransaction, configs], enableRetry: false) { (result: Result<TransactionID, Error>) in
+        router.request(parameters: [serializedTransaction, configs], enableСontinuedRetry: false) { (result: Result<TransactionID, Error>) in
             switch result {
             case .success(let transaction):
                 onComplete(.success(transaction))
