@@ -50,6 +50,7 @@ public class NetworkingRouter: SolanaRouter {
         method: HTTPMethod = .post,
         bcMethod: String = #function,
         parameters: [Encodable?] = [],
+        enableСontinuedRetry: Bool = true,
         onComplete: @escaping (Result<T, Error>) -> Void
     ) {
         let bcMethod = bcMethod.replacingOccurrences(of: "\\([\\w\\s:]*\\)", with: "", options: .regularExpression)
@@ -124,7 +125,11 @@ public class NetworkingRouter: SolanaRouter {
                     return
                 }
                 
-                if self.needRetry(for: url.host) {
+                /*
+                 'enableСontinuedRetry' flag used for forced shutdown retry cycle, default value - true
+                 Do not confuse the order of checking the conditions, because there must be api switching at least once
+                 */
+                if self.needRetry(for: url.host) && enableСontinuedRetry {
                     if url.host != host {
                         self.apiLogger?.handle(error: error, currentHost: url.host ?? "", nextHost: self.host ?? "")
                     }
