@@ -1,8 +1,8 @@
 import Foundation
 
 public extension Api {
-    func getLatestBlockhash(commitment: Commitment? = nil, onComplete: @escaping(Result<String, Error>) -> Void) {
-        router.request(parameters: [RequestConfiguration(commitment: commitment)]) { (result: Result<Rpc<LatestBlockhash?>, Error>) in
+    func getLatestBlockhash(commitment: Commitment? = nil, enableСontinuedRetry: Bool = true, onComplete: @escaping(Result<String, Error>) -> Void) {
+        router.request(parameters: [RequestConfiguration(commitment: commitment)], enableСontinuedRetry: enableСontinuedRetry) { (result: Result<Rpc<LatestBlockhash?>, Error>) in
             switch result {
             case .success(let rpc):
                 guard let value = rpc.value else {
