@@ -59,7 +59,9 @@ extension Action {
         if let recentBlockhash = recentBlockhash {
             getRecentBlockhashRequest(.success(recentBlockhash))
         } else {
-            self.api.getLatestBlockhash(onComplete: getRecentBlockhashRequest)
+            // Disable need retry for send only
+            let needRetry = mode == .serializeOnly
+            self.api.getLatestBlockhash(enableСontinuedRetry: needRetry, onComplete: getRecentBlockhashRequest)
         }
     }
 }
