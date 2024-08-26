@@ -4,12 +4,12 @@ public extension Api {
     func sendTransaction(serializedTransaction: String,
                          configs: RequestConfiguration = RequestConfiguration(encoding: "base64", maxRetries: 12)!,
                          startSendingTimestamp: Date,
-                         retries: Int = Constants.maxRetries,
+                         retries: TimeInterval = Constants.maxRetries,
                          onComplete: @escaping(Result<TransactionID, Error>) -> Void) {
         let elapsed = Date().timeIntervalSince(startSendingTimestamp)
 
         // Too early to send, waiting
-        if elapsed < Constants.retryTimeoutSeconds {
+        if elapsed < Constants.retryStartTimeoutSeconds {
             Thread.sleep(forTimeInterval: Constants.waitingDelaySeconds)
             sendTransaction(serializedTransaction: serializedTransaction,
                             configs: configs,
@@ -88,12 +88,12 @@ public extension ApiTemplates {
     }
 }
 
-private extension Api {
+public extension Api {
     enum Constants {
         /// According to blockchain specifications and blockhain analytic
         static let retryStartTimeoutSeconds: TimeInterval = 15
         static let waitingDelaySeconds: TimeInterval = 1
         static let retryDelaySeconds: TimeInterval = 3
-        static let maxRetries: TimeInterval = 5
+        public static let maxRetries: TimeInterval = 5
     }
 }
