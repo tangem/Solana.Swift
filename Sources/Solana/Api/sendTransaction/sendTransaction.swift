@@ -4,7 +4,20 @@ public extension Api {
     func sendTransaction(serializedTransaction: String,
                          configs: RequestConfiguration = RequestConfiguration(encoding: "base64", maxRetries: 12)!,
                          startSendingTimestamp: Date,
+                         retries: Int = Constants.maxRetries,
                          onComplete: @escaping(Result<TransactionID, Error>) -> Void) {
+        let elapsed = Date().timeIntervalSince(startSendingTimestamp)
+
+        // Too early to send, waiting
+        if elapsed < Constants.retryTimeoutSeconds {
+            Thread.sleep(forTimeInterval: Constants.retryDelaySeconds)
+            sendTransaction(serializedTransaction: serializedTransaction,
+                            configs: configs,
+                            startSendingTimestamp: startSendingTimestamp,
+                            onComplete: onComplete)
+            return
+        }
+
         router.request(parameters: [serializedTransaction, configs], enableСontinuedRetry: false) {[weak self] (result: Result<TransactionID, Error>) in
             guard let self else { return }
 
@@ -12,13 +25,14 @@ public extension Api {
             case .success(let transaction):
                 onComplete(.success(transaction))
             case .failure(let error):
-                if let solanaError = error as? RPCError, solanaError.isBlockhashNotFoundError,
-                   Date().timeIntervalSince(startSendingTimestamp) <= Constants.retryTimeoutSeconds {
+                if let solanaError = error as? RPCError, retries > 0 {
 
                     Thread.sleep(forTimeInterval: Constants.retryDelaySeconds)
+                    
                     sendTransaction(serializedTransaction: serializedTransaction,
                                     configs: configs,
                                     startSendingTimestamp: startSendingTimestamp,
+                                    retries: retries - 1,
                                     onComplete: onComplete)
                     return
                 }
@@ -77,7 +91,8 @@ public extension ApiTemplates {
 private extension Api {
     enum Constants {
         /// According to blockchain specifications and blockhain analytic
-        static let retryTimeoutSeconds: TimeInterval = 18
+        static let retryStartTimeoutSeconds: TimeInterval = 15
         static let retryDelaySeconds: TimeInterval = 3
+        static let maxRetries: TimeInterval = 5
     }
 }
