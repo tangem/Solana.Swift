@@ -10,7 +10,7 @@ public extension Api {
 
         // Too early to send, waiting
         if elapsed < Constants.retryTimeoutSeconds {
-            Thread.sleep(forTimeInterval: Constants.retryDelaySeconds)
+            Thread.sleep(forTimeInterval: Constants.waitingDelaySeconds)
             sendTransaction(serializedTransaction: serializedTransaction,
                             configs: configs,
                             startSendingTimestamp: startSendingTimestamp,
@@ -92,6 +92,7 @@ private extension Api {
     enum Constants {
         /// According to blockchain specifications and blockhain analytic
         static let retryStartTimeoutSeconds: TimeInterval = 15
+        static let waitingDelaySeconds: TimeInterval = 1
         static let retryDelaySeconds: TimeInterval = 3
         static let maxRetries: TimeInterval = 5
     }
