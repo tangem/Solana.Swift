@@ -8,7 +8,7 @@ extension Action {
         computeUnitPrice: UInt64?,
         allowUnfundedRecipient: Bool = false,
         fromPublicKey: PublicKey,
-        onComplete: @escaping ((Result<String, Error>) -> Void)
+        onComplete: @escaping ((Result<(String, Date), Error>) -> Void)
     ) {
         checkTransaction(
             to: destination,
@@ -119,7 +119,7 @@ extension Action {
         amount: UInt64,
         computeUnitLimit: UInt32?,
         computeUnitPrice: UInt64?,
-        onComplete: @escaping ((Result<String, Error>) -> Void)
+        onComplete: @escaping ((Result<(String, Date), Error>) -> Void)
     ) {
         let instructionsResult = sendSolInstructions(from: fromPublicKey, to: destination, amount: amount, computeUnitLimit: computeUnitLimit, computeUnitPrice: computeUnitPrice)
         

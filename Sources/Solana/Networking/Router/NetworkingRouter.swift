@@ -15,6 +15,15 @@ public enum RPCError: Error {
     case invalidResponse(ResponseError)
     case unknownResponse
     case retry
+
+    public var isBlockhashNotFoundError: Bool {
+        switch self {
+        case .invalidResponse(let reponseError):
+            reponseError.code == -32002
+        default:
+            false
+        }
+    }
 }
 
 public protocol NetworkingRouterSwitchApiLogger {

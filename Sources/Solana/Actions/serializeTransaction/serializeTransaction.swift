@@ -12,7 +12,7 @@ extension Action {
         signers: [Signer],
         feePayer: PublicKey? = nil,
         mode: SerializationMode,
-        onComplete: @escaping ((Result<String, Error>) -> Void)
+onComplete: @escaping ((Result<(String, Date), Error>) -> Void)
     ) {
 
         guard let feePayer = feePayer ?? signers.first?.publicKey else {
@@ -35,9 +35,11 @@ extension Action {
                     case .serializeOnly:
                         let serializedMessage = transaction
                             .serializeMessage()
-                            .map { $0.base64EncodedString() }
+                            .map { ($0.base64EncodedString(), Date()) }
                         onComplete(serializedMessage)
                     case .serializeAndSign:
+                        let startSendingTimestamp = Date()
+
                         transaction.sign(signers: signers, queue: queue) { result in
                             result
                                 .flatMap { transaction.serialize() }
@@ -45,7 +47,7 @@ extension Action {
                                     let base64 = $0.bytes.toBase64()
                                     return .success(base64)
                                 }
-                                .onSuccess { onComplete(.success($0)) }
+                                .onSuccess { onComplete(.success(($0, startSendingTimestamp))) }
                                 .onFailure { onComplete(.failure($0)) }
                         }
                     }
@@ -76,7 +78,7 @@ extension ActionTemplates {
             self.mode = mode
         }
 
-        public typealias Success = String
+        public typealias Success = (String, Date)
 
         public let instructions: [TransactionInstruction]
         public let recentBlockhash: String?
@@ -84,7 +86,7 @@ extension ActionTemplates {
         public let feePayer: PublicKey?
         public let mode: SerializationMode
 
-        public func perform(withConfigurationFrom actionClass: Action, completion: @escaping (Result<String, Error>) -> Void) {
+        public func perform(withConfigurationFrom actionClass: Action, completion: @escaping (Result<Success, Error>) -> Void) {
             actionClass.serializeTransaction(instructions: instructions, recentBlockhash: recentBlockhash, signers: signers, feePayer: feePayer, mode: mode, onComplete: completion)
         }
     }

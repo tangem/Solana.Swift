@@ -3,12 +3,40 @@ import Foundation
 public extension Api {
     func sendTransaction(serializedTransaction: String,
                          configs: RequestConfiguration = RequestConfiguration(encoding: "base64", maxRetries: 12)!,
+                         startSendingTimestamp: Date,
+                         retries: TimeInterval = Constants.maxRetries,
                          onComplete: @escaping(Result<TransactionID, Error>) -> Void) {
-        router.request(parameters: [serializedTransaction, configs], enableСontinuedRetry: false) { (result: Result<TransactionID, Error>) in
+        let elapsed = Date().timeIntervalSince(startSendingTimestamp)
+
+        // Too early to send, waiting
+        if elapsed < Constants.retryStartTimeoutSeconds {
+            Thread.sleep(forTimeInterval: Constants.waitingDelaySeconds)
+            sendTransaction(serializedTransaction: serializedTransaction,
+                            configs: configs,
+                            startSendingTimestamp: startSendingTimestamp,
+                            onComplete: onComplete)
+            return
+        }
+
+        router.request(parameters: [serializedTransaction, configs], enableСontinuedRetry: false) {[weak self] (result: Result<TransactionID, Error>) in
+            guard let self else { return }
+
             switch result {
             case .success(let transaction):
                 onComplete(.success(transaction))
             case .failure(let error):
+                if let solanaError = error as? RPCError, retries > 0 {
+
+                    Thread.sleep(forTimeInterval: Constants.retryDelaySeconds)
+                    
+                    sendTransaction(serializedTransaction: serializedTransaction,
+                                    configs: configs,
+                                    startSendingTimestamp: startSendingTimestamp,
+                                    retries: retries - 1,
+                                    onComplete: onComplete)
+                    return
+                }
+
                 if let solanaError = error as? SolanaError {
                     onComplete(.failure(self.handleError(error: solanaError)))
                     return
@@ -19,6 +47,7 @@ public extension Api {
             }
         }
     }
+    
 
     fileprivate func handleError(error: SolanaError) -> Error {
         if case .invalidResponse(let response) = error,
@@ -54,7 +83,17 @@ public extension ApiTemplates {
         public typealias Success = TransactionID
         
         public func perform(withConfigurationFrom apiClass: Api, completion: @escaping (Result<Success, Error>) -> Void) {
-            apiClass.sendTransaction(serializedTransaction: serializedTransaction, configs: configs, onComplete: completion)
+            apiClass.sendTransaction(serializedTransaction: serializedTransaction, configs: configs, startSendingTimestamp: Date(), onComplete: completion)
         }
+    }
+}
+
+public extension Api {
+    enum Constants {
+        /// According to blockchain specifications and blockhain analytic
+        static let retryStartTimeoutSeconds: TimeInterval = 15
+        static let waitingDelaySeconds: TimeInterval = 1
+        static let retryDelaySeconds: TimeInterval = 3
+        public static let maxRetries: TimeInterval = 5
     }
 }

@@ -57,9 +57,9 @@ extension Action {
             self.serializeTransaction(instructions: instructions, recentBlockhash: recentBlockhash, signers: signers, mode: .serializeAndSign) {
                 cb($0)
             }
-        }.flatMap { transaction in
+        }.flatMap { (transaction, timestamp) in
             return ContResult.init { cb in
-                self.api.sendTransaction(serializedTransaction: transaction) {
+                self.api.sendTransaction(serializedTransaction: transaction, startSendingTimestamp: timestamp) {
                     cb($0)
                 }
             }
@@ -131,7 +131,7 @@ extension Action {
         serializeTransaction(instructions: instructions, recentBlockhash: recentBlockhash, signers: signers, mode: .serializeAndSign) { result in
             switch result {
             case .success(let transaction):
-                self.api.simulateTransaction(transaction: transaction) {
+                self.api.simulateTransaction(transaction: transaction.0) {
                     switch $0 {
                     case .success(let r):
                         if r.err != nil {
