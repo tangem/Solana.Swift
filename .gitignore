@@ -35,3 +35,11 @@ Carthage/Build
 # `pod install` in .travis.yml
 # 
 Pods/
+
+# Swift Package Manager
+#
+# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
+# Packages/
+# Package.pins
+.build/
+.swiftpm
