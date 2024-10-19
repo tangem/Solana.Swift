@@ -1,6 +1,6 @@
 PODS:
   - secp256k1.swift (0.1.4)
-  - Starscream (4.0.4)
+  - Starscream (4.0.8)
   - TweetNacl (1.0.2)
 
 DEPENDENCIES:
@@ -16,9 +16,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   secp256k1.swift: a7e7a214f6db6ce5db32cc6b2b45e5c4dd633634
-  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
+  Starscream: 19b5533ddb925208db698f0ac508a100b884a1b9
   TweetNacl: 3abf4d1d2082b0114e7a67410e300892448951e6
 
-PODFILE CHECKSUM: 0ef2ad773b8bb93fd5b2cdbcb2f5a8eec729b9dd
+PODFILE CHECKSUM: 504edd3d0bbf2ef71eeec53b934f302edc583393
 
 COCOAPODS: 1.15.2
