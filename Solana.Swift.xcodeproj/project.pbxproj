@@ -180,6 +180,7 @@
 		B03AECDB290185CE003E18BC /* TokenInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECB5290185CE003E18BC /* TokenInfoTests.swift */; };
 		B03AECDC290185CE003E18BC /* Solana_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECB6290185CE003E18BC /* Solana_SwiftTests.swift */; };
 		B03AECDE290267FA003E18BC /* Signer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03AECDD290267FA003E18BC /* Signer.swift */; };
+		B603C7192CC321CB00FF5214 /* ComputeBudgetProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603C7182CC321CB00FF5214 /* ComputeBudgetProgram.swift */; };
 		DACFA7CD2BA2CE8E00ABEF02 /* getFeeForMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACFA7CC2BA2CE8E00ABEF02 /* getFeeForMessage.swift */; };
 /* End PBXBuildFile section */
 
@@ -370,6 +371,7 @@
 		B03AECB5290185CE003E18BC /* TokenInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenInfoTests.swift; sourceTree = "<group>"; };
 		B03AECB6290185CE003E18BC /* Solana_SwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solana_SwiftTests.swift; sourceTree = "<group>"; };
 		B03AECDD290267FA003E18BC /* Signer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signer.swift; sourceTree = "<group>"; };
+		B603C7182CC321CB00FF5214 /* ComputeBudgetProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputeBudgetProgram.swift; sourceTree = "<group>"; };
 		D1E8409193B12E3A8D5A9D41 /* Pods_Solana_SwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solana_SwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DACFA7CC2BA2CE8E00ABEF02 /* getFeeForMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getFeeForMessage.swift; sourceTree = "<group>"; };
 		DED8C195259DA792ADCC7652 /* Pods-Solana.Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solana.Swift.release.xcconfig"; path = "Target Support Files/Pods-Solana.Swift/Pods-Solana.Swift.release.xcconfig"; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 		B03AEB5C290185C4003E18BC /* Programs */ = {
 			isa = PBXGroup;
 			children = (
+				B603C7182CC321CB00FF5214 /* ComputeBudgetProgram.swift */,
 				B03AEB5D290185C4003E18BC /* TokenSwapProgram.swift */,
 				B03AEB5E290185C4003E18BC /* TokenProgram.swift */,
 				B03AEB5F290185C4003E18BC /* AssociatedTokenProgram.swift */,
@@ -1688,6 +1691,7 @@
 				B03AEC2B290185C5003E18BC /* sendSOL.swift in Sources */,
 				B03AEC74290185C6003E18BC /* Base58.swift in Sources */,
 				B03AEC76290185C6003E18BC /* Keychain.swift in Sources */,
+				B603C7192CC321CB00FF5214 /* ComputeBudgetProgram.swift in Sources */,
 				B03AEC6B290185C6003E18BC /* Ed25519HDKey.swift in Sources */,
 				B03AEC32290185C5003E18BC /* createTokenAccount.swift in Sources */,
 				B03AEC23290185C5003E18BC /* TokenProgram.swift in Sources */,
@@ -1847,7 +1851,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1904,7 +1908,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1930,7 +1934,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1960,7 +1964,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1980,7 +1984,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 81AE72A72337C0C9BEC637D2 /* Pods-Solana.SwiftTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4897UJ6D8C;
@@ -1998,7 +2002,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0746F5898207426EE9C0D17E /* Pods-Solana.SwiftTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4897UJ6D8C;

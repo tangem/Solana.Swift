@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Solana.Swift'
-  s.version          = '1.1'
+  s.version          = '1.2.0-tangem12'
   s.summary          = 'This is a open source library on pure swift for Solana protocol.'
 
 
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.author           = { 'ajamaica' => 'arturo.jamaicagarcia@asurion.com' }
   s.source           = { :git => 'https://github.com/ajamaica/Solana.Swift.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '13.0'
+  s.ios.deployment_target = '15.0'
   s.osx.deployment_target = "12.0"
   s.source_files = 'Sources/Solana/**/*'
   s.swift_versions   = ["5.3"]
