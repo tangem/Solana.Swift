@@ -55,7 +55,7 @@ open class NetworkingRouter: SolanaRouter {
         self.apiLogger = apiLogger
     }
     
-    public func request<T: Decodable>(
+    open func request<T: Decodable>(
         method: HTTPMethod = .post,
         bcMethod: String = #function,
         parameters: [Encodable?] = [],
