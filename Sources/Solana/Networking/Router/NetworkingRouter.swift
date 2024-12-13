@@ -31,7 +31,7 @@ public protocol NetworkingRouterSwitchApiLogger {
     func handle(error message: String)
 }
 
-public class NetworkingRouter: SolanaRouter {
+open class NetworkingRouter: SolanaRouter {
     
     public var endpoint: RPCEndpoint {
         endpoints[currentEndpointIndex]
