@@ -31,7 +31,7 @@ public protocol NetworkingRouterSwitchApiLogger {
     func handle(error message: String)
 }
 
-public class NetworkingRouter: SolanaRouter {
+open class NetworkingRouter: SolanaRouter {
     
     public var endpoint: RPCEndpoint {
         endpoints[currentEndpointIndex]
@@ -55,7 +55,7 @@ public class NetworkingRouter: SolanaRouter {
         self.apiLogger = apiLogger
     }
     
-    public func request<T: Decodable>(
+    open func request<T: Decodable>(
         method: HTTPMethod = .post,
         bcMethod: String = #function,
         parameters: [Encodable?] = [],
